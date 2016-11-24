@@ -65,18 +65,3 @@ nav a:hover {
 #navAddItemTag{
     background: blue;
 }
-
-.oneProductShow{
-    border-style: groove;
-    border-width: medium;
-    width: 220px;
-    height: 300px;
-    text-align: center;
-    margin: 5px;
-    float: right;
-}
-
-#divReplaceByPress{
-    width: 1200px;
-    height: 300px;
-}

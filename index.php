@@ -23,6 +23,7 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
     <title>Buy With Friends</title>
     <link rel="stylesheet" href="css/entry.css">
     <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/one_product.css">
     <link rel="shortcut icon" type="image/x-icon" href="image/logoBWF.png"/>
 
     <script
@@ -187,10 +188,10 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
                 <form>
                     <div class="container">
 
+                        <label><b>שם החברה:</b></label>
+                        <input id="companyName" type="text" placeholder="הכנס את שם החברה" required>
                         <label><b>שם המוצר:</b></label>
-                        <input id="productName" type="text" placeholder="הכנס את שם המוצר" required>
-                        <label><b>שם המוצר:</b></label>
-                        <input id="companyName" type="text" placeholder="הכנס את שם מוצר" required>
+                        <input id="productName" type="text" placeholder="הכנס את שם מוצר" required>
                         <label><b>תיאור המוצר:</b></label>
                         <input id="descriptionProduct" type="text" placeholder="תאר את המוצר" required>
                         <label><b>מספר השבועות לאסוף אנשים:</b></label>

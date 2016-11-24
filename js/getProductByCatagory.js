@@ -42,8 +42,8 @@ function getProductByCatagory(event) {
                 $("#divChanges").hide();
                 divChanges += "<div id='divReplaceByPress'>";
                 for (var i = 0; i < Products.length; i++) {
-                    divChanges += "<div class='oneProductShow'><label class='productName'>"+Products[i][1] +", </label>";
-                    divChanges +="<label class='companyName'>"+Products[i][2] +"</label> <br>";
+                    divChanges += "<div class='oneProductShow'><label class='companyName'>"+Products[i][1] +", </label>";
+                    divChanges +="<label class='productName'>"+Products[i][2] +"</label> <br>";
                     divChanges +="<img src= '"+Products[i][7]+"' width='200px' height='200dp'/><br><br>";
                     divChanges +="<label class='descriptionProduct'>"+Products[i][3] +"</label>";
                     divChanges +="</div>";

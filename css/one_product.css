@@ -1,0 +1,22 @@
+#divReplaceByPress{
+    width: 1200px;
+    height: 300px;
+}
+.oneProductShow{
+    border-style: groove;
+    border-width: medium;
+    width: 280px;
+    height: 355px;
+    text-align: center;
+    margin: 5px;
+    float: right;
+}
+
+.productName,.companyName{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.descriptionProduct{
+    font-size: 20px;
+}
