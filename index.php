@@ -74,7 +74,8 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
         איך זה עובד מה צריך לעשות
     </div>
 </div>
-<div id="divReplaceByPress"></div>
+<div id="divReplaceByPress" hidden></div>
+<div id = "DivShowDetails" hidden></div>
 
 <div id="popupBoxOnePosition">
     <div class="popupBoxWrapper">

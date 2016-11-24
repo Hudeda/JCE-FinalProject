@@ -10,7 +10,7 @@ $(document).ready(function () {
     $("#navMyCarTag").click({val: "5"},getProductByCatagory);
     $("#navOtherTag").click({val: "6"},getProductByCatagory);
 });
-
+var Products;
 function getProductByCatagory(event) {
     var catagory;
     if(event.data.val == "0")
@@ -38,15 +38,26 @@ function getProductByCatagory(event) {
         },
         success: function (response) {
             if (response.length > 6) {
-                var Products = JSON.parse(response);
+                Products = JSON.parse(response);
                 $("#divChanges").hide();
                 divChanges += "<div id='divReplaceByPress'>";
+
+
                 for (var i = 0; i < Products.length; i++) {
-                    divChanges += "<div class='oneProductShow'><label class='companyName'>"+Products[i][1] +", </label>";
-                    divChanges +="<label class='productName'>"+Products[i][2] +"</label> <br>";
-                    divChanges +="<img src= '"+Products[i][7]+"' width='200px' height='200dp'/><br><br>";
-                    divChanges +="<label class='descriptionProduct'>"+Products[i][3] +"</label>";
-                    divChanges +="</div>";
+                    var stringSub = "";
+                    if(Products[i][3].length > 16) {
+                        stringSub = Products[i][3].substr(0, 16);
+                        stringSub += "...";
+                    }
+                    else
+                        stringSub = Products[i][3];
+
+                    divChanges += "<div class='oneProductShow' onclick='openDescription("+i+")' style = 'background-image: url("+ Products[i][7]+")'>";
+                    divChanges += "<div class = 'showDetails'>"
+                    divChanges += "<label class='companyName'>"+Products[i][2] +", </label>";
+                    divChanges +="<label class='productName'>"+Products[i][1] +"</label> <br>";
+                    divChanges +="<label class='descriptionProduct'>"+stringSub +"</label>";
+                    divChanges +="</div></div>";
                 }
                 divChanges +="</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
@@ -56,4 +67,20 @@ function getProductByCatagory(event) {
                 alert("Error data input");
         }
     });
+}
+function openDescription(x) {
+    var divChanges = "<div id= 'DivShowDetails'> <div class='popupBoxWrapper'> <div class='popupBoxContent'> <div class='container'>";
+    divChanges += "<form id = 'formShowDetails'><label class='companyName'>"+Products[x][1] +", </label>";
+    divChanges +="<label class='productName'>"+Products[x][2] +"</label> <br>";
+    divChanges +=  "<img id = 'imageShowDetails' src="+Products[x][7]+" ><br>";
+    divChanges +="<label class='descriptionProduct'>"+Products[x][3] +"</label><br>";
+    divChanges +="<input type = button class='buttonJoinGroup' value='הצטרף לרכישה' onclick='hideDetails();'/>";
+    divChanges += "</form></div></div></div></div>";
+    $("#DivShowDetails").replaceWith(divChanges);
+    $("#DivShowDetails").show();
+}
+
+function hideDetails(){
+    $("#DivShowDetails").hide();
+
 }

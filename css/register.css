@@ -72,7 +72,6 @@ input[type=text], input[type = password],input[type = number],select{
 /* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
 }
 
 /* Avatar image */
@@ -113,18 +112,12 @@ span.psw {
 .popupBoxContent{
     background-color: #FFF; padding: 15px;
 }
-#popupRegister{
+#popupRegister, #addProductDiv,#sendEmailDiv,#DivShowDetails{
     top: 0; left: 0; position: fixed; width: 100%; height: 120%;
     background-color: rgba(0,0,0,0.7); display: none;
 }
-#addProductDiv{
-    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
-    background-color: rgba(0,0,0,0.7); display: none;
-}
-
-#sendEmailDiv{
-    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
-    background-color: rgba(0,0,0,0.7); display: none;
+#DivShowDetails {
+    text-align: center;
 }
 
 #numberForGetOffer{

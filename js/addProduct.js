@@ -3,9 +3,7 @@
  */
 $(document).ready(function () {
     $("#addProduct").click(saveProductDb);
-    $("#cancelAddProduct").click(function () {
-        $("#addProductDiv").hide()
-    });
+    $("#cancelAddProduct").click(function () {$("#addProductDiv").hide()});
 });
 var target;
 function readURL(input) {
