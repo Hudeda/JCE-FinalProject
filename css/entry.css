@@ -1,0 +1,82 @@
+/*all items*/
+body{
+    width: 1200px;
+    margin: 0px auto;
+    text-align: right;
+
+}
+
+nav ul {
+    list-style: none;
+    background-color: #444;
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+/*for one item*/
+nav li {
+    font-family: "arial",sans-serif;
+    font-size:15px;
+    line-height: 30px;
+    display: inline-block;
+    width: 120px;
+    border-bottom: 1px solid #888;
+}
+nav li:hover{
+    background-color: #005f5f;
+}
+/*to delete the blue underline*/
+nav label {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .3s background-color;
+}
+nav a:hover {
+    background-color: #005f5f;
+}
+#icon{
+    display:block;
+    background-color: #d9d9d9;
+}
+.loginLink{
+    direction: rtl;
+    width: 1200px;
+    float: right;
+    font: bold 12px arial;
+    display:flex;
+    white-space:pre;
+}
+.newsProduct{
+    width: 300px;
+    float: right;
+    height: 600px;
+    background: red;
+}
+.mainDiv{
+    width: 895px;
+    margin-right: 5px;
+    height: 600px;
+    background: blue;
+}
+#navAddItemTag{
+    background: blue;
+}
+
+.oneProductShow{
+    border-style: groove;
+    border-width: medium;
+    width: 220px;
+    height: 300px;
+    text-align: center;
+    margin: 5px;
+    float: right;
+}
+
+#divReplaceByPress{
+    width: 1200px;
+    height: 300px;
+}

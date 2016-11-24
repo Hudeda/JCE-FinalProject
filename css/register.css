@@ -1,0 +1,136 @@
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+    direction: rtl;
+}
+#pass {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-color:#017572;
+}
+
+/* Full-width inputs */
+input[type=text], input[type = password],input[type = number],select{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.registerGreen{
+    float: right;
+}
+
+.registerRed{
+    float: left;
+}
+
+/*!* Set a style for all buttons *!*/
+/*#connection {*/
+    /*background-color: #1a1aff;*/
+    /*color: white;*/
+    /*padding: 14px 20px;*/
+    /*margin: 8px 0;*/
+    /*border: none;*/
+    /*cursor: pointer;*/
+    /*width: 100%;*/
+/*}*/
+/*#register{*/
+    /*background-color: #ff0000;*/
+    /*color: white;*/
+    /*padding: 14px 20px;*/
+    /*margin: 8px 0;*/
+    /*border: none;*/
+    /*cursor: pointer;*/
+    /*width: 100%;*/
+/*}*/
+#register{
+    float: left;
+    margin-left: 50px ;
+}
+#connection {
+    margin-right: 50px;
+}
+.container{
+    text-align:right ;
+    padding: 16px;
+}
+.containerBtn{
+    text-align:center ;
+
+}
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+#cancel{
+    width:50px;
+}
+
+#popupBoxOnePosition{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+
+.popupBoxWrapper{
+    width: 550px; margin: 50px auto; text-align: left;
+}
+.popupBoxContent{
+    background-color: #FFF; padding: 15px;
+}
+#popupRegister{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+#addProductDiv{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+
+#sendEmailDiv{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+
+#numberForGetOffer{
+    margin-bottom: 10px;
+}
+
+[name="optradio"] {
+    margin: 10px;
+}
