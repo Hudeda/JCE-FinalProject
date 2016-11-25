@@ -42,7 +42,7 @@ function getProductByCatagory(event) {
     var divChanges = "";
     //start the loading view
     $(".se-pre-con").replaceWith("<div class='se-pre-con'></div>");
-
+    var numberOfOrder = 1;
     //send a post that return the product from server
     $.ajax({
         type: 'POST',
@@ -66,13 +66,24 @@ function getProductByCatagory(event) {
                     }
                     else
                         stringSub = Products[i][descriptionProduct];
+                    $.ajax({
+                        type: 'POST',
+                        url: getUsersInProductGroup,
+                        async:false,
+                        data: {
+                            idProduct: Products[i][idProduct],
+                        },
+                        success: function (response) {
+                            numberOfOrder =response;
+                        }
+                    });
 
                     divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
                     divChanges += "<div class = 'showDetails'>"
                     divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
                     divChanges += "<label class='productName'>" + Products[i][productName] + "</label> <br>";
                     divChanges += "<label class='descriptionProduct'>" + stringSub + "</label>";
-                    divChanges += "</div></div>";
+                    divChanges += "</div><div class='numberOforder' >"+numberOfOrder+" :מס' החברים בקבוצה "+"</div></div>";
                 }
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
@@ -87,7 +98,6 @@ function getProductByCatagory(event) {
 }
 //open description view by click on any product div(display the product in match more details)
 function openDescription(idPro) {
-
     var divChanges = "<div id= 'DivShowDetails'> <div class='popupBoxWrapper'> <div class='popupBoxContent'> <div class='container'>";
     divChanges += "<form id = 'formShowDetails'><label class='companyName'>" + Products[idPro][companyName] + ", </label>";
     divChanges += "<label class='productName'>" + Products[idPro][productName] + "</label> <br>";

@@ -8,16 +8,19 @@ $addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductDb.php";
 $sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/db/sendEmail.php";
 $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
+$addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
+$getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsersInProductGroup.php";
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
-//for script files that send POST request to php files
+    //for script files that send POST request to php files
     var addRegister = "<?php echo $addRegister ?>";
     var getUserNamePassToConnection = "<?php echo $getUserNamePassToConnection?>";
     var addProductDb = "<?php echo $addProductDb?>";
     var sendEmail = "<?php echo $sendEmail?>";
     var getProducts = "<?php echo $getProducts?>";
     var addProductByUserDB = "<?php echo $addProductByUser?>";
+    var getUsersInProductGroup = "<?php echo $getUsersInProductGroup?>";
 
 </script>
 
@@ -25,7 +28,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 <html>
 <head>
     <meta charset="UTF-8">
-<!--    Including all the stylesheets and scripts files are been used on this app-->
+    <!--    Including all the stylesheets and scripts files are been used on this app-->
     <title>Buy With Friends</title>
     <link rel="stylesheet" href="css/entry.css">
     <link rel="stylesheet" href="css/register.css">
