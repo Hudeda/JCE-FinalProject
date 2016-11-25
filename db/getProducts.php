@@ -14,7 +14,6 @@ $result = $conn->query("SELECT * FROM productbwf WHERE category = '$catagory'");
 
 if ($result->num_rows > 0) {
     // output data of each row
-
     $product_Users = array();
 
     while ($row = $result->fetch_assoc()) {
@@ -27,6 +26,7 @@ if ($result->num_rows > 0) {
         $resCell[6] = $row["numberOfAddPeople"];
         $resCell[7] = $row["numberForGetOffer"];
         $resCell[8] = $row["image"];
+        $resCell[9] = $row["uploadDate"];
         array_push($product_Users, $resCell);
     }
 

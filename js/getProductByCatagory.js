@@ -19,7 +19,9 @@ var productName = 2;
 var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
+var numberOfAddPeople = 6;
 var imageProduct = 8;
+var uploadDate = 9;
 
 //this function loading the products by click on any category on nav-bar
 function getProductByCatagory(event) {
@@ -59,32 +61,36 @@ function getProductByCatagory(event) {
 
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
-                    var stringSub = "";
-                    if (Products[i][descriptionProduct].length > 16) {
-                        stringSub = Products[i][descriptionProduct].substr(0, 16);
-                        stringSub += "...";
-                    }
-                    else
-                        stringSub = Products[i][descriptionProduct];
-                    $.ajax({
-                        type: 'POST',
-                        url: getUsersInProductGroup,
-                        async:false,
-                        data: {
-                            idProduct: Products[i][idProduct],
-                        },
-                        success: function (response) {
-                            numberOfOrder =response;
-                        }
-                    });
+                    if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
 
-                    divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
-                    divChanges += "<div class = 'showDetails'>"
-                    divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
-                    divChanges += "<label class='productName'>" + Products[i][productName] + "</label> <br>";
-                    divChanges += "<label class='descriptionProduct'>" + stringSub + "</label>";
-                    divChanges += "</div><div class='numberOforder' >"+numberOfOrder+" :מס' החברים בקבוצה "+"</div></div>";
+                        var stringSub = "";
+                        if (Products[i][descriptionProduct].length > 16) {
+                            stringSub = Products[i][descriptionProduct].substr(0, 16);
+                            stringSub += "...";
+                        }
+                        else
+                            stringSub = Products[i][descriptionProduct];
+                        $.ajax({
+                            type: 'POST',
+                            url: getUsersInProductGroup,
+                            async: false,
+                            data: {
+                                idProduct: Products[i][idProduct],
+                            },
+                            success: function (response) {
+                                numberOfOrder = response;
+                            }
+                        });
+
+                        divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
+                        divChanges += "<div class = 'showDetails'>"
+                        divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
+                        divChanges += "<label class='productName'>" + Products[i][productName] + "</label> <br>";
+                        divChanges += "<label class='descriptionProduct'>" + stringSub + "</label>";
+                        divChanges += "</div><div class='numberOforder' >" + numberOfOrder + " :מס' החברים בקבוצה " + "</div></div>";
+                    }
                 }
+
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
             }
@@ -98,11 +104,13 @@ function getProductByCatagory(event) {
 }
 //open description view by click on any product div(display the product in match more details)
 function openDescription(idPro) {
+    var dateTocloseGroup = getDateAfterXWeeks(Products[idPro][uploadDate], Products[idPro][numberOfAddPeople]);
     var divChanges = "<div id= 'DivShowDetails'> <div class='popupBoxWrapper'> <div class='popupBoxContent'> <div class='container'>";
     divChanges += "<form id = 'formShowDetails'><label class='companyName'>" + Products[idPro][companyName] + ", </label>";
     divChanges += "<label class='productName'>" + Products[idPro][productName] + "</label> <br>";
     divChanges += "<img id = 'imageShowDetails' src=" + Products[idPro][imageProduct] + " ><br>";
     divChanges += "<label class='descriptionProduct'>" + Products[idPro][descriptionProduct] + "</label><br>";
+    divChanges += "<label class='descriptionProduct'>" + "הקבוצה נסגרת בתאריך: " + dateTocloseGroup + "</label><br>";
     divChanges += "<input type = button class='buttonJoinGroup' value='הצטרף לרכישה' onclick='addProductByUser(" + idPro + ");'/>";
     divChanges += "<input type = button class='buttonExitJoin' value='יציאה' onclick='hideDetails();'/>";
     divChanges += "</form></div></div></div></div>";
@@ -117,7 +125,7 @@ function hideDetails() {
 function addProductByUser(idPro) {
     var userName = localStorage.getItem("userName");
     if (userName == undefined) {
-        alert("you must to connect first");
+        alert("יש להתחבר לפני השימוש באתר");
         return;
     }
     //get the real idProduct
@@ -142,4 +150,32 @@ function addProductByUser(idPro) {
     });
 
 
+}
+
+function getDateAfterXWeeks(datea, x) {
+    var date = new Date(datea)
+    date.setTime(date.getTime() + x * 86400000 * 7);
+    var dd = date.getDate();
+    var mm = date.getMonth() + 1; //January is 0!
+
+    var yyyy = date.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    var date = dd + '/' + mm + '/' + yyyy;
+    return date;
+}
+
+function checkIfDateArePss(date1, x) {
+    var date = new Date(date1);
+    date.setTime(date.getTime() + x * 86400000 * 7);
+    if (date.getTime() > new Date().getTime()) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }

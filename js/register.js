@@ -22,10 +22,12 @@ $(document).ready(function () {
 
     //if there is no local db show connection option else connect with the local db
     if (localStorage.getItem("userName") == undefined) {
+        $('#addProducthid').hide();
         $('#nameOfUser').text('אורח');
         $('#connect').text('התחבר');
     }
     else {
+        $('#addProducthid').show();
         $('#nameOfUser').text(localStorage.getItem("userName"));
         $('#connect').text('התנתק');
 
@@ -47,9 +49,11 @@ $(document).ready(function () {
 function registration() {
 
     if ($('#connect').text() == 'התחבר') {
+        $('#addProducthid').hide();
         $('#popupBoxOnePosition').show();
     }
     else {
+        $('#addProducthid').show();
         localStorage.clear();
         location.reload();
     }
@@ -191,7 +195,7 @@ function sendEmailForget() {
     var email = $("#emailSendingInput").val();
 
     if (!validateForm(email)) {
-        alert("this is not a email");
+        alert("האימייל אינו נכון נסה שנית");
         $('#emailSendingInput').focus();
         return
     }
@@ -204,7 +208,7 @@ function sendEmailForget() {
         },
         success: function (response) {
             if (response) {
-                alert("send email");
+                alert("אימייל נשלח");
                 location.reload();
             }
             else

@@ -16,10 +16,11 @@ $numberForGetOffer = $_POST['numberForGetOffer'];
 $image = $_POST['image'];
 $category = $_POST['category'];
 $userName = $_POST['userName'];
+$uploadDate = date("Y-m-d H:i:s");
 
 
-$sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,numberOfAddPeople,numberForGetOffer,image)
-VALUES ('$userName', '$productName', '$companyName','$descriptionProduct','$category','$numberOfAddPeople','$numberForGetOffer','$image')";
+$sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,numberOfAddPeople,numberForGetOffer,image,uploadDate)
+VALUES ('$userName', '$productName', '$companyName','$descriptionProduct','$category','$numberOfAddPeople','$numberForGetOffer','$image', '$uploadDate')";
 
 
 if ($conn->query($sql) === TRUE) {

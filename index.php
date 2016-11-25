@@ -54,7 +54,8 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
 <!--nav bar - all the category in app and adding product button -->
 <nav>
     <ul>
-        <li><label id="navAddItemTag" hidden="hide">הוספת פריט</label></li>
+        <div id ="addProducthid" hidden><li><label id="navAddItemTag">הוספת פריט</label></li>
+        <li><label >הפריטים שלי</label></li></div>
         <li><label id="navOtherTag">שונות</label></li>
         <li><label id="navMyCarTag">רכב</label></li>
         <li><label id="navMyCellularTag">סלולר</label></li>
