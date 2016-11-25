@@ -4,6 +4,7 @@ $getUserNamePassToConnection = "http://hudeda.netau.net/BuyWithFriendsWeb/db/get
 $addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductDb.php";
 $sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/db/sendEmail.php";
 $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
+$addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -13,6 +14,7 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
     var addProductDb = "<?php echo $addProductDb?>";
     var sendEmail = "<?php echo $sendEmail?>";
     var getProducts = "<?php echo $getProducts?>";
+    var addProductByUserDB = "<?php echo $addProductByUser?>";
 
 </script>
 
@@ -75,7 +77,7 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
     </div>
 </div>
 <div id="divReplaceByPress" hidden></div>
-<div id = "DivShowDetails" hidden></div>
+<div id="DivShowDetails" hidden></div>
 
 <div id="popupBoxOnePosition">
     <div class="popupBoxWrapper">
@@ -216,7 +218,6 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
                         <label><b>צקף תמונה</b></label>
                         <input type='file' onchange="readURL(this);" required>
                         <img id="blah" src="#" alt="your image" hidden/>
-
 
 
                     </div>

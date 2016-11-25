@@ -18,14 +18,15 @@ if ($result->num_rows > 0) {
     $product_Users = array();
 
     while ($row = $result->fetch_assoc()) {
-        $resCell[0] = $row["userName"];
-        $resCell[1] = $row["productName"];
-        $resCell[2] = $row["companyName"];
-        $resCell[3] = $row["descriptionProduct"];
-        $resCell[4] = $row["category"];
-        $resCell[5] = $row["numberOfAddPeople"];
-        $resCell[6] = $row["numberForGetOffer"];
-        $resCell[7] = $row["image"];
+        $resCell[0] = $row["idProduct"];
+        $resCell[1] = $row["userName"];
+        $resCell[2] = $row["productName"];
+        $resCell[3] = $row["companyName"];
+        $resCell[4] = $row["descriptionProduct"];
+        $resCell[5] = $row["category"];
+        $resCell[6] = $row["numberOfAddPeople"];
+        $resCell[7] = $row["numberForGetOffer"];
+        $resCell[8] = $row["image"];
         array_push($product_Users, $resCell);
     }
 

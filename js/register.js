@@ -20,18 +20,18 @@ $(document).ready(function () {
 
     $("#connection").click(checkPassword);
 
-    if( localStorage.getItem("userName") == undefined){
+    if (localStorage.getItem("userName") == undefined) {
         $('#nameOfUser').text('אורח');
         $('#connect').text('התחבר');
     }
-    else{
+    else {
         $('#nameOfUser').text(localStorage.getItem("userName"));
         $('#connect').text('התנתק');
 
     }
 
     $("#forgetPassword").click(function () {
-    $("#sendEmailDiv").show()
+        $("#sendEmailDiv").show()
     });
 
     $("#emailSendingButto").click(sendEmailForget);
@@ -43,11 +43,11 @@ $(document).ready(function () {
 });
 
 function registration() {
-    
-    if($('#connect').text() == 'התחבר'){
+
+    if ($('#connect').text() == 'התחבר') {
         $('#popupBoxOnePosition').show();
     }
-    else{
+    else {
         localStorage.clear();
         location.reload();
     }
@@ -56,7 +56,7 @@ function registration() {
 function validateForm(x) {
     var atpos = x.indexOf("@");
     var dotpos = x.lastIndexOf(".");
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length)
         return false;
     return true;
 }
@@ -67,11 +67,10 @@ function checkPassword() {
     var userName = $('#userNameConnection');
     var userPass = $('#userPassConnection');
 
-    if(userName.val() != "" && userPass.val() != "") {
+    if (userName.val() != "" && userPass.val() != "") {
 
         var Profile = [];
         $.ajax({
-            async: false,
             type: 'POST',
             url: getUserNamePassToConnection,
             data: {
@@ -112,12 +111,12 @@ function checkCorrectUserRegistrAndSendtoDB() {
         alert("אחד מהשדות ריק");
         return;
     }
-    if(!validateForm($('#userEmailRegistration').val())){
+    if (!validateForm($('#userEmailRegistration').val())) {
         alert("אימייל אינו נכון");
         $('#userEmailRegistration').focus();
         return
     }
-    if(!phonenumber()){
+    if (!phonenumber()) {
         alert("מספר טלפון אינו נכון");
         $('#userPhoneRegistration').focus();
         return
@@ -141,31 +140,27 @@ function checkCorrectUserRegistrAndSendtoDB() {
             password: pass1.val(),
         },
         success: function (response) {
-              if (response == " 1") {
-                localStorage.setItem("firstName",firstName.val());
-                localStorage.setItem("lastName",lastName.val());
-                localStorage.setItem("userName",userName.val());
-                localStorage.setItem("phone",userEmail.val());
-                localStorage.setItem("email",userPhone.val());
+            if (response == " 1") {
+                localStorage.setItem("firstName", firstName.val());
+                localStorage.setItem("lastName", lastName.val());
+                localStorage.setItem("userName", userName.val());
+                localStorage.setItem("phone", userEmail.val());
+                localStorage.setItem("email", userPhone.val());
                 location.reload();
                 alert("נוצר יוזר חדש");
-             
-        
-            }
-            else{ 
-               alert("&#1511;&#1497;&#1497;&#1501; &#1502;&#1513;&#1514;&#1502;&#1513; &#1499;&#1494;&#1492;");
-}
-                
 
+
+            }
+            else
+                alert("קיים שם משתמש/אימייל כזה");
         }
     });
 }
 
-function phonenumber()
-{
+function phonenumber() {
     inputtxt = $('#userPhoneRegistration').val();
     var phoneno = /^\d{10}$/;
-    if((inputtxt.match(phoneno))){
+    if ((inputtxt.match(phoneno))) {
         return true;
     }
     else {
@@ -173,19 +168,18 @@ function phonenumber()
     }
 }
 
-function makeid()
-{
+function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for( var i=0; i < 8; i++ )
+    for (var i = 0; i < 8; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
 }
 
 function sendEmailForget() {
-    var password =  makeid();
+    var password = makeid();
     var email = $("#emailSendingInput").val();
 
     if (!validateForm(email)) {
@@ -203,7 +197,7 @@ function sendEmailForget() {
         success: function (response) {
             if (response) {
                 alert("send email");
-location.reload();
+                location.reload();
 
             }
             else

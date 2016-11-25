@@ -21,11 +21,10 @@ function readURL(input) {
 
 
 function saveProductDb() {
-    alert(target.length);
     var userName = localStorage.getItem("userName");
     if (userName == null) {
         $("#addProductDiv").hide();
-        alert("you must connect first");
+        alert("ראשית יש צורך בהתחבר");
         return;
     }
     var productName = $("#productName").val();
@@ -34,12 +33,15 @@ function saveProductDb() {
     var numberOfAddPeople = $("#numberOfAddPeople").val();
     var numberForGetOffer = $("#numberForGetOffer").val();
     var category = $("#selectCategory").val();
+    if(companyName.length >16 || productName.length > 16){
+        alert("בבקשה לא לפרט בחברה ובמוצר, לזה קיים תיאור מוצר");
+        return;
+    }
     if (productName != "" && companyName != "" && descriptionProduct != "" && numberOfAddPeople != "" && category != "בחר קטגוריה" && category != undefined && numberForGetOffer != "" && target != undefined) {
 
         $.ajax({
             type: 'POST',
             url: addProductDb,
-            async: false,
             data: {
                 productName: productName,
                 companyName: companyName,
@@ -51,18 +53,16 @@ function saveProductDb() {
                 image: target,
             },
             success: function (response) {
-                alert(target.length);
-                alert(response.length);
                 if (response) {
-                    alert("new product created");
+                    alert("נוצרה קבוצת רכישה חדשה");
                     location.reload();
                 }
                 else
-                    alert("Error data input");
+                    alert("לא היה ניתן ליצור את הקבוצה");
             }
         });
     }
     else
-        alert("one of the input is empty");
+        alert("אחד מהשדות אינו מלא");
 }
 

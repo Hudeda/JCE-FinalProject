@@ -1,8 +1,9 @@
-#divReplaceByPress{
+#divReplaceByPress {
     width: 1200px;
     height: 300px;
 }
-.oneProductShow{
+
+.oneProductShow {
     border-style: groove;
     border-width: medium;
     width: 280px;
@@ -10,12 +11,12 @@
     text-align: center;
     margin: 5px;
     float: right;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: 280px 280px;
-    background-position:center;
+    background-position: center;
 }
 
-.showDetails{
+.showDetails {
     width: 280px;
     height: 70px;
     background: black;
@@ -23,12 +24,12 @@
     color: white;
 }
 
-.productName, .companyName{
+.productName, .companyName {
     font-weight: bold;
     font-size: 30px;
 }
 
-.descriptionProduct{
+.descriptionProduct {
     font-size: 20px;
 }
 
@@ -47,14 +48,37 @@
     border: 2px solid #008CBA;
 
 }
-#formShowDetails{
-    text-align: center;
-}
+
 .buttonJoinGroup:hover {
     background-color: #008CBA;
     color: white;
 }
-#imageShowDetails{
+
+#formShowDetails {
+    text-align: center;
+}
+
+.buttonExitJoin {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #ff4d4d;
+}
+
+.buttonExitJoin:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#imageShowDetails {
     width: 400px;
     height: 400px;
 }
