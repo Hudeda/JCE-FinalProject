@@ -5,7 +5,9 @@ $(document).ready(function () {
     $("#addProduct").click(saveProductDb);
     $("#cancelAddProduct").click(function () {$("#addProductDiv").hide()});
 });
+//save local image string base64
 var target;
+//get the user image and save the base64 string
 function readURL(input) {
     if (input.files && input.files[0]) {
 
@@ -19,14 +21,16 @@ function readURL(input) {
     }
 }
 
-
+//add a product to server
 function saveProductDb() {
+    //take the loacl userName
     var userName = localStorage.getItem("userName");
     if (userName == null) {
         $("#addProductDiv").hide();
         alert("ראשית יש צורך בהתחבר");
         return;
     }
+
     var productName = $("#productName").val();
     var companyName = $("#companyName").val();
     var descriptionProduct = $("#descriptionProduct").val();
@@ -37,8 +41,10 @@ function saveProductDb() {
         alert("בבקשה לא לפרט בחברה ובמוצר, לזה קיים תיאור מוצר");
         return;
     }
+    //check if one of th input is not filled
     if (productName != "" && companyName != "" && descriptionProduct != "" && numberOfAddPeople != "" && category != "בחר קטגוריה" && category != undefined && numberForGetOffer != "" && target != undefined) {
 
+        //send post request to adding the new product
         $.ajax({
             type: 'POST',
             url: addProductDb,

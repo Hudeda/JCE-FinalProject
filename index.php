@@ -1,4 +1,7 @@
 <?php
+
+//the connection between other php files to send and get from server.
+
 $addRegister = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addRegister.php";
 $getUserNamePassToConnection = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserNamePassToConnection.php";
 $addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductDb.php";
@@ -8,7 +11,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
-
+//for script files that send POST request to php files
     var addRegister = "<?php echo $addRegister ?>";
     var getUserNamePassToConnection = "<?php echo $getUserNamePassToConnection?>";
     var addProductDb = "<?php echo $addProductDb?>";
@@ -22,6 +25,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 <html>
 <head>
     <meta charset="UTF-8">
+<!--    Including all the stylesheets and scripts files are been used on this app-->
     <title>Buy With Friends</title>
     <link rel="stylesheet" href="css/entry.css">
     <link rel="stylesheet" href="css/register.css">
@@ -39,10 +43,12 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 
 
 </head>
+<!--logo on the Tab next to name app-->
 <div icon id="icon">
     <a href=""><img style="width:100px" src="image/logoBWF.png" type="image"></a>
 </div>
 
+<!--nav bar - all the category in app and adding product button -->
 <nav>
     <ul>
         <li><label id="navAddItemTag" hidden="hide">הוספת פריט</label></li>
@@ -56,6 +62,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     </ul>
 </nav>
 
+<!--connection and disconnection users -->
 <div class="loginLink">
     <span>שלום </span>
     <div id="nameOfUser" class="userName"><span></span></div>
@@ -65,21 +72,28 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 
 
 <body>
+
+<!--20 product are slideing on the rigth side on first window-->
 <div id="divChanges">
     <br>
     <div class="newsProduct">
         20 פריטים חדשים
     </div>
 
+    <!--Explains how the app works why we need this app-->
 
     <div class="mainDiv">
         איך זה עובד מה צריך לעשות
     </div>
 </div>
+<!--this div replaced by click on category on nav bar-->
 <div id="divReplaceByPress" hidden></div>
+<!--ths div show the details by press on any product-->
 <div id="DivShowDetails" hidden></div>
+<!--this div is the loading view-->
 <div class="se-pre-con" hidden></div>
 
+<!--this div is the popup windows are show the connection view -->
 <div id="popupBoxOnePosition">
     <div class="popupBoxWrapper">
         <div class="popupBoxContent">
@@ -116,7 +130,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     </div>
 </div>
 
-
+<!--this div is the popup windows are show the send email view-->
 <div id="sendEmailDiv">
     <div class="popupBoxWrapper">
         <div class="popupBoxContent">
@@ -143,6 +157,8 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     </div>
 </div>
 
+
+<!--this div is the popup windows are show the user register view-->
 
 <div id="popupRegister">
     <div class="popupBoxWrapper">
@@ -183,7 +199,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     </div>
 </div>
 
-
+<!--this div is the popup windows are show the adding product group view-->
 <div id="addProductDiv">
     <div class="popupBoxWrapper">
         <div class="popupBoxContent">

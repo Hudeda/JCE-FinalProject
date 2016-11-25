@@ -20,6 +20,7 @@ $(document).ready(function () {
 
     $("#connection").click(checkPassword);
 
+    //if there is no local db show connection option else connect with the local db
     if (localStorage.getItem("userName") == undefined) {
         $('#nameOfUser').text('אורח');
         $('#connect').text('התחבר');
@@ -42,6 +43,7 @@ $(document).ready(function () {
 
 });
 
+//if press on connect open the connection popup window else press on disconnect so clear the local db and reload the page
 function registration() {
 
     if ($('#connect').text() == 'התחבר') {
@@ -97,6 +99,7 @@ function checkPassword() {
     }
 }
 
+//checking the user register input and create new user
 function checkCorrectUserRegistrAndSendtoDB() {
     var firstName = $('#firstNameRegistration');
     var lastName = $('#lastNameRegistration');
@@ -106,29 +109,33 @@ function checkCorrectUserRegistrAndSendtoDB() {
     var pass1 = $('#pass1Registration');
     var pass2 = $('#pass2Registration');
 
+    //if one of the input is not filled
     if (firstName.val() == "" || lastName.val() == "" || userName.val() == "" || userEmail.val() == ""
         || userPhone.val() == "" || pass1.val() == "" || pass2.val() == "") {
         alert("אחד מהשדות ריק");
         return;
     }
+    //check if input email is correct
     if (!validateForm($('#userEmailRegistration').val())) {
         alert("אימייל אינו נכון");
         $('#userEmailRegistration').focus();
         return
     }
+    //check the input number
     if (!phonenumber()) {
         alert("מספר טלפון אינו נכון");
         $('#userPhoneRegistration').focus();
         return
     }
+    //check password inputs are equals
     if (pass1.val() != pass2.val()) {
         alert("הסיסמאות אינם תואמות");
         $('#pass1Registration').focus();
         return;
     }
 
+    //send post request to create a new user
     $.ajax({
-
         type: 'POST',
         url: addRegister,
         data: {
@@ -148,8 +155,6 @@ function checkCorrectUserRegistrAndSendtoDB() {
                 localStorage.setItem("email", userPhone.val());
                 location.reload();
                 alert("נוצר יוזר חדש");
-
-
             }
             else
                 alert("קיים שם משתמש/אימייל כזה");
@@ -157,6 +162,7 @@ function checkCorrectUserRegistrAndSendtoDB() {
     });
 }
 
+///phonenumber check the phone number function
 function phonenumber() {
     inputtxt = $('#userPhoneRegistration').val();
     var phoneno = /^\d{10}$/;
@@ -168,6 +174,7 @@ function phonenumber() {
     }
 }
 
+///create a new password
 function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -178,6 +185,7 @@ function makeid() {
     return text;
 }
 
+//send to user the new password
 function sendEmailForget() {
     var password = makeid();
     var email = $("#emailSendingInput").val();
@@ -198,10 +206,9 @@ function sendEmailForget() {
             if (response) {
                 alert("send email");
                 location.reload();
-
             }
             else
-                alert("&#1513;&#1490;&#1497;&#1488;&#1492; &#1489;&#1491;&#1496;&#1492;");
+                alert("נסיון שליחת אימייל עם סיסמה חדשה נכשל");
         }
     });
 }												

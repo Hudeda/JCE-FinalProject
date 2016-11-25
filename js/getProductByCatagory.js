@@ -2,6 +2,7 @@
  * Created by hudeda on 21/11/2016.
  */
 $(document).ready(function () {
+    // set the nav bar to get the category name
     $("#navMyElectricityTag").click({val: "0"}, getProductByCatagory);
     $("#navTouristTag").click({val: "1"}, getProductByCatagory);
     $("#navMyComputerTag").click({val: "2"}, getProductByCatagory);
@@ -10,6 +11,7 @@ $(document).ready(function () {
     $("#navMyCarTag").click({val: "5"}, getProductByCatagory);
     $("#navOtherTag").click({val: "6"}, getProductByCatagory);
 });
+//global value for all function to get the products
 var Products;
 var idProduct = 0;
 var userNameProduct = 1;
@@ -18,6 +20,8 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var imageProduct = 8;
+
+//this function loading the products by click on any category on nav-bar
 function getProductByCatagory(event) {
     var catagory;
     if (event.data.val == "0")
@@ -36,7 +40,10 @@ function getProductByCatagory(event) {
         catagory = $("#navOtherTag").text();
 
     var divChanges = "";
+    //start the loading view
     $(".se-pre-con").replaceWith("<div class='se-pre-con'></div>");
+
+    //send a post that return the product from server
     $.ajax({
         type: 'POST',
         url: getProducts,
@@ -46,12 +53,11 @@ function getProductByCatagory(event) {
         success: function (response) {
             if (response.length > 6) {
 
-
                 Products = JSON.parse(response);
                 $("#divChanges").hide();
                 divChanges += "<div id='divReplaceByPress'>";
 
-
+                //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
                     var stringSub = "";
                     if (Products[i][descriptionProduct].length > 16) {
@@ -70,14 +76,16 @@ function getProductByCatagory(event) {
                 }
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
-                $(".se-pre-con").replaceWith("<div class='se-pre-con' hidden></div>");
             }
             else
-                alert("Error data input");
+                alert("לא קיים עדיין קבוצות בקטגוריה זו");
+            //stop the loading view
+            $(".se-pre-con").replaceWith("<div class='se-pre-con' hidden></div>");
         }
     });
 
 }
+//open description view by click on any product div(display the product in match more details)
 function openDescription(idPro) {
 
     var divChanges = "<div id= 'DivShowDetails'> <div class='popupBoxWrapper'> <div class='popupBoxContent'> <div class='container'>";
@@ -91,18 +99,20 @@ function openDescription(idPro) {
     $("#DivShowDetails").replaceWith(divChanges);
     $("#DivShowDetails").show();
 }
-
+//close the DivShowDetails by click on the exit button
 function hideDetails() {
     $("#DivShowDetails").hide();
-
 }
+//add to database user how want to join any group
 function addProductByUser(idPro) {
     var userName = localStorage.getItem("userName");
     if (userName == undefined) {
         alert("you must to connect first");
         return;
     }
+    //get the real idProduct
     var idProductSend = Products[idPro][idProduct];
+    //send post request to join the group
     $.ajax({
         type: 'POST',
         url: addProductByUserDB,
