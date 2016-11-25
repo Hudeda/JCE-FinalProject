@@ -42,6 +42,7 @@ function saveProductDb() {
         $.ajax({
             type: 'POST',
             url: addProductDb,
+            async:false,
             data: {
                 productName: productName,
                 companyName: companyName,
