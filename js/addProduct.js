@@ -14,6 +14,10 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
+            if(input.files[0].size > 1048576){
+                alert("לא ניתן להעלות קבצים מעל 1 מגה");
+                return;
+            }
             $('#blah').attr('src', reader.result).width(100).height(100).show();
             target = reader.result;
         };
