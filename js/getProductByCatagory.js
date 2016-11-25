@@ -36,6 +36,7 @@ function getProductByCatagory(event) {
         catagory = $("#navOtherTag").text();
 
     var divChanges = "";
+    $(".se-pre-con").replaceWith("<div class='se-pre-con'></div>");
     $.ajax({
         type: 'POST',
         url: getProducts,
@@ -44,6 +45,8 @@ function getProductByCatagory(event) {
         },
         success: function (response) {
             if (response.length > 6) {
+
+
                 Products = JSON.parse(response);
                 $("#divChanges").hide();
                 divChanges += "<div id='divReplaceByPress'>";
@@ -67,12 +70,13 @@ function getProductByCatagory(event) {
                 }
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
-
+                $(".se-pre-con").replaceWith("<div class='se-pre-con' hidden></div>");
             }
             else
                 alert("Error data input");
         }
     });
+
 }
 function openDescription(idPro) {
 

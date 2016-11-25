@@ -40,7 +40,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 
 </head>
 <div icon id="icon">
-    <img style="width:100px" src="image/logoBWF.png" type="image">
+    <a href=""><img style="width:100px" src="image/logoBWF.png" type="image"></a>
 </div>
 
 <nav>
@@ -78,6 +78,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 </div>
 <div id="divReplaceByPress" hidden></div>
 <div id="DivShowDetails" hidden></div>
+<div class="se-pre-con" hidden></div>
 
 <div id="popupBoxOnePosition">
     <div class="popupBoxWrapper">
