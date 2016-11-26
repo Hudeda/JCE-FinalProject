@@ -16,7 +16,7 @@ $numberForGetOffer = $_POST['numberForGetOffer'];
 $image = $_POST['image'];
 $category = $_POST['category'];
 $userName = $_POST['userName'];
-$uploadDate = date("Y-m-d H:i:s");
+$uploadDate = date("Y-m-d H:i:s",strtotime('+7 hours'));
 
 
 $sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,numberOfAddPeople,numberForGetOffer,image,uploadDate)

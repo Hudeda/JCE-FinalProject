@@ -64,9 +64,9 @@ function getProductByCatagory(event) {
                     if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
 
                         var stringSub = "";
-                        if (Products[i][descriptionProduct].length > 16) {
-                            stringSub = Products[i][descriptionProduct].substr(0, 16);
-                            stringSub += "...";
+                        if (Products[i][descriptionProduct].length > 25) {
+                            stringSub = "...";
+                            stringSub += Products[i][descriptionProduct].substr(0, 25);
                         }
                         else
                             stringSub = Products[i][descriptionProduct];
@@ -148,8 +148,6 @@ function addProductByUser(idPro) {
                 alert("הינך כבר רשם לקבוצה זו");
         }
     });
-
-
 }
 
 function getDateAfterXWeeks(datea, x) {

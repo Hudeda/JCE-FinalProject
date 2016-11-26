@@ -10,6 +10,7 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
 $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsersInProductGroup.php";
+$getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts.php";
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -21,6 +22,7 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
     var getProducts = "<?php echo $getProducts?>";
     var addProductByUserDB = "<?php echo $addProductByUser?>";
     var getUsersInProductGroup = "<?php echo $getUsersInProductGroup?>";
+    var getUserProducts = "<?php echo $getUserProducts?>";
 
 </script>
 
@@ -41,6 +43,7 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/addProduct.js"></script>
+    <script type="text/javascript" src="js/userProduct.js"></script>
     <script type="text/javascript" src="js/navBar.js"></script>
     <script type="text/javascript" src="js/getProductByCatagory.js"></script>
 
@@ -49,13 +52,15 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
 <!--logo on the Tab next to name app-->
 <div icon id="icon">
     <a href=""><img style="width:100px" src="image/logoBWF.png" type="image"></a>
+
+
 </div>
 
 <!--nav bar - all the category in app and adding product button -->
 <nav>
     <ul>
         <div id ="addProducthid" hidden><li><label id="navAddItemTag">הוספת פריט</label></li>
-        <li><label >הפריטים שלי</label></li></div>
+        <li><label id="userProductsDiv">הפריטים שלי</label></li></div>
         <li><label id="navOtherTag">שונות</label></li>
         <li><label id="navMyCarTag">רכב</label></li>
         <li><label id="navMyCellularTag">סלולר</label></li>
@@ -110,7 +115,7 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
 
                     <div class="container">
                         <label><b>שם משתמש:</b></label>
-                        <input id="userNameConnection" type="text" placeholder="הכנס שם משתמש" required>
+                        <input id ="userNameConnection" type="text" placeholder="הכנס שם משתמש" required>
 
                         <label><b>סיסמה</b></label>
                         <input id="userPassConnection" type='password' placeholder="הכנס סיסמה" required>
@@ -198,7 +203,6 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
                 </form>
 
             </div>
-            &#8203;
         </div>
     </div>
 </div>
@@ -219,10 +223,10 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
                         <label><b>תיאור המוצר:</b></label>
                         <input id="descriptionProduct" type="text" placeholder="תאר את המוצר" required>
                         <label><b>מספר השבועות לאסוף אנשים:</b></label>
-                        <input id="numberOfAddPeople" type="number" placeholder="הכנס מספר השבועות לאסוף אנשים"
+                        <input id="numberOfAddPeople" type="number" min="1" placeholder="הכנס מספר השבועות לאסוף אנשים"
                                required>
                         <label><b>מספר השבועות לקבלת הצעות:</b></label>
-                        <input id="numberForGetOffer" type="number" placeholder="הכנס מספר השבועות לקבלת הצעות"
+                        <input id="numberForGetOffer" type="number" min="1" placeholder="הכנס מספר השבועות לקבלת הצעות"
                                required>
                         <label><b>קטגוריה:</b></label>
                         <select id="selectCategory">

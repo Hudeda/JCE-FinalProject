@@ -72,7 +72,6 @@ function checkPassword() {
 
     var userName = $('#userNameConnection');
     var userPass = $('#userPassConnection');
-
     if (userName.val() != "" && userPass.val() != "") {
 
         var Profile = [];
@@ -84,7 +83,6 @@ function checkPassword() {
                 password: userPass.val(),
             },
             success: function (response) {
-
                 if (response == "Error") {
                     alert("שם משתמש או הסיסמה אינם תואמים");
                     $('#userNameConnection').focus();
