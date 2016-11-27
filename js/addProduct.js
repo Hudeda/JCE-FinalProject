@@ -1,32 +1,111 @@
 /**
  * Created by hudeda on 16/11/2016.
  */
+var target;
 $(document).ready(function () {
     $("#addProduct").click(saveProductDb);
     $("#cancelAddProduct").click(function () {$("#addProductDiv").hide()});
+
+    $(".image-upload").ImageResize(
+        {
+            maxWidth: 800,
+            onImageResized: function (imageData) {
+                $(".images").append($("<img/>", { src: imageData }));
+            }
+        });
 });
 //save local image string base64
-var target;
+
 //get the user image and save the base64 string
-function readURL(input) {
-    if (input.files && input.files[0]) {
-
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            if(input.files[0].size > 1048576){
-                alert("לא ניתן להעלות קבצים מעל 1 מגה");
-                return;
-            }
-            $('#blah').attr('src', reader.result).width(100).height(100).show();
-            target = reader.result;
-        };
-        reader.readAsDataURL(input.files[0]);
+$.fn.ImageResize = function (options) {
+    var defaults = {
+        maxWidth: 200,
+        maxHeigt: 200,
+        onImageResized: null
     }
+    var settings = $.extend({}, defaults, options);
+    var selector = $(this);
+
+    selector.each(function (index) {
+        var control = selector.get(index);
+        if ($(control).prop("tagName").toLowerCase() == "input" && $(control).attr("type").toLowerCase() == "file") {
+            $(control).attr("accept", "image/*");
+            $(control).attr("multiple", "true");
+
+            control.addEventListener('change', handleFileSelect, false);
+        }
+        else {
+            cosole.log("Invalid file input field");
+        }
+    });
+
+    function handleFileSelect(event) {
+        //Check File API support
+        if (window.File && window.FileList && window.FileReader) {
+            var count = 0;
+            var files = event.target.files;
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                //Only pics
+                if (!file.type.match('image')) continue;
+
+                var picReader = new FileReader();
+                picReader.addEventListener("load", function (event) {
+                    var picFile = event.target;
+                    var imageData = picFile.result;
+                    var img = new Image();
+                    img.src = imageData;
+                    img.onload = function () {
+                        if (img.width > settings.maxWidth || img.height > settings.maxHeigt) {
+                            var width = settings.maxWidth;
+                            var height = settings.maxHeigt;
+
+                            if (img.width > settings.maxWidth) {
+                                width = settings.maxWidth;
+                                var ration = settings.maxWidth / img.width;
+                                height = Math.round(img.height * ration);
+                            }
+
+                            if (height > settings.maxHeigt) {
+                                height = settings.maxHeigt;
+                                var ration = settings.maxHeigt / img.height;
+                                width = Math.round(img.width * ration);
+                            }
+
+                            var canvas = $("<canvas/>").get(0);
+                            canvas.width = width;
+                            canvas.height = height;
+                            var context = canvas.getContext('2d');
+                            context.drawImage(img, 0, 0, width, height);
+                            imageData = canvas.toDataURL();
+
+                            if (settings.onImageResized != null && typeof (settings.onImageResized) == "function") {
+                                settings.onImageResized(imageData);
+                            }
+                            target=imageData;
+                        }
+
+                    }
+                    img.onerror = function () {
+
+                    }
+                });
+                //Read the image
+                picReader.readAsDataURL(file);
+            }
+        } else {
+            console.log("Your browser does not support File API");
+        }
+    }
+
+
 }
 
 //add a product to server
 function saveProductDb() {
+    alert(target);
+    alert(target.length);
     //take the loacl userName
     var userName = localStorage.getItem("userName");
     if (userName == null) {

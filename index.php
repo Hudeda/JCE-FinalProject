@@ -241,8 +241,8 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
                         </select>
                         <br>
                         <label><b>צקף תמונה</b></label>
-                        <input type='file' onchange="readURL(this);" required>
-                        <img id="blah" src="#" alt="your image" hidden/>
+                        <input type="file" class="image-upload"/>
+                        <div class="images"></div>
 
 
                     </div>
