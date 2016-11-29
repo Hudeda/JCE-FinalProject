@@ -1,23 +1,26 @@
 #divReplaceByPress {
-    width: 1200px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+
 }
 
 .oneProductShow {
     border-style: groove;
     border-width: medium;
-    width: 280px;
+    display: inline-block;
+    width: 260px;
     height: 355px;
     text-align: center;
     margin: 5px;
-    float: right;
     background-repeat: no-repeat;
-    background-size: 280px 280px;
+    background-size: 260px 260px;
     background-position: center;
 }
 
 .showDetails {
-    width: 280px;
+    width: 260px;
     height: 70px;
     background: black;
     opacity: 0.5;
@@ -84,10 +87,9 @@
     margin-top: 250px;
     font-weight: bold;
     font-size:25px;
-    width: 280px;
+    width: 260px;
     height: 35px;
     background: black;
     opacity: 0.5;
     color: white;
-
 }

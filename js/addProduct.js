@@ -8,9 +8,10 @@ $(document).ready(function () {
 
     $(".image-upload").ImageResize(
         {
-            maxWidth: 800,
+            maxWidth: 300,
             onImageResized: function (imageData) {
                 $(".images").append($("<img/>", { src: imageData }));
+                $(".images").show();
             }
         });
 });
@@ -44,7 +45,6 @@ $.fn.ImageResize = function (options) {
         if (window.File && window.FileList && window.FileReader) {
             var count = 0;
             var files = event.target.files;
-
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
                 //Only pics
@@ -54,6 +54,7 @@ $.fn.ImageResize = function (options) {
                 picReader.addEventListener("load", function (event) {
                     var picFile = event.target;
                     var imageData = picFile.result;
+                    alert( event.target.result.length);
                     var img = new Image();
                     img.src = imageData;
                     img.onload = function () {
@@ -83,8 +84,9 @@ $.fn.ImageResize = function (options) {
                             if (settings.onImageResized != null && typeof (settings.onImageResized) == "function") {
                                 settings.onImageResized(imageData);
                             }
-                            target=imageData;
                         }
+                        target=imageData;
+                        alert( target.length);
 
                     }
                     img.onerror = function () {
@@ -104,8 +106,6 @@ $.fn.ImageResize = function (options) {
 
 //add a product to server
 function saveProductDb() {
-    alert(target);
-    alert(target.length);
     //take the loacl userName
     var userName = localStorage.getItem("userName");
     if (userName == null) {

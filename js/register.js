@@ -22,12 +22,12 @@ $(document).ready(function () {
 
     //if there is no local db show connection option else connect with the local db
     if (localStorage.getItem("userName") == undefined) {
-        $('#addProducthid').hide();
+        $('#addProducthid ,#addProducthida').hide();
         $('#nameOfUser').text('אורח');
         $('#connect').text('התחבר');
     }
     else {
-        $('#addProducthid').show();
+        $('#addProducthid, #addProducthida').show();
         $('#nameOfUser').text(localStorage.getItem("userName"));
         $('#connect').text('התנתק');
 
@@ -43,19 +43,36 @@ $(document).ready(function () {
         $("#sendEmailDiv").hide();
     });
 
+    $(window).resize(checkSizeScreen);
+    checkSizeScreen();
+    $('#divReplaceByPress').hide();
+
+
 });
 
+
+function checkSizeScreen() {
+    if ($(window).width() < 700) {
+        $("#ulSmall").show();
+        $("#ulBig").hide();
+    }
+    else {
+        $("#ulSmall").hide();
+        $("#ulBig").show();
+
+    }
+}
 //if press on connect open the connection popup window else press on disconnect so clear the local db and reload the page
 function registration() {
 
     if ($('#connect').text() == 'התחבר') {
-        $('#addProducthid').hide();
+        $('#addProducthid, #addProducthida').hide();
         $('#popupBoxOnePosition').show();
     }
     else {
-        $('#addProducthid').show();
+        $('#addProducthid, #addProducthida').show();
         localStorage.clear();
-        location.reload();
+
     }
 }
 

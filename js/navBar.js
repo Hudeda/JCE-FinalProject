@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     $("#addProductDiv").hide();
-    $("#navAddItemTag").click(callAddProduct);
+    $("#navAddItemTag, #navAddItemTaga").click(callAddProduct);
 });
 
 function callAddProduct() {

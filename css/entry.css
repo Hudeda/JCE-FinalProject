@@ -1,28 +1,49 @@
 /*all items*/
 body{
-    width: 1200px;
+    width: 100%;
     margin: 0px auto;
     text-align: right;
 
 }
 
-nav ul {
+nav #ulBig {
     list-style: none;
-    background-color: #444;
     text-align: center;
     list-style-type: none;
+    background-color: #444;
     margin: 0;
     padding: 0;
     overflow: hidden;
     margin-bottom: 5px;
 }
 /*for one item*/
-nav li {
+nav .liBig {
     font-family: "arial",sans-serif;
     font-size:15px;
     line-height: 30px;
+    list-style-type: none;
     display: inline-block;
-    width: 120px;
+    width: 10%;
+    border-bottom: 1px solid #888;
+}
+
+#ulSmall{
+    list-style: none;
+    text-align: center;
+    list-style-type: none;
+    background-color: #444;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.ilSmall {
+    font-family: "arial", sans-serif;
+    font-size: 15px;
+    line-height: 30px;
+    display: inline-block;
+    list-style-type: none;
+    width: 100%;
     border-bottom: 1px solid #888;
 }
 nav li:hover{
@@ -38,31 +59,32 @@ nav label {
 nav a:hover {
     background-color: #005f5f;
 }
+
 #icon{
     display:block;
     background-color: #d9d9d9;
 }
 .loginLink{
     direction: rtl;
-    width: 1200px;
+    width: 100%;
     float: right;
     font: bold 12px arial;
     display:flex;
     white-space:pre;
 }
 .newsProduct{
-    width: 300px;
+    width: 25%;
     float: right;
     height: 600px;
     background: red;
 }
 .mainDiv{
-    width: 895px;
+    width: 75%;
     margin-right: 5px;
     height: 600px;
     background: blue;
 }
-#navAddItemTag{
+#navAddItemTag #navAddItemTaga{
     background: blue;
 }
 
@@ -80,8 +102,4 @@ if it's not present, don't show loader */
     height: 100%;
     z-index: 9999;
     background: url(../image/loadingIcon.gif) center no-repeat #fff;
-}
-
-#titleApp{
-    font-size: 60px;
 }

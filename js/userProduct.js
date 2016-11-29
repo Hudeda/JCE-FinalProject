@@ -2,7 +2,7 @@
  * Created by hudeda on 26/11/2016.
  */
 $(document).ready(function () {
-    $("#userProductsDiv").click(displayUserProducts);
+    $("#userProductsDiv, #userProductsDiva").click(displayUserProducts);
 
 });
 function displayUserProducts() {

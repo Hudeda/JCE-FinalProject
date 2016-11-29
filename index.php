@@ -47,27 +47,43 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
     <script type="text/javascript" src="js/navBar.js"></script>
     <script type="text/javascript" src="js/getProductByCatagory.js"></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 </head>
 <!--logo on the Tab next to name app-->
 <div icon id="icon">
     <a href=""><img style="width:100px" src="image/logoBWF.png" type="image"></a>
-
-
 </div>
 
 <!--nav bar - all the category in app and adding product button -->
 <nav>
-    <ul>
-        <div id ="addProducthid" hidden><li><label id="navAddItemTag">הוספת פריט</label></li>
-        <li><label id="userProductsDiv">הפריטים שלי</label></li></div>
-        <li><label id="navOtherTag">שונות</label></li>
-        <li><label id="navMyCarTag">רכב</label></li>
-        <li><label id="navMyCellularTag">סלולר</label></li>
-        <li><label id="navMySportTag">פנאי וספורט</label></li>
-        <li><label id="navMyComputerTag">מחשבים</label></li>
-        <li><label id="navTouristTag">תיירות</label></li>
-        <li><label id="navMyElectricityTag">חשמל ואלקטרוניקה</label></li>
+    <div id="ulSmall" hidden>
+            <li class="liSmall"><label id="navMyElectricityTaga">חשמל ואלקטרוניקה</label></li>
+            <li class="liSmall"><label id="navTouristTaga">תיירות</label></li>
+            <li class="liSmall"><label id="navMyComputerTaga">מחשבים</label></li>
+            <li class="liSmall"> <label id="navMySportTaga">פנאי וספורט</label></li>
+            <li class="liSmall"><label id="navMyCellularTaga">סלולר</label></li>
+            <li class="liSmall"><label id="navMyCarTaga">רכב</label></li>
+            <li class="liSmall"><label id="navOtherTaga">שונות</label></label></li>
+        <br>
+            <div id="addProducthida" hidden>
+                <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
+                <li class="liSmall"><label id="userProductsDiva">הפריטים שלי</label></li>
+            </div>
+    </div>
+    <ul id="ulBig">
+        <div id="addProducthid" hidden>
+            <li class="liBig"><label id="navAddItemTag">הוספת פריט</label></li>
+            <li class="liBig"><label id="userProductsDiv">הפריטים שלי</label></li>
+        </div>
+        <li class="liBig"><label id="navOtherTag">שונות</label></li>
+        <li class="liBig"><label id="navMyCarTag">רכב</label></li>
+        <li class="liBig"><label id="navMyCellularTag">סלולר</label></li>
+        <li class="liBig"><label id="navMySportTag">פנאי וספורט</label></li>
+        <li class="liBig"><label id="navMyComputerTag">מחשבים</label></li>
+        <li class="liBig"><label id="navTouristTag">תיירות</label></li>
+        <li class="liBig"><label id="navMyElectricityTag">חשמל ואלקטרוניקה</label></li>
     </ul>
 </nav>
 
@@ -115,7 +131,7 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
 
                     <div class="container">
                         <label><b>שם משתמש:</b></label>
-                        <input id ="userNameConnection" type="text" placeholder="הכנס שם משתמש" required>
+                        <input id="userNameConnection" type="text" placeholder="הכנס שם משתמש" required>
 
                         <label><b>סיסמה</b></label>
                         <input id="userPassConnection" type='password' placeholder="הכנס סיסמה" required>
@@ -242,7 +258,7 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
                         <br>
                         <label><b>צקף תמונה</b></label>
                         <input type="file" class="image-upload"/>
-                        <div class="images"></div>
+                        <div class="images" hidden></div>
 
 
                     </div>

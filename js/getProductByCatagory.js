@@ -3,13 +3,13 @@
  */
 $(document).ready(function () {
     // set the nav bar to get the category name
-    $("#navMyElectricityTag").click({val: "0"}, getProductByCatagory);
-    $("#navTouristTag").click({val: "1"}, getProductByCatagory);
-    $("#navMyComputerTag").click({val: "2"}, getProductByCatagory);
-    $("#navMySportTag").click({val: "3"}, getProductByCatagory);
-    $("#navMyCellularTag").click({val: "4"}, getProductByCatagory);
-    $("#navMyCarTag").click({val: "5"}, getProductByCatagory);
-    $("#navOtherTag").click({val: "6"}, getProductByCatagory);
+    $("#navMyElectricityTag , #navMyElectricityTaga").click({val: "0"}, getProductByCatagory);
+    $("#navTouristTag ,#navTouristTaga").click({val: "1"}, getProductByCatagory);
+    $("#navMyComputerTag ,#navMyComputerTaga").click({val: "2"}, getProductByCatagory);
+    $("#navMySportTag, #navMySportTaga").click({val: "3"}, getProductByCatagory);
+    $("#navMyCellularTag ,#navMyCellularTaga").click({val: "4"}, getProductByCatagory);
+    $("#navMyCarTag, #navMyCarTaga").click({val: "5"}, getProductByCatagory);
+    $("#navOtherTag, #navOtherTaga").click({val: "6"}, getProductByCatagory);
 });
 //global value for all function to get the products
 var Products;
