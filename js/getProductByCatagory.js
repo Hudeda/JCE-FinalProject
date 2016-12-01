@@ -116,6 +116,7 @@ function openDescription(idPro) {
     divChanges += "</form></div></div></div></div>";
     $("#DivShowDetails").replaceWith(divChanges);
     $("#DivShowDetails").show();
+    checkSizeScreen();
 }
 //close the DivShowDetails by click on the exit button
 function hideDetails() {

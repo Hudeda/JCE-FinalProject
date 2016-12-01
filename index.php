@@ -258,7 +258,6 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
                         <br>
                         <label><b>צקף תמונה</b></label>
                         <input type="file" class="image-upload"/>
-                        <div class="images" hidden></div>
 
 
                     </div>

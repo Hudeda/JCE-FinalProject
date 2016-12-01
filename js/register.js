@@ -55,12 +55,26 @@ function checkSizeScreen() {
     if ($(window).width() < 700) {
         $("#ulSmall").show();
         $("#ulBig").hide();
+        $(".popupBoxWrapper").width('90%');
+        $("#connection").width('15%');
+        $("#cancel").width('10%');
+        $("#register").width('15%');
+        $("#imageShowDetails").width('50%');
+        $("#imageShowDetails").height('20%');
+
     }
     else {
         $("#ulSmall").hide();
         $("#ulBig").show();
-
+        $(".popupBoxWrapper").width(550);
+        $("#connection").width(100);
+        $("#register").width(100);
+        $("#cancel").width(50);
+        $("#imageShowDetails").width(400);
+        $("#imageShowDetails").height(400);
     }
+
+
 }
 //if press on connect open the connection popup window else press on disconnect so clear the local db and reload the page
 function registration() {
@@ -72,6 +86,7 @@ function registration() {
     else {
         $('#addProducthid, #addProducthida').show();
         localStorage.clear();
+        location.reload();
 
     }
 }

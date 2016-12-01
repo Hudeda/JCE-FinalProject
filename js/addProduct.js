@@ -10,8 +10,6 @@ $(document).ready(function () {
         {
             maxWidth: 300,
             onImageResized: function (imageData) {
-                $(".images").append($("<img/>", { src: imageData }));
-                $(".images").show();
             }
         });
 });
