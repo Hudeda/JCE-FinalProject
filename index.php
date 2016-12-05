@@ -6,10 +6,7 @@ $addRegister = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addRegister.php";
 $getUserNamePassToConnection = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserNamePassToConnection.php";
 $addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductDb.php";
 $sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/db/sendEmail.php";
-$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
-$addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
-$getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsersInProductGroup.php";
 $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts.php";
 
 ?>
@@ -19,15 +16,13 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
     var getUserNamePassToConnection = "<?php echo $getUserNamePassToConnection?>";
     var addProductDb = "<?php echo $addProductDb?>";
     var sendEmail = "<?php echo $sendEmail?>";
-    var getProducts = "<?php echo $getProducts?>";
     var addProductByUserDB = "<?php echo $addProductByUser?>";
-    var getUsersInProductGroup = "<?php echo $getUsersInProductGroup?>";
     var getUserProducts = "<?php echo $getUserProducts?>";
 
 </script>
 
 <!DOCTYPE html>
-<html>
+<html  ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <!--    Including all the stylesheets and scripts files are been used on this app-->
@@ -37,15 +32,19 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
     <link rel="stylesheet" href="css/one_product.css">
     <link rel="shortcut icon" type="image/x-icon" href="image/logoBWF.png"/>
 
-    <script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+    
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/addProduct.js"></script>
     <script type="text/javascript" src="js/userProduct.js"></script>
     <script type="text/javascript" src="js/navBar.js"></script>
+    <script type="text/javascript" src="js/entry.js"></script>
     <script type="text/javascript" src="js/getProductByCatagory.js"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -53,42 +52,42 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
 </head>
 <!--logo on the Tab next to name app-->
 <div icon id="icon">
-    <a href=""><img style="width:100px" src="image/logoBWF.png" type="image"></a>
+    <a href="http://hudeda.netau.net/BuyWithFriendsWeb/"><img style="width:100px" src="image/logoBWF.png" type="image"></a>
 </div>
 
 <!--nav bar - all the category in app and adding product button -->
 <nav>
     <div id="ulSmall" hidden>
-            <li class="liSmall"><label id="navMyElectricityTaga">חשמל ואלקטרוניקה</label></li>
-            <li class="liSmall"><label id="navTouristTaga">תיירות</label></li>
-            <li class="liSmall"><label id="navMyComputerTaga">מחשבים</label></li>
-            <li class="liSmall"> <label id="navMySportTaga">פנאי וספורט</label></li>
-            <li class="liSmall"><label id="navMyCellularTaga">סלולר</label></li>
-            <li class="liSmall"><label id="navMyCarTaga">רכב</label></li>
-            <li class="liSmall"><label id="navOtherTaga">שונות</label></label></li>
+        <a href="#/electricity" id="navMyElectricityTaga"><li class="liSmall">חשמל ואלקטרוניקה</li></a>
+        <a href="#/tourist" id="navTouristTaga"><li class="liSmall">תיירות</li></a>
+        <a href="#/computer" id="navMyComputerTaga"><li class="liSmall">מחשבים</li></a>
+        <a href="#/sport" id="navMySportTaga"><li class="liSmall">פנאי וספורט</li></a>
+        <a href="#/cellular" id="navMyCellularTaga"><li class="liSmall">סלולר</li></a>
+        <a href="#/car" id="navMyCarTaga"><li class="liSmall">רכב</li></a>
+        <a href="#/other" id="navOtherTaga"><li class="liSmall">שונות</li></a>
         <br>
-            <div id="addProducthida" hidden>
-                <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
-                <li class="liSmall"><label id="userProductsDiva">הפריטים שלי</label></li>
-            </div>
+        <div id="addProducthida" hidden>
+            <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
+            <li class="liSmall"><label id="userProductsDiva">הפריטים שלי</label></li>
+        </div>
     </div>
     <ul id="ulBig">
         <div id="addProducthid" hidden>
             <li class="liBig"><label id="navAddItemTag">הוספת פריט</label></li>
             <li class="liBig"><label id="userProductsDiv">הפריטים שלי</label></li>
         </div>
-        <li class="liBig"><label id="navOtherTag">שונות</label></li>
-        <li class="liBig"><label id="navMyCarTag">רכב</label></li>
-        <li class="liBig"><label id="navMyCellularTag">סלולר</label></li>
-        <li class="liBig"><label id="navMySportTag">פנאי וספורט</label></li>
-        <li class="liBig"><label id="navMyComputerTag">מחשבים</label></li>
-        <li class="liBig"><label id="navTouristTag">תיירות</label></li>
-        <li class="liBig"><label id="navMyElectricityTag">חשמל ואלקטרוניקה</label></li>
+        <a href="#/other" id="navOtherTag"><li class="liBig">שונות</li></a>
+        <a href="#/car" id="navMyCarTag"><li class="liBig">רכב</li></a>
+        <a href="#/cellular" id="navMyCellularTag"><li class="liBig">סלולר</li></a>
+        <a href="#/sport" id="navMySportTag"><li class="liBig">פנאי וספורט</li></a>
+        <a href="#/computer" id="navMyComputerTag"><li class="liBig">מחשבים</li></a>
+        <a href="#/tourist" id="navTouristTag"><li class="liBig">תיירות</li></a>
+        <a href="#/electricity" id="navMyElectricityTag"><li class="liBig">חשמל ואלקטרוניקה</li></a>
     </ul>
 </nav>
 
 <!--connection and disconnection users -->
-<div class="loginLink">
+<div class="loginLink" >
     <span>שלום </span>
     <div id="nameOfUser" class="userName"><span></span></div>
     <span>, </span>
@@ -101,9 +100,7 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
 <!--20 product are slideing on the rigth side on first window-->
 <div id="divChanges">
     <br>
-    <div class="newsProduct">
-        20 פריטים חדשים
-    </div>
+    <div class="newsProduct"></div>
 
     <!--Explains how the app works why we need this app-->
 
@@ -111,13 +108,9 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
         איך זה עובד מה צריך לעשות
     </div>
 </div>
-<!--this div replaced by click on category on nav bar-->
-<div id="divReplaceByPress" hidden></div>
+<div ng-view></div>
 <!--ths div show the details by press on any product-->
 <div id="DivShowDetails" hidden></div>
-<!--this div is the loading view-->
-<div class="se-pre-con" hidden></div>
-
 <!--this div is the popup windows are show the connection view -->
 <div id="popupBoxOnePosition">
     <div class="popupBoxWrapper">

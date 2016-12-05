@@ -73,16 +73,14 @@ nav a:hover {
     white-space:pre;
 }
 .newsProduct{
-    width: 25%;
+    width: 100%;
+    height: 25%;
     float: right;
-    height: 600px;
-    background: red;
 }
 .mainDiv{
-    width: 75%;
+    width: 100%;
     margin-right: 5px;
     height: 600px;
-    background: blue;
 }
 #navAddItemTag ,#navAddItemTaga{
     background: blue;
@@ -94,13 +92,44 @@ nav a:hover {
 if it's not present, don't show loader */
 .no-js #loader { display: none;  }
 
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
-.se-pre-con {
-    position: fixed;
-    left: 0px;
-    top: 0px;
+/* */
+#displayTwentyLastProducts{
+    display: flex;
+    width: 100%;
+    height: 25%;
+    float: left;
+
+}
+.displayOneLastProduct{
+    display: flex;
+    border-style: groove;
+    width: 25%;
+    margin: 0.5%;
+    height: 90%;
+    float: left;
+}
+.imagesEntryProducts{
+    width: 90%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.showProductDetailsEntry{
+    margin: 5%;
     width: 100%;
     height: 100%;
-    z-index: 9999;
-    background: url(../image/loadingIcon.gif) center no-repeat #fff;
+    direction: rtl;
+}
+
+.companyNameEntry ,.productNameEntry{
+    font-size: 100%;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
 }
