@@ -7,7 +7,6 @@ $getUserNamePassToConnection = "http://hudeda.netau.net/BuyWithFriendsWeb/db/get
 $addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductDb.php";
 $sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/db/sendEmail.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
-$getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts.php";
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -17,7 +16,6 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
     var addProductDb = "<?php echo $addProductDb?>";
     var sendEmail = "<?php echo $sendEmail?>";
     var addProductByUserDB = "<?php echo $addProductByUser?>";
-    var getUserProducts = "<?php echo $getUserProducts?>";
 
 </script>
 
@@ -40,7 +38,6 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
     
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/addProduct.js"></script>
-    <script type="text/javascript" src="js/userProduct.js"></script>
     <script type="text/javascript" src="js/navBar.js"></script>
     <script type="text/javascript" src="js/entry.js"></script>
     <script type="text/javascript" src="js/getProductByCatagory.js"></script>
@@ -68,13 +65,13 @@ $getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUserProducts
         <br>
         <div id="addProducthida" hidden>
             <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
-            <li class="liSmall"><label id="userProductsDiva">הפריטים שלי</label></li>
+            <a href="#/userProduct" id="userProductsDiva"><li class="liSmall">הפריטים שלי</li></a>
         </div>
     </div>
     <ul id="ulBig">
         <div id="addProducthid" hidden>
             <li class="liBig"><label id="navAddItemTag">הוספת פריט</label></li>
-            <li class="liBig"><label id="userProductsDiv">הפריטים שלי</label></li>
+            <a href="#/userProduct" id="userProductsDiv"><li class="liBig">הפריטים שלי</li></a>
         </div>
         <a href="#/other" id="navOtherTag"><li class="liBig">שונות</li></a>
         <a href="#/car" id="navMyCarTag"><li class="liBig">רכב</li></a>

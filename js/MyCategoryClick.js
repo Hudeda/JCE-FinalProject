@@ -26,7 +26,6 @@ function getProductByCatagory() {
 
     var divChanges = "";
     //start the loading view
-    $(".se-pre-con").replaceWith("<div class='se-pre-con'></div>");
     var numberOfOrder = 1;
     //send a post that return the product from server
     $.ajax({

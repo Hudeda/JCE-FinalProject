@@ -26,6 +26,9 @@ app.config(function ($routeProvider) {
         .when('/other',{
             templateUrl:'MyOther.php'
         })
+        .when('/userProduct',{
+            templateUrl:'MyProducts.php'
+        })
         .otherwise({redirectTo: '/'});
 
 })
