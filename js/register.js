@@ -209,7 +209,7 @@ function phonenumber() {
 }
 
 ///create a new password
-function makeid() {
+function newPss() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -221,7 +221,7 @@ function makeid() {
 
 //send to user the new password
 function sendEmailForget() {
-    var password = makeid();
+    var password = newPss();
     var email = $("#emailSendingInput").val();
 
     if (!validateForm(email)) {

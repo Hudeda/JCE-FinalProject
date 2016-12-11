@@ -47,14 +47,20 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 
 
 </head>
-<!--logo on the Tab next to name app-->
-<div icon id="icon">
-    <a href="http://hudeda.netau.net/BuyWithFriendsWeb/"><img style="width:100px" src="image/logoBWF.png" type="image"></a>
-</div>
 
+<!--connection and disconnection users -->
+<br>
+<div class="loginLink" >
+    <span>שלום </span>
+    <div id="nameOfUser" class="userName"><span></span></div>
+    <span>, </span>
+    <a><div id="connect" style="color: #1a1aff; text-decoration: underline;"></div></a>
+</div>
+<br>
 <!--nav bar - all the category in app and adding product button -->
 <nav>
-    <div id="ulSmall" hidden>
+    <div id="ulSmall">
+        <br>
         <a href="#/electricity" id="navMyElectricityTaga"><li class="liSmall">חשמל ואלקטרוניקה</li></a>
         <a href="#/tourist" id="navTouristTaga"><li class="liSmall">תיירות</li></a>
         <a href="#/computer" id="navMyComputerTaga"><li class="liSmall">מחשבים</li></a>
@@ -62,17 +68,18 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
         <a href="#/cellular" id="navMyCellularTaga"><li class="liSmall">סלולר</li></a>
         <a href="#/car" id="navMyCarTaga"><li class="liSmall">רכב</li></a>
         <a href="#/other" id="navOtherTaga"><li class="liSmall">שונות</li></a>
-        <br>
+        <br><br>
         <div id="addProducthida" hidden>
             <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
             <a href="#/userProduct" id="userProductsDiva"><li class="liSmall">הפריטים שלי</li></a>
         </div>
     </div>
+    <br>
     <ul id="ulBig">
         <div id="addProducthid" hidden>
             <li class="liBig"><label id="navAddItemTag">הוספת פריט</label></li>
             <a href="#/userProduct" id="userProductsDiv"><li class="liBig">הפריטים שלי</li></a>
-        </div>
+        </div><br>
         <a href="#/other" id="navOtherTag"><li class="liBig">שונות</li></a>
         <a href="#/car" id="navMyCarTag"><li class="liBig">רכב</li></a>
         <a href="#/cellular" id="navMyCellularTag"><li class="liBig">סלולר</li></a>
@@ -83,13 +90,8 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     </ul>
 </nav>
 
-<!--connection and disconnection users -->
-<div class="loginLink" >
-    <span>שלום </span>
-    <div id="nameOfUser" class="userName"><span></span></div>
-    <span>, </span>
-    <div id="connect" style="color: #1a1aff; text-decoration: underline;"></div>
-</div>
+<br>
+<br>
 
 
 <body>

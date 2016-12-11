@@ -3,7 +3,9 @@
  */
 $(document).ready(function () {
     displayUserProducts();
+    $(window).resize(checkSizeScreen);
 
+    checkSizeScreen();
 });
 
 var Products;
@@ -33,34 +35,34 @@ function displayUserProducts() {
         },
         success: function (response) {
             Products = JSON.parse(response);
-            
+
 
             for (var i = 0; i < Products.length; i++) {
                 divChanges = "";
                 divChanges += "<div class = 'oneUserProduct'>";
                 divChanges += "<div class = 'textDivUserProduct'>";
-                divChanges += "<div class = 'titleProduct'>"+Products[i][companyName] + ", "+Products[i][productName]+"</div>";
-                divChanges += "<div class='descriptionUserProduct'>"+Products[i][descriptionProduct]+"</div>";
+                divChanges += "<div class = 'titleProduct'>" + Products[i][companyName] + ", " + Products[i][productName] + "</div>";
+                divChanges += "<div class='descriptionUserProduct'>" + Products[i][descriptionProduct] + "</div>";
 
 
                 if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
-                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup("+Products[i][idProduct]+");'/>";
-                    divChanges +="</div>"
+                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
+                    divChanges += "</div>"
                     divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
                     divChanges += "</div>"
                     $("#appendItemPeople").append(divChanges);
                 }
                 else if (!checkIfDateArePss(Products[i][uploadDate], parseInt(Products[i][numberOfAddPeople]) +
                         parseInt(Products[i][numberOfOffers]))) {
-                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup("+Products[i][idProduct]+");'/>";
-                    divChanges +="</div>"
+                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
+                    divChanges += "</div>"
                     divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
                     divChanges += "</div>"
                     $("#appendItemOffers").append(divChanges);
 
                 }
                 else {
-                    divChanges +="</div>"
+                    divChanges += "</div>"
                     divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
                     divChanges += "</div>"
                     $("#appendItemClosed").append(divChanges);
@@ -85,10 +87,10 @@ function exitFromGroup(x) {
             productId: x,
         },
         success: function (response) {
-            if(response){
+            if (response) {
                 location.reload();
             }
-            else{
+            else {
                 alert("לא הצלחת לצאת מהקבוצה");
             }
 
@@ -104,4 +106,25 @@ function checkIfDateArePss(date1, x) {
     else {
         return true;
     }
+}
+function checkSizeScreen() {
+    if ($(window).width() < 700) {
+        $(".titlesUserProducts").css('font-size', '25px');
+        $(".titleProduct").css('font-size', '20px');
+        $(".descriptionUserProduct").css('font-size', '15px');
+        $(".buttonExitFromGroup").css('padding', '10px 15px');
+
+    }
+    else{
+        $(".titlesUserProducts").css('font-size', '30px');
+        $(".titleProduct").css('font-size', '30px');
+        $(".descriptionUserProduct").css('font-size', '20px');
+        $(".buttonExitFromGroup").css('padding', '16px 32px');
+    }
+
+    if ($(window).width() < 500) {
+        $(".imageDivUserProduct").css('background-size', '80% 70%');
+    }
+    else
+        $(".imageDivUserProduct").css('background-size', '60% 90%');
 }

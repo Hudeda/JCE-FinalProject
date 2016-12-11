@@ -27,7 +27,7 @@ var imageProduct = 8;
 var uploadDate = 9;
 
 function displayTwentyLastProducts() {
-
+    
     var divChanges = "<div id='displayTwentyLastProducts'>";
     for (var i = 0; i < Products.length; i++) {
 

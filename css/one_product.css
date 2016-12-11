@@ -9,6 +9,7 @@
 .oneProductShow {
     border-style: groove;
     border-width: medium;
+    background-color: white;
     display: inline-block;
     width: 260px;
     height: 355px;

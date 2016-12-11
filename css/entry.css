@@ -3,7 +3,7 @@ body{
     width: 100%;
     margin: 0px auto;
     text-align: right;
-    background-color: #f2f2f2;
+    background-color: #1ab2ff;
 
 }
 
@@ -11,67 +11,63 @@ nav #ulBig {
     list-style: none;
     text-align: center;
     list-style-type: none;
-    background-color: #444;
     margin: 0;
+    color: white;
     padding: 0;
     overflow: hidden;
     margin-bottom: 5px;
 }
 /*for one item*/
 nav .liBig {
+    transition: all 0.8s ease;
     font-family: "arial",sans-serif;
     font-size:15px;
+    border-radius: 15px;
     line-height: 30px;
+    border: 1px;
     list-style-type: none;
     display: inline-block;
     width: 10%;
-    border-bottom: 1px solid #888;
+    border-style: solid;
+    border-color: white;
 }
 
 #ulSmall{
+    width: 100%;
     list-style: none;
-    text-align: center;
+    display: inline-block;
     list-style-type: none;
-    background-color: #444;
+    text-align: center;
+    color: white;
     margin: 0;
     padding: 0;
     overflow: hidden;
     margin-bottom: 5px;
 }
-.ilSmall {
+.liSmall {
+    width: 40%;
     font-family: "arial", sans-serif;
     font-size: 15px;
     line-height: 30px;
     display: inline-block;
     list-style-type: none;
-    width: 100%;
-    border-bottom: 1px solid #888;
+    border-bottom: 1px solid white;
+    border-radius: 15px;
 }
 nav li:hover{
-    background-color: #005f5f;
-}
-/*to delete the blue underline*/
-nav label {
-    text-decoration: none;
-    color: #fff;
-    display: block;
-    transition: .3s background-color;
-}
-nav a:hover {
-    background-color: #005f5f;
+    background-color: white;
+    color: #1ab2ff;
 }
 
-#icon{
-    display:block;
-    background-color: #d9d9d9;
-}
 .loginLink{
+    margin-right : 10px;
     direction: rtl;
     width: 100%;
     float: right;
-    font: bold 12px arial;
+    font: bold 20px arial;
     display:flex;
     white-space:pre;
+    color: white;
 }
 .newsProduct{
     width: 100%;
@@ -82,9 +78,6 @@ nav a:hover {
     width: 100%;
     margin-right: 5px;
     height: 600px;
-}
-#navAddItemTag ,#navAddItemTaga{
-    background: blue;
 }
 
 

@@ -28,7 +28,7 @@ $deleteUserProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/db/deleteUserPro
     <script type="text/javascript" src="js/userProduct.js"></script>
 
 </head>
-
+<br>
 <div id="divUserProducts"></div>
 <div class='titlesUserProducts'>קבוצות בשלב איסוף אנשים:</div>
 <div id='appendItemPeople'></div>
