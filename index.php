@@ -70,14 +70,14 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
         <a href="#/other" id="navOtherTaga"><li class="liSmall">שונות</li></a>
         <br><br>
         <div id="addProducthida" hidden>
-            <li class="liSmall"><label id="navAddItemTaga">הוספת פריט</label></li>
+            <li class="liSmall"><label id="navAddItemTaga">פתיחת קבוצה</label></li>
             <a href="#/userProduct" id="userProductsDiva"><li class="liSmall">הפריטים שלי</li></a>
         </div>
     </div>
     <br>
     <ul id="ulBig">
         <div id="addProducthid" hidden>
-            <li class="liBig"><label id="navAddItemTag">הוספת פריט</label></li>
+            <li class="liBig"><label id="navAddItemTag">פתיחת קבוצה</label></li>
             <a href="#/userProduct" id="userProductsDiv"><li class="liBig">הפריטים שלי</li></a>
         </div><br>
         <a href="#/other" id="navOtherTag"><li class="liBig">שונות</li></a>
@@ -137,7 +137,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
                         <input id="cancel" src="image/red%20icon.png" type="image">
 
                     </div>
-                    <span class="psw">שחכת <label id="forgetPassword">סיסמה?</label></span>
+                    <span class="psw">שכחת <label id="forgetPassword">סיסמה?</label></span>
 
                 </form>
 

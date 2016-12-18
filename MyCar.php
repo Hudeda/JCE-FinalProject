@@ -34,7 +34,7 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
 </head>
 
 <div id = 'categoryText' hidden>רכב</div>
-<div id="divReplaceByPressElectricity"></div>
+<div id="divReplaceByPress"></div>
 
 <div id="DivShowDetails" hidden></div>
 

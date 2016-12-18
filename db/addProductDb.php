@@ -23,8 +23,12 @@ $sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionPr
 VALUES ('$userName', '$productName', '$companyName','$descriptionProduct','$category','$numberOfAddPeople','$numberForGetOffer','$image', '$uploadDate')";
 
 
+
 if ($conn->query($sql) === TRUE) {
-    echo  $image;
+    $last_id = $conn->insert_id;
+    $sql = "INSERT INTO productByUser (idProduct,userName)VALUES ('$last_id','$userName')";
+    $conn->query($sql);
+    echo  true;
 } else {
     echo false;
 }

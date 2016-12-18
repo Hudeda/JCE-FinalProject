@@ -17,8 +17,10 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var numberOfAddPeople = 6;
+var numberOfOffers = 7
 var imageProduct = 8;
 var uploadDate = 9;
+var numberOfJoined = 10;
 
 //this function loading the products by click on any category on nav-bar
 function getProductByCatagory() {
@@ -52,29 +54,18 @@ function getProductByCatagory() {
                         }
                         else
                             stringSub = Products[i][descriptionProduct];
-                        $.ajax({
-                            type: 'POST',
-                            url: getUsersInProductGroup,
-                            async: false,
-                            data: {
-                                idProduct: Products[i][idProduct],
-                            },
-                            success: function (response) {
-                                numberOfOrder = response;
-                            }
-                        });
 
                         divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
                         divChanges += "<div class = 'showDetails'>"
                         divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
                         divChanges += "<label class='productName'>" + Products[i][productName] + "</label> <br>";
                         divChanges += "<label class='descriptionProduct'>" + stringSub + "</label>";
-                        divChanges += "</div><div class='numberOforder' >" + numberOfOrder + " :מס' החברים בקבוצה " + "</div></div>";
+                        divChanges += "</div><div class='numberOforder' >" + Products[i][numberOfJoined] + " :מס' החברים בקבוצה " + "</div></div>";
                     }
                 }
 
                 divChanges += "</div>";
-                $("#divReplaceByPressElectricity").replaceWith(divChanges);
+                $("#divReplaceByPress").replaceWith(divChanges);
             }
             else
                 alert("לא קיימת קבוצה בקטגוריה זו");

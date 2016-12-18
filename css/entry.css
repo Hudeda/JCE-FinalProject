@@ -3,8 +3,7 @@ body{
     width: 100%;
     margin: 0px auto;
     text-align: right;
-    background-color: #1ab2ff;
-
+    background: url(https://hebits.net/themes/ICGstation/images/background.png);
 }
 
 nav #ulBig {
@@ -17,6 +16,7 @@ nav #ulBig {
     overflow: hidden;
     margin-bottom: 5px;
 }
+a{color: white}
 /*for one item*/
 nav .liBig {
     transition: all 0.8s ease;
@@ -56,7 +56,7 @@ nav .liBig {
 }
 nav li:hover{
     background-color: white;
-    color: #1ab2ff;
+    color: black;
 }
 
 .loginLink{

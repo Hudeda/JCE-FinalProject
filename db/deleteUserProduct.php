@@ -17,6 +17,7 @@ $sql = "DELETE FROM productByUser WHERE idProduct = '$productId' AND userName = 
 
 
 if ($conn->query($sql) === TRUE) {
+    $conn->query("UPDATE productbwf SET NumberOfJoined = (NumberOfJoined - 1) WHERE idProduct = '".$productId."'");
     echo true;
 } else {
     echo false;

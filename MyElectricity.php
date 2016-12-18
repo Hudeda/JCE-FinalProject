@@ -30,7 +30,7 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
 </head>
 
 <div id = 'categoryText' hidden>חשמל ואלקטרוניקה</div>
-<div id="divReplaceByPressElectricity"></div>
+<div id="divReplaceByPress"></div>
 
 <div class='se-pre-con'></div>
 

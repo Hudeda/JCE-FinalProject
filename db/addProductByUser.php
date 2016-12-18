@@ -16,7 +16,10 @@ $sql = "INSERT INTO productByUser (idProduct,userName)
 VALUES ('$idProduct','$userName')";
 
 
+
+
 if ($conn->query($sql) === TRUE) {
+    $conn->query("UPDATE productbwf SET NumberOfJoined = NumberOfJoined + 1 WHERE idProduct = '".$idProduct."'");
     echo true;
 } else {
     echo false;

@@ -27,6 +27,7 @@ if ($result->num_rows > 0) {
         $resCell[7] = $row["numberForGetOffer"];
         $resCell[8] = $row["image"];
         $resCell[9] = $row["uploadDate"];
+        $resCell[10] = $row["NumberOfJoined"];
         array_push($product_Users, $resCell);
     }
 

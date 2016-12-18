@@ -16,26 +16,23 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var numberOfAddPeople = 6;
-var numberOfOffers = 7
+var numberOfOffers = 7;
 var imageProduct = 8;
 var uploadDate = 9;
+var numberOfJoined = 10;
 function displayUserProducts() {
     Products = [];
-    var flag = 1;
-    var flag1 = 1;
-    var flag2 = 1;
-    var check = 0;
+
     var divChanges = "";
     $.ajax({
         async: false,
         type: 'POST',
         url: getUserProducts,
         data: {
-            userName: localStorage.getItem("userName"),
+            userName: localStorage.getItem("userName")
         },
         success: function (response) {
             Products = JSON.parse(response);
-
 
             for (var i = 0; i < Products.length; i++) {
                 divChanges = "";
@@ -46,25 +43,27 @@ function displayUserProducts() {
 
 
                 if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
+                    divChanges += "<div class = 'lableMyProduct'><lable>מספר החברים בקבוצה: "+Products[i][numberOfJoined]+"</lable><br>";
                     divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
-                    divChanges += "</div>"
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
-                    divChanges += "</div>"
+                    divChanges += "<br><lable>סיום איסוף אנשים ותחילת קבלת הצעות מחיר: "+getDateAfterXWeeks(Products[i][uploadDate],Products[i][numberOfAddPeople])+"</lable>";
+                    divChanges += "</div></div>";
+                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
+                    divChanges += "</div>";
                     $("#appendItemPeople").append(divChanges);
                 }
                 else if (!checkIfDateArePss(Products[i][uploadDate], parseInt(Products[i][numberOfAddPeople]) +
                         parseInt(Products[i][numberOfOffers]))) {
                     divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
-                    divChanges += "</div>"
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
-                    divChanges += "</div>"
+                    divChanges += "</div>";
+                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
+                    divChanges += "</div>";
                     $("#appendItemOffers").append(divChanges);
 
                 }
                 else {
-                    divChanges += "</div>"
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>"
-                    divChanges += "</div>"
+                    divChanges += "</div>";
+                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
+                    divChanges += "</div>";
                     $("#appendItemClosed").append(divChanges);
 
                 }
@@ -77,16 +76,16 @@ function displayUserProducts() {
 
 }
 function exitFromGroup(x) {
-
     $.ajax({
         async: false,
         type: 'POST',
         url: deleteUserProduct,
         data: {
             userName: localStorage.getItem("userName"),
-            productId: x,
+            productId: x
         },
         success: function (response) {
+            alert(response);
             if (response) {
                 location.reload();
             }
@@ -127,4 +126,21 @@ function checkSizeScreen() {
     }
     else
         $(".imageDivUserProduct").css('background-size', '60% 90%');
+}
+
+function getDateAfterXWeeks(datea, x) {
+    var date = new Date(datea);
+    date.setTime(date.getTime() + x * 86400000 * 7);
+    var dd = date.getDate();
+    var mm = date.getMonth() + 1; //January is 0!
+
+    var yyyy = date.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    var date = dd + '/' + mm + '/' + yyyy;
+    return date;
 }
