@@ -20,18 +20,20 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getUsers
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 
-    <script type="text/javascript" src="js/MyCategoryClick.js"></script>
-    <link rel="stylesheet" href="css/one_product.css">
+    <script type="text/javascript" src="http://hudeda.netau.net/BuyWithFriendsWeb/js/MyCategoryClick.js"></script>
 
 </head>
+<body>
+<br>
+<div id="loader"></div>
 
-<div id = 'categoryText' hidden>מחשבים</div>
+<div id='categoryText' hidden>חשמל ואלקטרוניקה</div>
 <div id="divReplaceByPress"></div>
 
 <div class='se-pre-con'></div>
 
+<div id="myModal"></div>
+
+</body>
 </html>

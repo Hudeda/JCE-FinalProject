@@ -1,95 +1,42 @@
 $(document).ready(function () {
-
-    $("#connect").click(registration);
-
-    $("#cancel").click(function () {
-        $('#popupBoxOnePosition').hide();
-    });
-
-    $("#register").click(function () {
-        $('#popupBoxOnePosition').hide();
-        $('#popupRegister').show();
-    });
-
-    $("#registerRedID").click(function () {
-        $('#popupRegister').hide();
-        $('#popupBoxOnePosition').show();
-    });
-
-    $("#registerGreenID").click(checkCorrectUserRegistrAndSendtoDB);
-
-    $("#connection").click(checkPassword);
-
     //if there is no local db show connection option else connect with the local db
     if (localStorage.getItem("userName") == undefined) {
-        $('#addProducthid ,#addProducthida').hide();
-        $('#nameOfUser').text('אורח');
-        $('#connect').text('התחבר');
+        $('#loginBtn').html("התחברות");
+        $('#userProduct').hide();
+        $('#addProduct').hide();
+        $('#loginBtn').attr( "data-toggle" ,"modal");
+
     }
     else {
-        $('#addProducthid, #addProducthida').show();
-        $('#nameOfUser').text(localStorage.getItem("userName"));
-        $('#connect').text('התנתק');
+        $('#loginBtn').html("התנתק");
+        $('#userProduct').show();
+        $('#addProduct').show();
+        $('#loginBtn').removeAttr( "data-toggle" );
 
     }
 
-    $("#forgetPassword").click(function () {
-        $("#sendEmailDiv").show()
-    });
+    $("#loginBtn").click(registration);
+    $("#userRegisterBregister").click(checkCorrectUserRegistrAndSendtoDB);
+    $("#userConnectionB").click(checkPassword);
 
-    $("#emailSendingButto").click(sendEmailForget);
 
-    $("#emailSendingCancel").click(function () {
-        $("#sendEmailDiv").hide();
-    });
-
-    $(window).resize(checkSizeScreen);
-    checkSizeScreen();
-    $('#divReplaceByPress').hide();
+    $("#emailSendingButto").click(sendEmailForgot);
 
 
 });
 
-
-function checkSizeScreen() {
-    if ($(window).width() < 700) {
-        $("#ulSmall").show();
-        $("#ulBig").hide();
-        $(".popupBoxWrapper").width('90%');
-        $("#connection").width('15%');
-        $("#cancel").width('10%');
-        $("#register").width('15%');
-        $("#imageShowDetails").width('50%');
-        $("#imageShowDetails").height('20%');
-
-    }
-    else {
-        $("#ulSmall").hide();
-        $("#ulBig").show();
-        $(".popupBoxWrapper").width(550);
-        $("#connection").width(100);
-        $("#register").width(100);
-        $("#cancel").width(50);
-        $("#imageShowDetails").width(400);
-        $("#imageShowDetails").height(400);
-    }
-
-
-}
 //if press on connect open the connection popup window else press on disconnect so clear the local db and reload the page
 function registration() {
-
-    if ($('#connect').text() == 'התחבר') {
-        $('#addProducthid, #addProducthida').hide();
-        $('#popupBoxOnePosition').show();
+    if ($('#loginBtn').text() == 'התחברות') {
     }
     else {
-        $('#addProducthid, #addProducthida').show();
         localStorage.clear();
         location.reload();
 
     }
 }
+
+
 
 function validateForm(x) {
     var atpos = x.indexOf("@");
@@ -101,7 +48,6 @@ function validateForm(x) {
 
 //checking if the password match to userName and saving in the local storage
 function checkPassword() {
-
     var userName = $('#userNameConnection');
     var userPass = $('#userPassConnection');
     if (userName.val() != "" && userPass.val() != "") {
@@ -115,7 +61,7 @@ function checkPassword() {
                 password: userPass.val(),
             },
             success: function (response) {
-                if (response == "Error") {
+                if (response.localeCompare(' Error') == 0) {
                     alert("שם משתמש או הסיסמה אינם תואמים");
                     $('#userNameConnection').focus();
                     return;
@@ -220,7 +166,7 @@ function newPss() {
 }
 
 //send to user the new password
-function sendEmailForget() {
+function sendEmailForgot() {
     var password = newPss();
     var email = $("#emailSendingInput").val();
 

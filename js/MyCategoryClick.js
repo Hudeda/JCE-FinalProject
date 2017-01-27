@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
 
-    getProductByCatagory();
+    getProductByCategory();
 
 });
 function hideDetails() {
@@ -23,89 +23,94 @@ var uploadDate = 9;
 var numberOfJoined = 10;
 
 //this function loading the products by click on any category on nav-bar
-function getProductByCatagory() {
-    var catagory = $("#categoryText").text();
+function getProductByCategory() {
+    var category = $("#categoryText").text();
 
     var divChanges = "";
     //start the loading view
     var numberOfOrder = 1;
     //send a post that return the product from server
+
     $.ajax({
         type: 'POST',
         url: getProducts,
         data: {
-            catagory: catagory,
+            category: category,
         },
         success: function (response) {
             if (response.length > 6) {
 
                 Products = JSON.parse(response);
-                $("#divChanges").hide();
+
                 divChanges += "<div id='divReplaceByPress'>";
 
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
-                    if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
-
-                        var stringSub = "";
-                        if (Products[i][descriptionProduct].length > 25) {
-                            stringSub = "...";
-                            stringSub += Products[i][descriptionProduct].substr(0, 25);
-                        }
-                        else
-                            stringSub = Products[i][descriptionProduct];
-
-                        divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
-                        divChanges += "<div class = 'showDetails'>"
-                        divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
-                        divChanges += "<label class='productName'>" + Products[i][productName] + "</label> <br>";
-                        divChanges += "<label class='descriptionProduct'>" + stringSub + "</label>";
-                        divChanges += "</div><div class='numberOforder' >" + Products[i][numberOfJoined] + " :מס' החברים בקבוצה " + "</div></div>";
+                    var stringSub = "";
+                    if (Products[i][descriptionProduct].length > 30) {
+                        stringSub = "...";
+                        stringSub += Products[i][descriptionProduct].substr(0, 30);
                     }
+                    else
+                        stringSub = Products[i][descriptionProduct];
+
+                    divChanges += "<div class='panel panel-default'><div class='col-lg-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
+                    divChanges += "<div class='col-lg-4'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
+                    divChanges += "<p>" + stringSub + "</p><br>"
+                    divChanges += "<p>" + Products[i][numberOfJoined] + " :מס' החברים בקבוצה " + "</p>";
+                    divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='openDetails(" + i + ")'>פרטים</button></p>";
+                    divChanges += "</div></div></div></div></div>";
                 }
 
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
+                $("#loader").css('display', "none");
+
             }
             else
                 alert("לא קיימת קבוצה בקטגוריה זו");
             //stop the loading view
-            $(".se-pre-con").replaceWith("<div class='se-pre-con' hidden></div>");
         }
-    });
 
+    });
 }
 //open description view by click on any product div(display the product in match more details)
-function openDescription(idPro) {
-    var dateTocloseGroup = getDateAfterXWeeks(Products[idPro][uploadDate], Products[idPro][numberOfAddPeople]);
-    var divChanges = "<div id= 'DivShowDetails'> <div class='popupBoxWrapper'> <div class='popupBoxContent'> <div class='container'>";
-    divChanges += "<form id = 'formShowDetails'><label class='companyName'>" + Products[idPro][companyName] + ", </label>";
-    divChanges += "<label class='productName'>" + Products[idPro][productName] + "</label> <br>";
-    divChanges += "<img id = 'imageShowDetails' src=" + Products[idPro][imageProduct] + " ><br>";
-    divChanges += "<label class='descriptionProduct'>" + Products[idPro][descriptionProduct] + "</label><br>";
-    divChanges += "<label class='descriptionProduct'>" + "הקבוצה נסגרת בתאריך: " + dateTocloseGroup + "</label><br>";
-    divChanges += "<input type = button class='buttonJoinGroup' value='הצטרף לרכישה' onclick='addProductByUser(" + idPro + ");'/>";
-    divChanges += "<input type = button class='buttonExitJoin' value='יציאה' onclick='hideDetails();'/>";
-    divChanges += "</form></div></div></div></div>";
-    $("#DivShowDetails").replaceWith(divChanges);
-    $("#DivShowDetails").show();
-    checkSizeScreen();
+function openDetails(x) {
+    var divChanges = "<div class='modal fade' id='myModal' role='dialog'>";
+    divChanges += "<div class='modal-dialog'>";
+
+    divChanges += "<div class='modal-content'>";
+    divChanges += "<div class='modal-header'>";
+    divChanges += "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+    divChanges += "<h4 class='modal-title'>" + Products[x][productName] + ', ' + Products[x][companyName] + "</h4></div>";
+    divChanges += "<div class='thumbnail''><img src=" + Products[x][imageProduct] + "></div>";
+    divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
+    divChanges += "<div class='modal-footer'><div class='col-xs-5'><br><button type='button' class='btn btn-success' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button></div>" +
+        "<div class='col-xs-7'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
+        "<p>המכרז מסתיים ב- " + getDayBeforeXMonth(Products[x][numberOfOffers]) + "</p></div>" +
+        "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
+    divChanges += "</div> </div></div></div>";
+
+    $("#myModal").replaceWith(divChanges);
 }
 
-function checkIfDateArePss(date1, x) {
-    var date = new Date(date1);
-    date.setTime(date.getTime() + x * 86400000 * 7);
-    if (date.getTime() > new Date().getTime()) {
-        return false;
-    }
-    else {
+function checkTime(addPeopleTime) {
+    var nowTime = new Date();
+    var dateAddPeopleTime = new Date(addPeopleTime);
+    if (nowTime < dateAddPeopleTime)
         return true;
-    }
+    else
+        return false;
 }
 
-function getDateAfterXWeeks(datea, x) {
+
+function getDayBeforeXMonth(datea) {
     var date = new Date(datea)
-    date.setTime(date.getTime() + x * 86400000 * 7);
+
+    var Hours = date.getHours(); // => 9
+    var Minutes = date.getMinutes(); // =>  30
+    var Seconds = date.getSeconds(); // => 51
+
     var dd = date.getDate();
     var mm = date.getMonth() + 1; //January is 0!
 
@@ -116,36 +121,20 @@ function getDateAfterXWeeks(datea, x) {
     if (mm < 10) {
         mm = '0' + mm
     }
-    var date = dd + '/' + mm + '/' + yyyy;
+    if (Hours < 10) {
+        Hours = '0' + Hours
+    }
+    if (Minutes < 10) {
+        Minutes = '0' + Minutes
+    }
+    if (Seconds < 10) {
+        Seconds = '0' + Seconds
+    }
+
+    var date = dd + '/' + mm + '/' + yyyy + " " + Hours + ":" + Minutes + ":" + Seconds;
     return date;
 }
 
-
-function checkSizeScreen() {
-    if ($(window).width() < 700) {
-        $("#ulSmall").show();
-        $("#ulBig").hide();
-        $(".popupBoxWrapper").width('90%');
-        $("#connection").width('15%');
-        $("#cancel").width('10%');
-        $("#register").width('15%');
-        $("#imageShowDetails").width('50%');
-        $("#imageShowDetails").height('20%');
-
-    }
-    else {
-        $("#ulSmall").hide();
-        $("#ulBig").show();
-        $(".popupBoxWrapper").width(550);
-        $("#connection").width(100);
-        $("#register").width(100);
-        $("#cancel").width(50);
-        $("#imageShowDetails").width(400);
-        $("#imageShowDetails").height(400);
-    }
-
-
-}
 
 //add to database user how want to join any group
 function addProductByUser(idPro) {

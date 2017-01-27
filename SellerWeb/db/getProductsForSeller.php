@@ -8,17 +8,15 @@
 require "init.php";
 
 $category = $_POST["category"];
-
 $date = date('Y-m-d H:i:s');
-$result = $conn->query("SELECT * FROM productbwf WHERE category =  '$category' AND numberOfAddPeople >  '$date'");
 
+$result = $conn->query("SELECT * FROM productbwf WHERE category = '$category' AND numberOfAddPeople <  '$date' AND numberForGetOffer >  '$date'");
 
 if ($result->num_rows > 0) {
     // output data of each row
     $product_Users = array();
 
     while ($row = $result->fetch_assoc()) {
-
         $resCell[0] = $row["idProduct"];
         $resCell[1] = $row["userName"];
         $resCell[2] = $row["productName"];

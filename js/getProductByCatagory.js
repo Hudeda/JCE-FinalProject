@@ -1,34 +1,33 @@
 /**
  * Created by hudeda on 21/11/2016.
  */
-var app = angular.module('myApp',['ngRoute']);
+var app = angular.module('myApp1', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/electricity',{
-            templateUrl:'MyElectricity.php'
+            templateUrl:'pages/MyElectricity.php'
         })
         .when('/tourist',{
-            templateUrl:'MyTourist.php'
+            templateUrl:'pages/MyTourist.php'
         })
         .when('/computer',{
-            templateUrl:'MyComputer.php'
+            templateUrl:'pages/MyComputer.php'
         })
         .when('/sport',{
-            templateUrl:'MySport.php'
+            templateUrl:'pages/MySport.php'
         })
         .when('/cellular',{
-            templateUrl:'MyCellular.php'
+            templateUrl:'pages/MyCellular.php'
         })
         .when('/car',{
-            templateUrl:'MyCar.php'
+            templateUrl:'pages/MyCar.php'
         })
         .when('/other',{
-            templateUrl:'MyOther.php'
+            templateUrl:'pages/MyOther.php'
         })
         .when('/userProduct',{
-            templateUrl:'MyProducts.php'
+            templateUrl:'pages/MyProducts.php',
         })
         .otherwise({redirectTo: '/'});
-
 })

@@ -10,15 +10,17 @@ require "init.php";
 $productId = $_POST['productId'];
 $userName = $_POST['userName'];
 
-$pass = sha1($password);
-
 
 $sql = "DELETE FROM productByUser WHERE idProduct = '$productId' AND userName = '$userName' LIMIT 1";
 
 
 if ($conn->query($sql) === TRUE) {
-    $conn->query("UPDATE productbwf SET NumberOfJoined = (NumberOfJoined - 1) WHERE idProduct = '".$productId."'");
-    echo true;
+    $sql ="UPDATE productbwf SET NumberOfJoined = (NumberOfJoined - 1) WHERE idProduct = '".$productId."'";
+    if ($conn->query($sql) === TRUE)
+        echo true;
+    else
+        echo false;
+
 } else {
     echo false;
 }

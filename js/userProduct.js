@@ -3,9 +3,6 @@
  */
 $(document).ready(function () {
     displayUserProducts();
-    $(window).resize(checkSizeScreen);
-
-    checkSizeScreen();
 });
 
 var Products;
@@ -20,12 +17,12 @@ var numberOfOffers = 7;
 var imageProduct = 8;
 var uploadDate = 9;
 var numberOfJoined = 10;
+var price = 11;
 function displayUserProducts() {
     Products = [];
 
     var divChanges = "";
     $.ajax({
-        async: false,
         type: 'POST',
         url: getUserProducts,
         data: {
@@ -35,45 +32,45 @@ function displayUserProducts() {
             Products = JSON.parse(response);
 
             for (var i = 0; i < Products.length; i++) {
-                divChanges = "";
-                divChanges += "<div class = 'oneUserProduct'>";
-                divChanges += "<div class = 'textDivUserProduct'>";
-                divChanges += "<div class = 'titleProduct'>" + Products[i][companyName] + ", " + Products[i][productName] + "</div>";
-                divChanges += "<div class='descriptionUserProduct'>" + Products[i][descriptionProduct] + "</div>";
 
+                divChanges = "<div class='panel panel-default'><div class='col-lg-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
+                divChanges += "<div class='col-lg-4'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
+                divChanges += "<p>" + Products[i][descriptionProduct] + "</p><br>"
+                divChanges += "<p>" + " מס' החברים בקבוצה: "+Products[i][numberOfJoined] + "</p>" ;
+                var currentDate = new Date();
+                var dateToAddPeople = new Date(Products[i][numberOfAddPeople]);
+                var dateToGetOffers = new Date(Products[i][numberOfOffers]);
 
-                if (!checkIfDateArePss(Products[i][uploadDate], Products[i][numberOfAddPeople])) {
-                    divChanges += "<div class = 'lableMyProduct'><lable>מספר החברים בקבוצה: "+Products[i][numberOfJoined]+"</lable><br>";
-                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
-                    divChanges += "<br><lable>סיום איסוף אנשים ותחילת קבלת הצעות מחיר: "+getDateAfterXWeeks(Products[i][uploadDate],Products[i][numberOfAddPeople])+"</lable>";
-                    divChanges += "</div></div>";
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
-                    divChanges += "</div>";
+                if (currentDate < dateToAddPeople) {
+                    divChanges += "<p> תאריך סוף לאיסוף אנשים: "+getDayBeforeXMonth(Products[i][numberOfAddPeople])+"</p>" ;
+                    divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='exitFromGroup("+Products[i][idProduct]+")'>יציאה מהקבוצה</button></p>";
+                    divChanges += "</div></div></div></div></div>";
                     $("#appendItemPeople").append(divChanges);
+
                 }
-                else if (!checkIfDateArePss(Products[i][uploadDate], parseInt(Products[i][numberOfAddPeople]) +
-                        parseInt(Products[i][numberOfOffers]))) {
-                    divChanges += "<input type = button class='buttonExitFromGroup' value='יציאה' onclick='exitFromGroup(" + Products[i][idProduct] + ");'/>";
-                    divChanges += "</div>";
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
-                    divChanges += "</div>";
+                else if (currentDate < dateToGetOffers) {
+                    divChanges += "<p> המחיר המוצע הינו: "+Products[i][price]+"</p>"
+                    divChanges += "<p> תאריך סוף לקבלת הצעות: "+getDayBeforeXMonth(Products[i][numberOfOffers])+"</p>" ;
+
+                    divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='exitFromGroup("+i+")'>יציאה מהקבוצה</button></p>";
+                    divChanges += "</div></div></div></div></div>";
                     $("#appendItemOffers").append(divChanges);
 
                 }
                 else {
-                    divChanges += "</div>";
-                    divChanges += "<div class='imageDivUserProduct' style = 'background-image: url(" + Products[i][imageProduct] + ")'></div>";
-                    divChanges += "</div>";
+                    divChanges += "<p> המחיר שנקבע הינו: "+Products[i][price]+"</p>"
+                    divChanges += "</div></div></div></div>";
                     $("#appendItemClosed").append(divChanges);
 
                 }
             }
-            $("#divChanges").hide();
+            $("#loader").css('display', "none");
+            $(".rtlStyle").css('display', "block");
+
+
         }
 
     });
-    $(".se-pre-con").replaceWith("<div class='se-pre-con' hidden></div>");
-
 }
 function exitFromGroup(x) {
     $.ajax({
@@ -85,7 +82,6 @@ function exitFromGroup(x) {
             productId: x
         },
         success: function (response) {
-            alert(response);
             if (response) {
                 location.reload();
             }
@@ -96,41 +92,14 @@ function exitFromGroup(x) {
         }
     });
 }
-function checkIfDateArePss(date1, x) {
-    var date = new Date(date1);
-    date.setTime(date.getTime() + x * 86400000 * 7);
-    if (date.getTime() > new Date().getTime()) {
-        return false;
-    }
-    else {
-        return true;
-    }
-}
-function checkSizeScreen() {
-    if ($(window).width() < 700) {
-        $(".titlesUserProducts").css('font-size', '25px');
-        $(".titleProduct").css('font-size', '20px');
-        $(".descriptionUserProduct").css('font-size', '15px');
-        $(".buttonExitFromGroup").css('padding', '10px 15px');
 
-    }
-    else{
-        $(".titlesUserProducts").css('font-size', '30px');
-        $(".titleProduct").css('font-size', '30px');
-        $(".descriptionUserProduct").css('font-size', '20px');
-        $(".buttonExitFromGroup").css('padding', '16px 32px');
-    }
+function getDayBeforeXMonth(datea) {
+    var date = new Date(datea)
 
-    if ($(window).width() < 500) {
-        $(".imageDivUserProduct").css('background-size', '80% 70%');
-    }
-    else
-        $(".imageDivUserProduct").css('background-size', '60% 90%');
-}
+    var Hours = date.getHours(); // => 9
+    var Minutes = date.getMinutes(); // =>  30
+    var Seconds = date.getSeconds(); // => 51
 
-function getDateAfterXWeeks(datea, x) {
-    var date = new Date(datea);
-    date.setTime(date.getTime() + x * 86400000 * 7);
     var dd = date.getDate();
     var mm = date.getMonth() + 1; //January is 0!
 
@@ -141,6 +110,16 @@ function getDateAfterXWeeks(datea, x) {
     if (mm < 10) {
         mm = '0' + mm
     }
-    var date = dd + '/' + mm + '/' + yyyy;
+    if (Hours < 10) {
+        Hours = '0' + Hours
+    }
+    if (Minutes < 10) {
+        Minutes = '0' + Minutes
+    }
+    if (Seconds < 10) {
+        Seconds = '0' + Seconds
+    }
+
+    var date = dd + '/' + mm + '/' + yyyy +" "+ Hours+":"+Minutes+":"+Seconds;
     return date;
 }

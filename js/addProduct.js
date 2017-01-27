@@ -3,13 +3,13 @@
  */
 var target;
 $(document).ready(function () {
-    $("#addProduct").click(saveProductDb);
-    $("#cancelAddProduct").click(function () {$("#addProductDiv").hide()});
+    $("#addProductBuyUser").click(saveProductDb);
 
     $(".image-upload").ImageResize(
         {
             maxWidth: 300,
             onImageResized: function (imageData) {
+                $(".images").replaceWith($("<img class='images' src= '"+imageData+"' <img/>"));
             }
         });
 });
@@ -18,8 +18,8 @@ $(document).ready(function () {
 //get the user image and save the base64 string
 $.fn.ImageResize = function (options) {
     var defaults = {
-        maxWidth: 200,
-        maxHeigt: 200,
+        maxWidth: 300,
+        maxHeigt: 300,
         onImageResized: null
     }
     var settings = $.extend({}, defaults, options);
@@ -52,7 +52,8 @@ $.fn.ImageResize = function (options) {
                 picReader.addEventListener("load", function (event) {
                     var picFile = event.target;
                     var imageData = picFile.result;
-                    alert( event.target.result.length);
+
+
                     var img = new Image();
                     img.src = imageData;
                     img.onload = function () {
@@ -84,7 +85,6 @@ $.fn.ImageResize = function (options) {
                             }
                         }
                         target=imageData;
-                        alert( target.length);
 
                     }
                     img.onerror = function () {
@@ -153,4 +153,3 @@ function saveProductDb() {
     else
         alert("אחד מהשדות אינו מלא");
 }
-

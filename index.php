@@ -9,6 +9,7 @@ $sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/db/sendEmail.php";
 $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUser.php";
 
 ?>
+
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
     //for script files that send POST request to php files
     var addRegister = "<?php echo $addRegister ?>";
@@ -17,256 +18,237 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     var sendEmail = "<?php echo $sendEmail?>";
     var addProductByUserDB = "<?php echo $addProductByUser?>";
 
+
 </script>
 
 <!DOCTYPE html>
-<html  ng-app="myApp">
+<html ng-app="myApp1">
 <head>
     <meta charset="UTF-8">
     <!--    Including all the stylesheets and scripts files are been used on this app-->
+    <meta http-equiv="X-UA)Compatible" content="IE-edge">
+    <meta name="viewport" content="width = device-width,initial-scale = 1">
     <title>Buy With Friends</title>
-    <link rel="stylesheet" href="css/entry.css">
-    <link rel="stylesheet" href="css/register.css">
-    <link rel="stylesheet" href="css/one_product.css">
     <link rel="shortcut icon" type="image/x-icon" href="image/logoBWF.png"/>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <script type="text/javascript" src="js/register.js"></script>
     <script type="text/javascript" src="js/addProduct.js"></script>
-    <script type="text/javascript" src="js/navBar.js"></script>
-    <script type="text/javascript" src="js/entry.js"></script>
     <script type="text/javascript" src="js/getProductByCatagory.js"></script>
 
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/one_product.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
 
 </head>
 
-<!--connection and disconnection users -->
-<br>
-<div class="loginLink" >
-    <span>שלום </span>
-    <div id="nameOfUser" class="userName"><span></span></div>
-    <span>, </span>
-    <a><div id="connect" style="color: #1a1aff; text-decoration: underline;"></div></a>
-</div>
-<br>
-<!--nav bar - all the category in app and adding product button -->
-<nav>
-    <div id="ulSmall">
-        <br>
-        <a href="#/electricity" id="navMyElectricityTaga"><li class="liSmall">חשמל ואלקטרוניקה</li></a>
-        <a href="#/tourist" id="navTouristTaga"><li class="liSmall">תיירות</li></a>
-        <a href="#/computer" id="navMyComputerTaga"><li class="liSmall">מחשבים</li></a>
-        <a href="#/sport" id="navMySportTaga"><li class="liSmall">פנאי וספורט</li></a>
-        <a href="#/cellular" id="navMyCellularTaga"><li class="liSmall">סלולר</li></a>
-        <a href="#/car" id="navMyCarTaga"><li class="liSmall">רכב</li></a>
-        <a href="#/other" id="navOtherTaga"><li class="liSmall">שונות</li></a>
-        <br><br>
-        <div id="addProducthida" hidden>
-            <li class="liSmall"><label id="navAddItemTaga">פתיחת קבוצה</label></li>
-            <a href="#/userProduct" id="userProductsDiva"><li class="liSmall">הפריטים שלי</li></a>
-        </div>
-    </div>
-    <br>
-    <ul id="ulBig">
-        <div id="addProducthid" hidden>
-            <li class="liBig"><label id="navAddItemTag">פתיחת קבוצה</label></li>
-            <a href="#/userProduct" id="userProductsDiv"><li class="liBig">הפריטים שלי</li></a>
-        </div><br>
-        <a href="#/other" id="navOtherTag"><li class="liBig">שונות</li></a>
-        <a href="#/car" id="navMyCarTag"><li class="liBig">רכב</li></a>
-        <a href="#/cellular" id="navMyCellularTag"><li class="liBig">סלולר</li></a>
-        <a href="#/sport" id="navMySportTag"><li class="liBig">פנאי וספורט</li></a>
-        <a href="#/computer" id="navMyComputerTag"><li class="liBig">מחשבים</li></a>
-        <a href="#/tourist" id="navTouristTag"><li class="liBig">תיירות</li></a>
-        <a href="#/electricity" id="navMyElectricityTag"><li class="liBig">חשמל ואלקטרוניקה</li></a>
-    </ul>
-</nav>
+<!-- Collapsible Navigation Bar -->
+<div class="container">
 
-<br>
-<br>
+    <!-- .navbar-fixed-top, or .navbar-fixed-bottom can be added to keep the nav bar fixed on the screen -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
 
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
 
-<body>
+                <!-- Button that toggles the navbar on and off on small screens -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 
-<!--20 product are slideing on the rigth side on first window-->
-<div id="divChanges">
-    <br>
-    <div class="newsProduct"></div>
+                    <!-- Hides information from screen readers -->
+                    <span class="sr-only"></span>
 
-    <!--Explains how the app works why we need this app-->
+                    <!-- Draws 3 bars in navbar button when in small mode -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-    <div class="mainDiv">
-        איך זה עובד מה צריך לעשות
-    </div>
-</div>
-<div ng-view></div>
-<!--ths div show the details by press on any product-->
-<div id="DivShowDetails" hidden></div>
-<!--this div is the popup windows are show the connection view -->
-<div id="popupBoxOnePosition">
-    <div class="popupBoxWrapper">
-        <div class="popupBoxContent">
-            <div class="container">
-
-                <form>
-                    <div class="imgcontainer">
-                        <img src="image/logoBWF.png" alt="Avatar" class="avatar">
-                    </div>
-
-                    <div class="container">
-                        <label><b>שם משתמש:</b></label>
-                        <input id="userNameConnection" type="text" placeholder="הכנס שם משתמש" required>
-
-                        <label><b>סיסמה</b></label>
-                        <input id="userPassConnection" type='password' placeholder="הכנס סיסמה" required>
-
-                        <img id="connection" style="width:100px" src="image/connectio.png"/>
-                        <img id="register" style="width:100px" src="image/registrationRed.png"/>
-
-                    </div>
-
-                    <div class="containerBtn">
-                        <input id="cancel" src="image/red%20icon.png" type="image">
-
-                    </div>
-                    <span class="psw">שכחת <label id="forgetPassword">סיסמה?</label></span>
-
-                </form>
-
+                <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
+                <a class="pull-left" href="#"><img src="image/logoBWF.png"></a>
             </div>
-            &#8203;
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">בית<span class="sr-only">(current)</span></a></li>
+                    <li><a href="" id="loginBtn" data-target='#myLogin'>התחברות</a></li>
+                    <li><a href="" id="addProduct" hidden data-toggle='modal'
+                           data-target='#addProductModal'>הוספת פריט</a></li>
+                    <li><a href="#/userProduct" id="userProduct" hidden>הפריטים שלי</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">צור קשר<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="">דוא"ל</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="">פניות באתר</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- navbar-left will move the search to the left -->
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">חיפוש</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="divCategory text-center">
+        <div class="btn-group">
+            <a href="#/other" type="button" class="btn btn-primary">שונות</a>
+            <a href="#/car" type="button" class="btn btn-primary">רכב</a>
+            <a href="#/cellular" type="button" class="btn btn-primary">סלולר</a>
+            <a href="#/sport" type="button" class="btn btn-primary">פנאי וספורט</a>
+            <a href="#/computer" type="button" class="btn btn-primary">מחשבים</a>
+            <a href="#/tourist" type="button" class="btn btn-primary">תיירות</a>
+            <a href="#/electricity" type="button" class="btn btn-primary">חשמל ואלקטרוניקה</a>
         </div>
     </div>
-</div>
+    <div class='modal fade' id='myLogin' role='dialog'>
+        <div class='modal-dialog'>
 
-<!--this div is the popup windows are show the send email view-->
-<div id="sendEmailDiv">
-    <div class="popupBoxWrapper">
-        <div class="popupBoxContent">
-            <div class="container">
-
-                <form>
-                    <div class="container">
-
-                        <label><b>אימייל:</b></label>
-                        <input id="emailSendingInput" type="text" placeholder="הכנס אימייל" required>
-
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    <h4 class='modal-title'> התחברות </h4></div>
+                <div class='modal-body'>
+                    <p>שם משתמש: <input id="userNameConnection" class='form-control' id='ex1' type='text'></p><br>
+                    <p>סיסמא:<input id="userPassConnection" class='form-control' id='ex1' type='password'></p></div>
+                <div class='modal-footer'>
+                    <div class='col-xs-5'><br>
+                        <button id="userConnectionB" type='button' class='btn btn-success'>התחבר</button>
+                        <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myRegistration'>
+                            הירשם
+                        </button>
                     </div>
-                    <div class="registerGreen">
-                        <img id="emailSendingButto" style="width:50px" src="image/green%20icon.png"/>
-                    </div>
-                    <div class="registerRed">
-                        <img id="emailSendingCancel" style="width:50px" src="image/red%20icon.png"/>
-                    </div>
-                </form>
+                    <br>
+                    <button id="forgotPassword" type='button' class='btn btn-warning' data-toggle='modal' data-target='#myForgotPasswordModal'>?שכחת סיסמא</button>
 
-            </div>
-            &#8203;
-        </div>
-    </div>
-</div>
-
-
-<!--this div is the popup windows are show the user register view-->
-
-<div id="popupRegister">
-    <div class="popupBoxWrapper">
-        <div class="popupBoxContent">
-            <div class="container">
-
-                <form>
-                    <div class="container">
-
-                        <label><b>שם פרטי:</b></label>
-                        <input id="firstNameRegistration" type="text" placeholder="הכנס שם פרטי" required>
-                        <label><b>שם משפחה:</b></label>
-                        <input id="lastNameRegistration" type="text" placeholder="הכנס שם משפחה" required>
-                        <label><b>שם משתמש:</b></label>
-                        <input id="userNameRegistration" type="text" placeholder="הכנס שם משתמש" required>
-                        <label><b>אימייל</b></label>
-                        <input id="userEmailRegistration" type="text" placeholder="הכנס אימייל" required>
-                        <label><b>מספר טלפון:</b></label>
-                        <input id="userPhoneRegistration" type="text" placeholder="הכנס מספר טלפון" required>
-                        <label><b>סיסמה:</b></label>
-                        <input id="pass1Registration" type='password' placeholder="הכנס סיסמה"/>
-                        <label><b>אימות סיסמה:</b></label>
-                        <input id="pass2Registration" type='password' placeholder="הכנס אימות סיסמה"/>
-
-
-                    </div>
-                    <div class="registerGreen">
-                        <img id="registerGreenID" style="width:50px" src="image/green%20icon.png"/>
-                    </div>
-                    <div class="registerRed">
-                        <img id="registerRedID" style="width:50px" src="image/red%20icon.png"/>
-                    </div>
-                </form>
-
+                    <button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class='modal fade' id='myRegistration' role='dialog'>
+        <div class='modal-dialog'>
 
-<!--this div is the popup windows are show the adding product group view-->
-<div id="addProductDiv">
-    <div class="popupBoxWrapper">
-        <div class="popupBoxContent">
-            <div class="container">
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    <h4 class='modal-title'> הרשמה </h4></div>
+                <div class='modal-body'>
+                    <p>שם פרטי: <input id="firstNameRegistration" class='form-control' id='ex1' type='text'></p>
+                    <p>שם משפחה: <input id="lastNameRegistration" class='form-control' id='ex1' type='text'></p>
+                    <p>שם משתמש: <input id="userNameRegistration" class='form-control' id='ex1' type='text'></p>
+                    <p>מספר טלפון: <input id="userPhoneRegistration" class='form-control' id='ex1' type='tel'
+                                          maxlength='10'></p>
+                    <p>אימייל: <input id="userEmailRegistration" class='form-control' id='ex1' type='email'></p>
+                    <p>סיסמא: <input id="pass1Registration" class='form-control' id='ex1' type='password'></p>
+                    <p>אימות סיסמא: <input id="pass2Registration" class='form-control' id='ex1' type='password'></p>
+                </div>
+                <div class='modal-footer'>
+                    <div class='col-xs-5'><br>
+                        <button id="userRegisterBregister" type='button' class='btn btn-success'>הירשם</button>
+                    </div>
+                    <br>
+                    <button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='modal fade' id='myForgotPasswordModal' role='dialog'>
+        <div class='modal-dialog'>
 
-                <form>
-                    <div class="container">
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    <h4 class='modal-title'> שכחתי שם משתמש/סיסמא </h4></div>
+                <div class='modal-body'>
+                    <p>אימייל: <input id="emailSendingInput" class='form-control' id='ex1' type='email'></p>
+                </div>
+                <div class='modal-footer'>
+                    <div class='col-xs-5'><br>
+                        <button id="emailSendingButto" type='button' class='btn btn-success'>שלח סיסמא חדשה</button>
+                    </div>
+                    <br>
+                    <button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <label><b>שם החברה:</b></label>
-                        <input id="companyName" type="text" placeholder="הכנס את שם החברה" required>
-                        <label><b>שם המוצר:</b></label>
-                        <input id="productName" type="text" placeholder="הכנס את שם מוצר" required>
-                        <label><b>תיאור המוצר:</b></label>
-                        <input id="descriptionProduct" type="text" placeholder="תאר את המוצר" required>
-                        <label><b>מספר השבועות לאסוף אנשים:</b></label>
-                        <input id="numberOfAddPeople" type="number" min="1" placeholder="הכנס מספר השבועות לאסוף אנשים"
-                               required>
-                        <label><b>מספר השבועות לקבלת הצעות:</b></label>
-                        <input id="numberForGetOffer" type="number" min="1" placeholder="הכנס מספר השבועות לקבלת הצעות"
-                               required>
-                        <label><b>קטגוריה:</b></label>
-                        <select id="selectCategory">
-                            <option value="בחר קטגוריה">בחר קטגוריה:</option>
-                            <option value="חשמל ואלקטרוניקה">חשמל ואלקטרוניקה</option>
-                            <option value="תיירות">תיירות</option>
-                            <option value="מחשבים">מחשבים</option>
-                            <option value="פנאי וספורט">פנאי וספורט</option>
-                            <option value="סלולר">סלולר</option>
-                            <option value="רכב">רכב</option>
-                            <option value="שונות">שונות</option>
+
+    <div class='modal fade' id='addProductModal' role='dialog'>
+        <div class='modal-dialog'>
+
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                    <h4 class='modal-title'> הוספת פריט </h4></div>
+                <div class='modal-body'>
+                    <p>שם מוצר: <input id="productName" class='form-control' id='ex1' type='text'></p>
+                    <p>שם חברה: <input id="companyName" class='form-control' id='ex1' type='text'></p>
+                    <p>תיאור מוצר: <input id="descriptionProduct" class='form-control' id='ex1' type='text'></p>
+                    <p>מספר שבועות לאיסוף אנשים: <input id="numberOfAddPeople" class='form-control' id='ex1' type='tel'
+                                                        maxlength='10'></p>
+                    <p>מספר שבועות לקבלת הצעות: <input id="numberForGetOffer" class='form-control' id='ex1'
+                                                       type='email'></p>
+                    <p>בחר קטגוריה: <select id="selectCategory" class="selectpicker">
+                            <optgroup label="בחר קטגוריה:">
+                                <option>חשמל ואלקטרוניקה</option>
+                                <option>תיירות</option>
+                                <option>מחשבים</option>
+                                <option>פנאי וספורט</option>
+                                <option>סלולר</option>
+                                <option>רכב</option>
+                                <option>שונות</option>
+                            </optgroup>
                         </select>
-                        <br>
-                        <label><b>צקף תמונה</b></label>
+                    </p>
+                    <p> העלאת תמונה:
                         <input type="file" class="image-upload"/>
+                    <div class="images"></div>
+                    </p>
+                    <div class='modal-footer'>
+                        <div class='col-xs-5'><br>
+                            <button id="addProductBuyUser" type='button' class='btn btn-primary'>הוספת פריט</button>
 
-
+                        </div>
+                        <br>
+                        <button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>
                     </div>
-                    <div class="registerGreen">
-                        <input id="addProduct" style="width:50px" src="image/green%20icon.png" type="image">
-                    </div>
-                    <div class="registerRed">
-                        <input id="cancelAddProduct" style="width:50px" src="image/red%20icon.png" type="image">
-                    </div>
-                </form>
-
+                </div>
             </div>
         </div>
     </div>
+
+    <body>
+
+    <div ng-view></div>
+
+    </body>
 </div>
 
-</body>
 </html>
 
 

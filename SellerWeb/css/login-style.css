@@ -1,0 +1,11 @@
+.form-login{
+    padding: 10%;
+    background: rgb(189, 195, 199);
+}
+
+.btn{
+    color: #5C6BC0;
+}
+legend{
+    direction: rtl;
+}

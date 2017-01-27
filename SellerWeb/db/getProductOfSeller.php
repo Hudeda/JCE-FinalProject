@@ -2,23 +2,21 @@
 /**
  * Created by IntelliJ IDEA.
  * User: hudeda
- * Date: 21/11/2016
- * Time: 11:28
+ * Date: 18/01/2017
+ * Time: 17:43
  */
+
 require "init.php";
 
-$category = $_POST["category"];
+$companyId = $_POST["companyId"];
 
-$date = date('Y-m-d H:i:s');
-$result = $conn->query("SELECT * FROM productbwf WHERE category =  '$category' AND numberOfAddPeople >  '$date'");
-
+$result = $conn->query("SELECT * FROM productbwf JOIN (SELECT * FROM sellerToProduct WHERE companyId = $companyId) as pbu on productbwf.idProduct = pbu.productId ORDER BY productbwf.uploadDate DESC");
 
 if ($result->num_rows > 0) {
     // output data of each row
     $product_Users = array();
 
     while ($row = $result->fetch_assoc()) {
-
         $resCell[0] = $row["idProduct"];
         $resCell[1] = $row["userName"];
         $resCell[2] = $row["productName"];
@@ -33,7 +31,5 @@ if ($result->num_rows > 0) {
         $resCell[11] = $row["Price"];
         array_push($product_Users, $resCell);
     }
-
 }
 echo json_encode($product_Users);
-
