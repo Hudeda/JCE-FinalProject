@@ -37,11 +37,6 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
-
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -209,9 +204,9 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/db/addProductByUs
                     <p>שם מוצר: <input id="productName" class='form-control' id='ex1' type='text'></p>
                     <p>שם חברה: <input id="companyName" class='form-control' id='ex1' type='text'></p>
                     <p>תיאור מוצר: <input id="descriptionProduct" class='form-control' id='ex1' type='text'></p>
-                    <p>מספר שבועות לאיסוף אנשים: <input id="numberOfAddPeople" class='form-control' id='ex1' type='tel'
+                    <p>מספר שבועות לאיסוף אנשים: <input id="endOfAddPeopleDate" class='form-control' id='ex1' type='tel'
                                                         maxlength='10'></p>
-                    <p>מספר שבועות לקבלת הצעות: <input id="numberForGetOffer" class='form-control' id='ex1'
+                    <p>מספר שבועות לקבלת הצעות: <input id="endOfGetOfferDate" class='form-control' id='ex1'
                                                        type='email'></p>
                     <p>בחר קטגוריה: <select id="selectCategory" class="selectpicker">
                             <optgroup label="בחר קטגוריה:">

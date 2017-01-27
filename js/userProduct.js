@@ -12,7 +12,7 @@ var productName = 2;
 var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
-var numberOfAddPeople = 6;
+var endOfAddPeopleDate = 6;
 var numberOfOffers = 7;
 var imageProduct = 8;
 var uploadDate = 9;
@@ -38,11 +38,11 @@ function displayUserProducts() {
                 divChanges += "<p>" + Products[i][descriptionProduct] + "</p><br>"
                 divChanges += "<p>" + " מס' החברים בקבוצה: "+Products[i][numberOfJoined] + "</p>" ;
                 var currentDate = new Date();
-                var dateToAddPeople = new Date(Products[i][numberOfAddPeople]);
+                var dateToAddPeople = new Date(Products[i][endOfAddPeopleDate]);
                 var dateToGetOffers = new Date(Products[i][numberOfOffers]);
 
                 if (currentDate < dateToAddPeople) {
-                    divChanges += "<p> תאריך סוף לאיסוף אנשים: "+getDayBeforeXMonth(Products[i][numberOfAddPeople])+"</p>" ;
+                    divChanges += "<p> תאריך סוף לאיסוף אנשים: "+getDayBeforeXMonth(Products[i][endOfAddPeopleDate])+"</p>" ;
                     divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='exitFromGroup("+Products[i][idProduct]+")'>יציאה מהקבוצה</button></p>";
                     divChanges += "</div></div></div></div></div>";
                     $("#appendItemPeople").append(divChanges);

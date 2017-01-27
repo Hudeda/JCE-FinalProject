@@ -13,7 +13,7 @@ var productName = 2;
 var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
-var numberOfAddPeople = 6;
+var endOfAddPeopleDate = 6;
 var numberOfOffers = 7
 var imageProduct = 8;
 var uploadDate = 9;
@@ -42,7 +42,7 @@ function getProductByCategory() {
                 divChanges += "<div class='container' id='divReplaceByPress'><div class='row' >";
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
-                    if (checkTime(Products[i][numberOfAddPeople], Products[i][numberOfOffers])) {
+                    if (checkTime(Products[i][endOfAddPeopleDate], Products[i][numberOfOffers])) {
 
                         var stringSub = "";
                         if (Products[i][descriptionProduct].length > 30) {

@@ -23,8 +23,8 @@ if ($result->num_rows > 0) {
         $resCell[3] = $row["companyName"];
         $resCell[4] = $row["descriptionProduct"];
         $resCell[5] = $row["category"];
-        $resCell[6] = $row["numberOfAddPeople"];
-        $resCell[7] = $row["numberForGetOffer"];
+        $resCell[6] = $row["endOfAddPeopleDate"];
+        $resCell[7] = $row["endOfGetOfferDate"];
         $resCell[8] = $row["image"];
         $resCell[9] = $row["uploadDate"];
         $resCell[10] = $row["NumberOfJoined"];

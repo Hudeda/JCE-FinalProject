@@ -104,6 +104,8 @@ $.fn.ImageResize = function (options) {
 
 //add a product to server
 function saveProductDb() {
+    if($('#addProductBuyUser').hasClass("disabled"))
+        return;
     //take the loacl userName
     var userName = localStorage.getItem("userName");
     if (userName == null) {
@@ -115,27 +117,27 @@ function saveProductDb() {
     var productName = $("#productName").val();
     var companyName = $("#companyName").val();
     var descriptionProduct = $("#descriptionProduct").val();
-    var numberOfAddPeople = $("#numberOfAddPeople").val();
-    var numberForGetOffer = $("#numberForGetOffer").val();
+    var endOfAddPeopleDate = $("#endOfAddPeopleDate").val();
+    var endOfGetOfferDate = $("#endOfGetOfferDate").val();
     var category = $("#selectCategory").val();
     if(companyName.length >16 || productName.length > 16){
         alert("בבקשה לא לפרט בחברה ובמוצר, לזה קיים תיאור מוצר");
         return;
     }
     //check if one of th input is not filled
-    if (productName != "" && companyName != "" && descriptionProduct != "" && numberOfAddPeople != "" && category != "בחר קטגוריה" && category != undefined && numberForGetOffer != "" && target != undefined) {
+    if (productName != "" && companyName != "" && descriptionProduct != "" && endOfAddPeopleDate != "" && category != "בחר קטגוריה" && category != undefined && endOfGetOfferDate != "" && target != undefined) {
+        $('#addProductBuyUser').addClass("disabled");
 
         //send post request to adding the new product
         $.ajax({
             type: 'POST',
             url: addProductDb,
-            async:false,
             data: {
                 productName: productName,
                 companyName: companyName,
                 descriptionProduct: descriptionProduct,
-                numberOfAddPeople: numberOfAddPeople,
-                numberForGetOffer: numberForGetOffer,
+                endOfAddPeopleDate: endOfAddPeopleDate,
+                endOfGetOfferDate: endOfGetOfferDate,
                 userName: userName,
                 category: category,
                 image: target,
