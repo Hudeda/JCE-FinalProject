@@ -28,12 +28,15 @@ $endOfAddPeopleDate =Date('Y-m-d H:i:s', strtotime("+".$endOfAddPeopleDate." wee
 $filteredData = explode(',', $image);
 $decoded_string = base64_decode($filteredData[1]);
 
-
-$path = '../image/'.$image_name;
+$pathOfDir = '../image/'.$userName;
+if(!is_dir($pathOfDir)){
+    mkdir($pathOfDir);
+}
+$path = '../image/'.$userName.'/'.$image_name;
 $file = fopen($path,'w');
 $is_writting =fwrite($file,$decoded_string);
 fclose($file);
-$path = 'http://hudeda.netau.net/BuyWithFriendsWeb/image/'.$image_name;
+$path = 'http://hudeda.netau.net/BuyWithFriendsWeb/image/'.$userName.'/'.$image_name;
 
 if($is_writting > 0) {
     $sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,endOfAddPeopleDate,endOfGetOfferDate,image,uploadDate)
