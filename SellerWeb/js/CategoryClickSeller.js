@@ -14,7 +14,7 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var endOfAddPeopleDate = 6;
-var numberOfOffers = 7
+var endOfGetOfferDate = 7
 var imageProduct = 8;
 var uploadDate = 9;
 var numberOfJoined = 10;
@@ -42,7 +42,7 @@ function getProductByCategory() {
                 divChanges += "<div class='container' id='divReplaceByPress'><div class='row' >";
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
-                    if (checkTime(Products[i][endOfAddPeopleDate], Products[i][numberOfOffers])) {
+                    if (checkTime(Products[i][endOfAddPeopleDate], Products[i][endOfGetOfferDate])) {
 
                         var stringSub = "";
                         if (Products[i][descriptionProduct].length > 30) {
@@ -88,7 +88,7 @@ function openDetails(x) {
     divChanges += "<div class='modal-footer'><div class='col-xs-5'><p>הזן הצעת מחיר</p> <input class='form-control' id='ex1' type='number' min='1'>" +
         "<br><button type='button' class='btn btn-success' onclick='sendSellerOffer(" + x + ',' + Products[x][idProduct] + ")' >שליחת הצעה </button></div>" +
         "<div class='col-xs-7'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p> המחיר שהוצע עד כה:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- "+getDayBeforeXMonth(Products[x][numberOfOffers])+"</p></div>" +
+        "<p> המחיר שהוצע עד כה:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- "+getDayBeforeXMonth(Products[x][endOfGetOfferDate])+"</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div> </div></div></div>";
 

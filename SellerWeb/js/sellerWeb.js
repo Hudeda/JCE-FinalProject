@@ -27,7 +27,7 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var endOfAddPeopleDate = 6;
-var numberOfOffers = 7;
+var endOfGetOfferDate = 7;
 var imageProduct = 8;
 var uploadDate = 9;
 var numberOfJoined = 10;
@@ -51,7 +51,7 @@ function getUserProductsFromDb() {
 
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
-                    if (checkIfDateArePss(Products[i][uploadDate], Products[i][endOfAddPeopleDate]) && !checkIfDateArePss(Products[i][uploadDate], parseInt(Products[i][numberOfOffers]) + parseInt(Products[i][endOfAddPeopleDate]))) {
+                    if (checkIfDateArePss(Products[i][uploadDate], Products[i][endOfAddPeopleDate]) && !checkIfDateArePss(Products[i][uploadDate], parseInt(Products[i][endOfGetOfferDate]) + parseInt(Products[i][endOfAddPeopleDate]))) {
                         divChanges += "<div class='oneProductShow' onclick='openDescription(" + i + ")' style = 'background-image: url(" + Products[i][imageProduct] + ")'>";
                         divChanges += "<div class = 'showDetails'>"
                         divChanges += "<label class='companyName'>" + Products[i][companyName] + ", </label>";
@@ -80,8 +80,7 @@ function registration() {
     }
     else {
         localStorage.clear();
-        location.reload();
-
+        window.location.href = "http://hudeda.netau.net/BuyWithFriendsWeb/";
     }
 }
 

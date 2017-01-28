@@ -6,7 +6,7 @@
  * Time: 18:09
  */
 $connectCompany = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/connectCompany.php";
-$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/db/getProducts.php";
+$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getProducts.php";
 $setNewPriceOfProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/setNewPriceOfProduct.php";
 $getProductOfSeller = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/getProductOfSeller.php";
 $changeSellerOfProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/changeSellerOfProduct.php";
@@ -84,7 +84,7 @@ $changeSellerOfProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db
                 </button>
 
                 <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
-                <a class="pull-left" href="#"><img src="../image/logoBWF.png"></a>
+                <a class="pull-left" href="#"><img src="../BuyerWeb/image/logoBWF.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

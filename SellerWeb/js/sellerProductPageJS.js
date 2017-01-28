@@ -14,7 +14,7 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var endOfAddPeopleDate = 6;
-var numberOfOffers = 7;
+var endOfGetOfferDate = 7;
 var imageProduct = 8;
 var uploadDate = 9;
 var numberOfJoined = 10;
@@ -72,7 +72,7 @@ function openDisplayForSeller(x) {
     divChanges += "<div class='thumbnail''><img src=" + Products[x][imageProduct] + "></div>";
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
     divChanges += "<div class='modal-footer'><div class='col-xs-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p> מחיר שלי הינו:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- "+getDayBeforeXMonth(Products[x][numberOfOffers])+"</p></div>" +
+        "<p> מחיר שלי הינו:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- "+getDayBeforeXMonth(Products[x][endOfGetOfferDate])+"</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div></div></div></div>";
 
