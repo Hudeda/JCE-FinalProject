@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9ec00f06-b115-4600-b944-d346360478bf" name="BuyWith" url="http://buy-with-friends.com">
+        <fileTransfer host="ftp.buy-with-friends.com" port="21" password="dfc4dfcbdfdedfc3df9adf9bdf9adf93" username="buywithf">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

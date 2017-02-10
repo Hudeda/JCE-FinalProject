@@ -5,11 +5,11 @@
  * Date: 18/12/2016
  * Time: 18:09
  */
-$connectCompany = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/connectCompany.php";
-$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getProducts.php";
-$setNewPriceOfProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/setNewPriceOfProduct.php";
-$getProductOfSeller = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/getProductOfSeller.php";
-$changeSellerOfProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/changeSellerOfProduct.php";
+$connectCompany = "http://buy-with-friends.com/SellerWeb/db/connectCompany.php";
+$getProducts = "http://buy-with-friends.com/BuyerWeb/db/getProducts.php";
+$setNewPriceOfProduct = "http://buy-with-friends.com/SellerWeb/db/setNewPriceOfProduct.php";
+$getProductOfSeller = "http://buy-with-friends.com/SellerWeb/db/getProductOfSeller.php";
+$changeSellerOfProduct = "http://buy-with-friends.com/SellerWeb/db/changeSellerOfProduct.php";
 
 ?>
 

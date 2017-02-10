@@ -17,7 +17,7 @@ $pass = sha1($password);
 
 require "init.php";
 
-$sql = "UPDATE Userrs SET Password = '$pass' WHERE Email='$email'";
+$sql = "UPDATE users SET Password = '$pass' WHERE Email='$email'";
 
 
 if ($conn->query($sql) === TRUE) {

@@ -12,7 +12,7 @@ $password = $_POST['password'];
 $pass = sha1($password);
 
 
-$sql = "INSERT INTO Userrs (First_Name, Last_Name, User_Name,Email,Phone,Password)
+$sql = "INSERT INTO users (First_Name, Last_Name, User_Name,Email,Phone,Password)
 VALUES ('$firstName', '$lastName', '$userName','$userEmail','$userPhone','$pass')";
 
 

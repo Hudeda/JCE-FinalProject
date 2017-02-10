@@ -5,7 +5,7 @@
  * Date: 16/01/2017
  * Time: 20:06
  */
-$connectCompany = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/connectCompany.php";
+$connectCompany = "http://buy-with-friends.com/SellerWeb/db/connectCompany.php";
 
 ?>
 

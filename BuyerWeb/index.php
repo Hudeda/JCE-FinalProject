@@ -2,11 +2,11 @@
 
 //the connection between other php files to send and get from server.
 
-$addRegister = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/addRegister.php";
-$getUserNamePassToConnection = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getUserNamePassToConnection.php";
-$addProductDb = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/addProductDb.php";
-$sendEmail = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/sendEmail.php";
-$addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/addProductByUser.php";
+$addRegister = "http://buy-with-friends.com/BuyerWeb/db/addRegister.php";
+$getUserNamePassToConnection = "http://buy-with-friends.com/BuyerWeb/db/getUserNamePassToConnection.php";
+$addProductDb = "http://buy-with-friends.com/BuyerWeb/db/addProductDb.php";
+$sendEmail = "http://buy-with-friends.com/BuyerWeb/db/sendEmail.php";
+$addProductByUser = "http://buy-with-friends.com/BuyerWeb/db/addProductByUser.php";
 
 ?>
 
@@ -75,13 +75,13 @@ $addProductByUser = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/addPr
                 </button>
 
                 <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
-                <a class="pull-left" href="#"><img src="image/logoBWF.png"></a>
+                <a class="pull-left" href="http://buy-with-friends.com/BuyerWeb/#/"><img src="http://buy-with-friends.com/BuyerWeb/image/logoBWF.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active" id="homePage"><a href="#">בית<span class="sr-only">(current)</span></a></li>
+                    <li class="active" id="homePage"><a href="http://buy-with-friends.com/BuyerWeb/#/">בית<span class="sr-only">(current)</span></a></li>
                     <li><a href="" id="loginBtn" data-target='#myLogin'>התחברות</a></li>
                     <li id="addProduct" ><a href=""  hidden data-toggle='modal'
                            data-target='#addProductModal'>הוספת פריט</a></li>

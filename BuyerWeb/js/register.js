@@ -41,7 +41,7 @@ function registration() {
     }
     else {
         localStorage.clear();
-        window.location.href = "http://hudeda.netau.net/BuyWithFriendsWeb/";
+        window.location.href = "http://buy-with-friends.com/";
 
     }
 }

@@ -5,8 +5,8 @@
  * Date: 06/12/2016
  * Time: 01:15
  */
-$getUserProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getUserProducts.php";
-$deleteUserProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/deleteUserProduct.php";
+$getUserProducts = "http://buy-with-friends.com/BuyerWeb/db/getUserProducts.php";
+$deleteUserProduct = "http://buy-with-friends.com/BuyerWeb/db/deleteUserProduct.php";
 
 ?>
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -19,8 +19,8 @@ $deleteUserProduct = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/dele
 <html>
 <head>
 
-    <script type="text/javascript" src="http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/js/userProduct.js"></script>
-    <link rel="stylesheet" href="http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/css/userProducts.css">
+    <script type="text/javascript" src="http://buy-with-friends.com/BuyerWeb/js/userProduct.js"></script>
+    <link rel="stylesheet" href="http://buy-with-friends.com/BuyerWeb/css/userProducts.css">
 
 </head>
 <body>

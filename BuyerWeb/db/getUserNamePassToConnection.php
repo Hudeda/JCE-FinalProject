@@ -13,7 +13,7 @@ $password = $_POST['password'];
 
 $pass = sha1($password);
 
-$result =  $conn->query( "SELECT * FROM Userrs WHERE User_Name = '$userName' AND Password = '$pass'" );
+$result =  $conn->query( "SELECT * FROM users WHERE User_Name = '$userName' AND Password = '$pass'" );
 
 if ($result->num_rows > 0) {
     // output data of each row

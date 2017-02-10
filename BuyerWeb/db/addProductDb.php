@@ -36,7 +36,7 @@ $path = '../image/'.$userName.'/'.$image_name;
 $file = fopen($path,'w');
 $is_writting =fwrite($file,$decoded_string);
 fclose($file);
-$path = 'http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/image/'.$userName.'/'.$image_name;
+$path = 'http://buy-with-friends.com/BuyerWeb/image/'.$userName.'/'.$image_name;
 
 if($is_writting > 0) {
     $sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,endOfAddPeopleDate,endOfGetOfferDate,image,uploadDate)

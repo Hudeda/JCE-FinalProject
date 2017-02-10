@@ -29,5 +29,8 @@ app.config(function ($routeProvider) {
         .when('/userProduct',{
             templateUrl:'pages/MyProducts.php',
         })
+        .when('/',{
+            templateUrl:'pages/MyHomePage.php',
+        })
         .otherwise({redirectTo: '/'});
 })

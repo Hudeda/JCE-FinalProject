@@ -76,11 +76,11 @@ function getUserProductsFromDb() {
 function registration() {
 
     if ($('#loginBtn').text() == 'התחברות') {
-        window.location.href = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/pages/login.php";
+        window.location.href = "http://buy-with-friends.com/SellerWeb/pages/login.php";
     }
     else {
         localStorage.clear();
-        window.location.href = "http://hudeda.netau.net/BuyWithFriendsWeb/";
+        window.location.href = "http://buy-with-friends.com/";
     }
 }
 

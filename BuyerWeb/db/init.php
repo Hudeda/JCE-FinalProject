@@ -1,8 +1,8 @@
 <?php
-$servername = 'mysql7.000webhost.com';
-$username = "a5581880_BWF";
-$password = "adam0109";
-$dbname = "a5581880_BWFDB";
+$servername = 'server77.hosting24.com';
+$username = "buywithf_DB";
+$password = "nati0109";
+$dbname = "buywithf_DB";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

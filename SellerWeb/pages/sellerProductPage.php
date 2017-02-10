@@ -5,7 +5,7 @@
  * Date: 17/01/2017
  * Time: 12:03
  */
-$getProductsOfSeller = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/getProductOfSeller.php";
+$getProductsOfSeller = "http://buy-with-friends.com/SellerWeb/db/getProductOfSeller.php";
 
 ?>
 
@@ -20,7 +20,7 @@ $getProductsOfSeller = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/g
 <html>
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/js/sellerProductPageJS.js"></script>
+    <script type="text/javascript" src="http://buy-with-friends.com/SellerWeb/js/sellerProductPageJS.js"></script>
     
 </head>
 <br>

@@ -5,8 +5,8 @@
  * Date: 05/12/2016
  * Time: 23:08
  */
-$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getProducts.php";
-$getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db/getUsersInProductGroup.php";
+$getProducts = "http://buy-with-friends.com/BuyerWeb/db/getProducts.php";
+$getUsersInProductGroup = "http://buy-with-friends.com/BuyerWeb/db/getUsersInProductGroup.php";
 ?>
 
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -21,7 +21,7 @@ $getUsersInProductGroup = "http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/db
 <head>
     <meta charset="UTF-8">
 
-    <script type="text/javascript" src="http://hudeda.netau.net/BuyWithFriendsWeb/BuyerWeb/js/MyCategoryClick.js"></script>
+    <script type="text/javascript" src="http://buy-with-friends.com/BuyerWeb/js/MyCategoryClick.js"></script>
 
 </head>
 <body>

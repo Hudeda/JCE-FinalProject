@@ -6,7 +6,7 @@
  * Time: 11:54
  */
 
-$getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/getProductsForSeller.php";
+$getProducts = "http://buy-with-friends.com/SellerWeb/db/getProductsForSeller.php";
 ?>
 
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
@@ -21,7 +21,7 @@ $getProducts = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/db/getProduc
     <meta charset="UTF-8">
 
     <script type="text/javascript"
-            src="http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/js/CategoryClickSeller.js"></script>
+            src="http://buy-with-friends.com/SellerWeb/js/CategoryClickSeller.js"></script>
 
 
 </head>

@@ -104,6 +104,7 @@ $.fn.ImageResize = function (options) {
 
 //add a product to server
 function saveProductDb() {
+    alert("in saveProductDb");
     if($('#addProductBuyUser').hasClass("disabled"))
         return;
     //take the loacl userName
@@ -143,6 +144,7 @@ function saveProductDb() {
                 image: target,
             },
             success: function (response) {
+                alert(response);
                 if (response == ' 1') {
                     alert("נוצרה קבוצת רכישה חדשה");
                     location.reload();

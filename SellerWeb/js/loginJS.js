@@ -37,7 +37,7 @@ function connectSellerDB(){
                 localStorage.setItem("companyAddress", Profile[2]);
                 localStorage.setItem("companyPhone", Profile[3]);
                 localStorage.setItem("companyEmail", Profile[4]);
-                window.location.href = "http://hudeda.netau.net/BuyWithFriendsWeb/SellerWeb/";
+                window.location.href = "http://buy-with-friends.com/SellerWeb/";
             }
         });
     }
