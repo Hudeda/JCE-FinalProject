@@ -7,6 +7,9 @@
     float: left;
     width: 100%;
 }
+.col-xs-5 {
+    text-align: center;
+}
 
 @media (min-width: 0px) and (max-width: 550px) {
     .panel-default {
@@ -63,4 +66,7 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+form.navbar-form.navbar-right.ng-pristine.ng-valid {
+    display: flex;
 }

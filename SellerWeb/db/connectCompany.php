@@ -5,6 +5,7 @@
  * Date: 23/12/2016
  * Time: 11:43
  */
+session_start();
 
 require "init.php";
 
@@ -24,9 +25,11 @@ if ($result->num_rows > 0) {
     $resCell[2] = $row["companyAddress"];
     $resCell[3] = $row["companyPhone"];
     $resCell[4] = $row["companyEmail"];
-
+    $_SESSION["userIdSeller"] = $id;
+    
     echo json_encode($resCell);
 
 } else {
     echo "Error";
 }
+mysql_close($conn);

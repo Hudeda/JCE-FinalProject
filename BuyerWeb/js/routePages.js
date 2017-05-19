@@ -29,6 +29,9 @@ app.config(function ($routeProvider) {
         .when('/userProduct',{
             templateUrl:'pages/MyProducts.php',
         })
+        .when('/search',{
+            templateUrl:'pages/MySearch.php',
+        })
         .when('/',{
             templateUrl:'pages/MyHomePage.php',
         })

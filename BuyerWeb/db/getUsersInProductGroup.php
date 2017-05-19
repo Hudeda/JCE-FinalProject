@@ -14,3 +14,5 @@ $result =  $conn->query( "SELECT COUNT(*) as count FROM productByUser WHERE idPr
 $row = $result->fetch_assoc();
 $count = $row['count'];
 echo $count;
+mysql_close($conn);
+

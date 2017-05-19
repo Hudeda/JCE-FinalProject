@@ -2,12 +2,11 @@
     /*background: lightgray;*/
     /*border-color: white;*/
 /*}*/
-/*.btn-group{*/
-    /*margin: 0 auto;*/
-    /*width: inherit;*/
-    /*text-align: center;*/
-    /*display: inline-block;*/
-/*}*/
+#imageProductSeller {
+    height: 300;
+    width: 300;
+    margin: auto !important;
+}
 .row{
     display: flex;
 }

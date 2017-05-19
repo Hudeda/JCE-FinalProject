@@ -5,6 +5,7 @@
  * Date: 17/01/2017
  * Time: 12:02
  */
+session_start();
 $getProducts = "http://buy-with-friends.com/SellerWeb/db/getProductsForSeller.php";
 ?>
 

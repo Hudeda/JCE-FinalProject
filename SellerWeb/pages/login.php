@@ -17,23 +17,17 @@ $connectCompany = "http://buy-with-friends.com/SellerWeb/db/connectCompany.php";
 
 <!DOCTYPE html>
 <head>
-
+    <meta charset="UTF-8">
     <title>login BuyWithFriendSeller</title>
-    <link rel="stylesheet" type="text/css" href="../css/login-style.css">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
-
-    <script type="text/javascript" src="../js/loginJS.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://buy-with-friends.com/SellerWeb/js/loginJS.js"></script>
 
 </head>
 <body>
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-offset-3 col-sm-offset-4 col-md-offset-4 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-            <div class="form-login">
+        <div class="col-md-8 col-md-offset-2">
+        <div class="form-login" id = "MainForm_login">
                 <form action="" method="POST" calss="form-horizontal" role="form">
                     <div class="form-group">
                         <legend>התחברות</legend>
@@ -58,7 +52,7 @@ $connectCompany = "http://buy-with-friends.com/SellerWeb/db/connectCompany.php";
 
                     <div class="form-login">
                         <div class="col-sm-10 col-sm-offset-2">
-                            <button id="connectSeller" type="submit" class="btn btn-primary">אישור</button>
+                            <button id="connectSeller" type="button" class="btn btn-primary">אישור</button>
                         </div>
                     </div>
 
@@ -67,7 +61,5 @@ $connectCompany = "http://buy-with-friends.com/SellerWeb/db/connectCompany.php";
         </div>
     </div>
 </div>
-</div>
-
 
 </body>

@@ -8,8 +8,9 @@ $(document).ready(function () {
     $(".image-upload").ImageResize(
         {
             maxWidth: 300,
+            maxHeigt: 300,
             onImageResized: function (imageData) {
-                $(".images").replaceWith($("<img class='images' src= '"+imageData+"' <img/>"));
+                $(".images").replaceWith($("<img class='images' src= '" + imageData + "' <img/>"));
             }
         });
 });
@@ -84,7 +85,7 @@ $.fn.ImageResize = function (options) {
                                 settings.onImageResized(imageData);
                             }
                         }
-                        target=imageData;
+                        target = imageData;
 
                     }
                     img.onerror = function () {
@@ -104,14 +105,13 @@ $.fn.ImageResize = function (options) {
 
 //add a product to server
 function saveProductDb() {
-    alert("in saveProductDb");
-    if($('#addProductBuyUser').hasClass("disabled"))
+    if ($('#addProductBuyUser').hasClass("disabled"))
         return;
-    //take the loacl userName
-    var userName = localStorage.getItem("userName");
-    if (userName == null) {
+    //take the loacl UserIdBuyer
+    var UserIdBuyer = localStorage.getItem("UserIdBuyer");
+    if (UserIdBuyer == null) {
         $("#addProductDiv").hide();
-        alert("ראשית יש צורך בהתחבר");
+        swal("שגיאה", "ראשית יש צורך בהתחבר", "error");
         return;
     }
 
@@ -121,8 +121,8 @@ function saveProductDb() {
     var endOfAddPeopleDate = $("#endOfAddPeopleDate").val();
     var endOfGetOfferDate = $("#endOfGetOfferDate").val();
     var category = $("#selectCategory").val();
-    if(companyName.length >16 || productName.length > 16){
-        alert("בבקשה לא לפרט בחברה ובמוצר, לזה קיים תיאור מוצר");
+    if (companyName.length > 16 || productName.length > 16) {
+        swal("הערה", "בבקשה לא לפרט בחברה ובמוצר, לזה קיים תיאור מוצר", "warning");
         return;
     }
     //check if one of th input is not filled
@@ -139,21 +139,21 @@ function saveProductDb() {
                 descriptionProduct: descriptionProduct,
                 endOfAddPeopleDate: endOfAddPeopleDate,
                 endOfGetOfferDate: endOfGetOfferDate,
-                userName: userName,
+                UserIdBuyer: UserIdBuyer,
                 category: category,
                 image: target,
             },
             success: function (response) {
-                alert(response);
                 if (response == ' 1') {
-                    alert("נוצרה קבוצת רכישה חדשה");
+                    swal("נוצרה קבוצת רכישה חדשה", "הינך רשום לקבוצה, כרגע הקבוצה בשלב איסוף אנשים", "success");
                     location.reload();
                 }
                 else
-                    alert("לא היה ניתן ליצור את הקבוצה");
+                    swal("שגיאה","לא היה ניתן ליצור את הקבוצה", "error");
+
             }
         });
     }
     else
-        alert("אחד מהשדות אינו מלא");
+        swal("!שים לב","אחד מהשדות אינו מלא", "warning");
 }

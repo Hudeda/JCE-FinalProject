@@ -1,11 +1,16 @@
 .form-login{
     padding: 10%;
-    background: rgb(189, 195, 199);
+}
+#MainForm_login{
+    border-style: groove;
 }
 
-.btn{
-    color: #5C6BC0;
-}
 legend{
     direction: rtl;
+}
+.modal-body {
+    direction: rtl !important;
+}
+.container {
+    display: grid !important;
 }

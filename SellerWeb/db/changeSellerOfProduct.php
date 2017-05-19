@@ -5,10 +5,11 @@
  * Date: 18/01/2017
  * Time: 12:03
  */
-
+session_start();
+$companyId = $_POST['companyId'];
+if ($_SESSION["userIdSeller"] == $companyId):
 require "init.php";
 
-$companyId = $_POST['companyId'];
 $productId = $_POST['productId'];
 
 
@@ -16,6 +17,8 @@ $result =  $conn->query( "INSERT INTO sellerToProduct (productId, companyId) VAL
 ON DUPLICATE KEY UPDATE companyId = $companyId");
 
 if($result)
-    echo "success";
+    echo "1";
 else
-    echo "failed";
+    echo "0";
+mysql_close($conn);
+endif;

@@ -5,7 +5,8 @@
  * Date: 16/11/2016
  * Time: 14:14
  */
-
+session_start();
+if (isset($_SESSION["userNameBuyer"])):
 require "init.php";
 
 
@@ -16,8 +17,8 @@ $endOfAddPeopleDate = $_POST['endOfAddPeopleDate'];
 $endOfGetOfferDate = $_POST['endOfGetOfferDate'];
 $image = $_POST['image'];
 $category = $_POST['category'];
-$userName = $_POST['userName'];
-$image_name = $userName . Date('Y-m-dH:i:s');
+$UserId = $_POST['UserIdBuyer'];
+$image_name = $UserId . Date('Y-m-dH:i:s');
 
 $uploadDate = date("Y-m-d H:i:s",strtotime('+7 hours'));
 $int = (int) preg_replace('/\D/', '', $endOfAddPeopleDate) + preg_replace('/\D/', '', $endOfGetOfferDate);
@@ -28,27 +29,29 @@ $endOfAddPeopleDate =Date('Y-m-d H:i:s', strtotime("+".$endOfAddPeopleDate." wee
 $filteredData = explode(',', $image);
 $decoded_string = base64_decode($filteredData[1]);
 
-$pathOfDir = '../image/'.$userName;
+$pathOfDir = '../image/'.$UserId;
 if(!is_dir($pathOfDir)){
     mkdir($pathOfDir);
 }
-$path = '../image/'.$userName.'/'.$image_name;
+$path = '../image/'.$UserId.'/'.$image_name.'.jpg';
 $file = fopen($path,'w');
 $is_writting =fwrite($file,$decoded_string);
 fclose($file);
-$path = 'http://buy-with-friends.com/BuyerWeb/image/'.$userName.'/'.$image_name;
+$path = 'http://buy-with-friends.com/BuyerWeb/image/'.$UserId.'/'.$image_name.'.jpg';
 
 if($is_writting > 0) {
-    $sql = "INSERT INTO productbwf (userName, productName, companyName,descriptionProduct,category,endOfAddPeopleDate,endOfGetOfferDate,image,uploadDate)
-VALUES ('$userName', '$productName', '$companyName','$descriptionProduct','$category','$endOfAddPeopleDate','$endOfGetOfferDate','$path', '$uploadDate')";
+    $sql = "INSERT INTO productBWF (productName, companyName,descriptionProduct,category,endOfAddPeopleDate,endOfGetOfferDate,image,uploadDate,UserId)
+VALUES ('$productName', '$companyName','$descriptionProduct','$category','$endOfAddPeopleDate','$endOfGetOfferDate','$path', '$uploadDate','$UserId')";
 
 
     if ($conn->query($sql) === TRUE) {
         $last_id = $conn->insert_id;
-        $sql = "INSERT INTO productByUser (idProduct,userName)VALUES ('$last_id','$userName')";
+        $sql = "INSERT INTO productByUser (idProduct,UserId)VALUES ('$last_id','$UserId')";
         $conn->query($sql);
         echo true;
     } else {
         echo false;
     }
 }
+mysql_close($conn);
+endif;

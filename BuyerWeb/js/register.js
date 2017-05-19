@@ -1,51 +1,58 @@
 $(document).ready(function () {
-    $(".nav a").on("click", function(){
+    $(".nav a").on("click", function () {
         $(".nav").find(".active").removeClass("active");
         $(this).parent().addClass("active");
     });
 
-    $("#homePage").on("click", function(){
+    $("#homePage").on("click", function () {
         $(".divCategory").show();
     });
     //if there is no local db show connection option else connect with the local db
-    if (localStorage.getItem("userName") == undefined) {
-        $('#loginBtn').html("התחברות");
-        $('#userProduct').hide();
-        $('#addProduct').hide();
-        $('#userName').text('');
-        $('#loginBtn').attr( "data-toggle" ,"modal");
+    if (localStorage.getItem("userNameBuyer") == undefined) {
+        $('#userNameSendingInput').val("");
 
     }
     else {
-        $('#loginBtn').html("התנתק");
-        $('#userProduct').show();
-        $('#addProduct').show();
-        $('#userName').text(localStorage.getItem('firstName')+" "+localStorage.getItem('lastName'));
-        $('#loginBtn').removeAttr( "data-toggle" );
-
+        var userName = localStorage.getItem("userNameBuyer");
+        $('#userNameSendingInput').val(userName);
+        swal("שלום " + userName, ".כעת תוכל להנות מקנייה משותפת ", "success");
     }
 
-    $("#loginBtn").click(registration);
-    $("#userRegisterBregister").click(checkCorrectUserRegistrAndSendtoDB);
-    $("#userConnectionB").click(checkPassword);
-
-
-    $("#emailSendingButto").click(sendEmailForgot);
+    $("#deleteSession").click(deleteSession);
+    $("#userRegister").click(checkRegistration);
+    $("#userConnection").click(checkConnection);
+    $("#emailSendingButton").click(sendEmailForgot);
+    $("#sendReferences").click(sendReferences);
 
 
 });
 
 //if press on connect open the connection popup window else press on disconnect so clear the local db and reload the page
-function registration() {
-    if ($('#loginBtn').text() == 'התחברות') {
-    }
-    else {
-        localStorage.clear();
-        window.location.href = "http://buy-with-friends.com/";
+function deleteSession() {
 
-    }
+    swal({
+        title: '?אתה בטוח רוצה לצאת מהאתר',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'כן, תוציא אותי',
+        cancelButtonText: 'ביטול',
+        confirmButtonClass: 'btn btn-success btn-lg',
+        cancelButtonClass: 'btn btn-danger btn-lg',
+        buttonsStyling: false
+    }).then(function () {
+        $.ajax({
+            type: 'POST',
+            url: endSessionBuyer,
+            data: {},
+            success: function (response) {
+                localStorage.clear();
+                window.location.href = "http://buy-with-friends.com";
+            }
+        });
+    })
 }
-
 
 
 function validateForm(x) {
@@ -57,7 +64,7 @@ function validateForm(x) {
 }
 
 //checking if the password match to userName and saving in the local storage
-function checkPassword() {
+function checkConnection() {
     var userName = $('#userNameConnection');
     var userPass = $('#userPassConnection');
     if (userName.val() != "" && userPass.val() != "") {
@@ -72,17 +79,18 @@ function checkPassword() {
             },
             success: function (response) {
                 if (response.localeCompare(' Error') == 0) {
-                    alert("שם משתמש או הסיסמה אינם תואמים");
+                    swal("שגיאת התחברות", "שם משתמש או הסיסמה אינם תואמים", "warning");
                     $('#userNameConnection').focus();
                     return;
                 }
                 Profile = JSON.parse(response);
-                localStorage.setItem("firstName", Profile[0]);
-                localStorage.setItem("lastName", Profile[1]);
-                localStorage.setItem("userName", Profile[2]);
-                localStorage.setItem("phone", Profile[3]);
-                localStorage.setItem("email", Profile[4]);
-                location.reload();
+                localStorage.setItem("firstNameBuyer", Profile[0]);
+                localStorage.setItem("lastNameBuyer", Profile[1]);
+                localStorage.setItem("userNameBuyer", Profile[2]);
+                localStorage.setItem("phoneBuyer", Profile[3]);
+                localStorage.setItem("emailBuyer", Profile[4]);
+                localStorage.setItem("UserIdBuyer", Profile[5]);
+                window.location.href = "http://buy-with-friends.com/BuyerWeb/";
 
             }
         });
@@ -90,7 +98,7 @@ function checkPassword() {
 }
 
 //checking the user register input and create new user
-function checkCorrectUserRegistrAndSendtoDB() {
+function checkRegistration() {
     var firstName = $('#firstNameRegistration');
     var lastName = $('#lastNameRegistration');
     var userName = $('#userNameRegistration');
@@ -102,30 +110,30 @@ function checkCorrectUserRegistrAndSendtoDB() {
     //if one of the input is not filled
     if (firstName.val() == "" || lastName.val() == "" || userName.val() == "" || userEmail.val() == ""
         || userPhone.val() == "" || pass1.val() == "" || pass2.val() == "") {
-        alert("אחד מהשדות ריק");
+        swal("!שים לב", "אחד מהשדות ריק", "warning");
         return;
     }
     //check if input email is correct
     if (!validateForm($('#userEmailRegistration').val())) {
-        alert("אימייל אינו נכון");
+        swal("!שים לב", "אימייל אינו נכון", "warning");
         $('#userEmailRegistration').focus();
         return
     }
     //check the input number
     if (!phonenumber()) {
-        alert("מספר טלפון אינו נכון");
+        swal("!שים לב", "מספר טלפון אינו נכון", "warning");
         $('#userPhoneRegistration').focus();
         return
     }
     //check password inputs are equals
     if (pass1.val() != pass2.val()) {
-        alert("הסיסמאות אינם תואמות");
+        swal("!שים לב", "הסיסמאות אינם תואמות", "warning");
         $('#pass1Registration').focus();
         return;
     }
-
     //send post request to create a new user
     $.ajax({
+        async: false,
         type: 'POST',
         url: addRegister,
         data: {
@@ -137,19 +145,22 @@ function checkCorrectUserRegistrAndSendtoDB() {
             password: pass1.val(),
         },
         success: function (response) {
-            if (response == " 1") {
-                localStorage.setItem("firstName", firstName.val());
-                localStorage.setItem("lastName", lastName.val());
-                localStorage.setItem("userName", userName.val());
-                localStorage.setItem("phone", userEmail.val());
-                localStorage.setItem("email", userPhone.val());
+            if (response == " 0")
+                swal("טעות", "?קיים שם משתמש/אימייל כזה, נרשמת כבר לא", "warning");
+            else {
+                localStorage.setItem("firstNameBuyer", firstName.val());
+                localStorage.setItem("lastNameBuyer", lastName.val());
+                localStorage.setItem("userNameBuyer", userName.val());
+                localStorage.setItem("phoneBuyer", userEmail.val());
+                localStorage.setItem("emailBuyer", userPhone.val());
+                localStorage.setItem("UserIdBuyer", response.replace(/\s+/g, ''));
+                swal("נוצר מוכר חדש", "כעת, תוכל להנות מקנייה משותפת", "success");
                 location.reload();
-                alert("נוצר יוזר חדש");
             }
-            else
-                alert("קיים שם משתמש/אימייל כזה");
+
         }
     });
+
 }
 
 ///phonenumber check the phone number function
@@ -178,27 +189,116 @@ function newPss() {
 //send to user the new password
 function sendEmailForgot() {
     var password = newPss();
-    var email = $("#emailSendingInput").val();
+    var emailToSendPassword = $("#emailSendingInput").val();
 
-    if (!validateForm(email)) {
-        alert("האימייל אינו נכון נסה שנית");
+    if (!validateForm(emailToSendPassword)) {
+        swal("טעות", "האימייל אינו נכון נסה שנית", "warning");
         $('#emailSendingInput').focus();
         return
     }
     $.ajax({
         type: 'POST',
-        url: sendEmail,
+        url: sendPassByEmail,
         data: {
-            email: email,
+            email: emailToSendPassword,
             password: password,
         },
         success: function (response) {
             if (response) {
-                alert("אימייל נשלח");
-                location.reload();
+                swal("אימייל נשלח", "סיסמא חדשה נשלחה לאימייל שצויין", "success");
+                $("#myForgotPasswordModal").modal('hide');
+                $("#myLogin").modal('hide');
             }
             else
-                alert("נסיון שליחת אימייל עם סיסמה חדשה נכשל");
+                swal("שגיאה", "נסיון שליחת אימייל עם סיסמה חדשה נכשל", "error");
         }
     });
-}												
+}
+
+function sendReferences() {
+    var userName = $("#userNameSendingInput").val();
+    var title = $("#titleSendingInput").val();
+    var message = $("#messageTextarea").val();
+    if (message == "" || userName == "" || title == "") {
+        swal("שגיאה", "!יש למלא את כל השדות", "warning");
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: sendReferencesUrl,
+        data: {
+            userName: userName,
+            message: message,
+            title: title,
+        },
+        success: function (response) {
+            if (response) {
+                swal("הפניה נשלחה", "פנייתך התקבלה ותענה בהקדם", "success");
+                $('#myBuyerReferencesModal').modal('hide');
+            }
+            else
+                swal("שגיאה", "נסיון שליחת הפניה נכשל", "error");
+        }
+    });
+}
+function addFacebookRegister(phone) {
+    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function (response) {
+        var firstName = response.first_name;
+        var lastName = response.last_name;
+        var userName = response.email.substring(0, response.email.indexOf('@'));
+        var userEmail = response.email;
+        var userId = response.id;
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: addFacebookRegisterDb,
+            data: {
+                firstName: firstName,
+                lastName: lastName,
+                userName: userName,
+                userEmail: userEmail,
+                userId: userId,
+                userPhone: phone,
+            },
+            success: function (response) {
+                if (response == " 0"){
+                    $.ajax({
+                        type: 'POST',
+                        url: getUserNamePassToConnection,
+                        data: {
+                            userName: userName,
+                            password: '1',
+                        },
+                        success: function (response) {
+                            Profile = JSON.parse(response);
+                            localStorage.setItem("firstNameBuyer", Profile[0]);
+                            localStorage.setItem("lastNameBuyer", Profile[1]);
+                            localStorage.setItem("userNameBuyer", Profile[2]);
+                            localStorage.setItem("phoneBuyer", Profile[3]);
+                            localStorage.setItem("emailBuyer", Profile[4]);
+                            localStorage.setItem("UserIdBuyer", Profile[5]);
+                            window.location.href = "http://buy-with-friends.com/BuyerWeb/";
+
+                        }
+                    });
+
+                }else {
+                    localStorage.setItem("firstNameBuyer", firstName);
+                    localStorage.setItem("lastNameBuyer", lastName);
+                    localStorage.setItem("userNameBuyer", userName);
+                    localStorage.setItem("phoneBuyer", userEmail);
+                    localStorage.setItem("emailBuyer", phone);
+                    localStorage.setItem("UserIdBuyer", userId);
+                    location.reload();
+                }
+
+            }
+        });
+    });
+
+}
+
+function alreadyRegisteredFB(){
+
+}

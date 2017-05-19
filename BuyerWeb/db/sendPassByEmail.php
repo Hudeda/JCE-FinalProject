@@ -10,7 +10,7 @@
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-@mail($email,'Buy With Friends',"Your new Pssword is: ".$password);
+@mail($email,'Buy With Friends',"Yournew Pssword is: ".$password);
 
 
 $pass = sha1($password);
@@ -25,6 +25,4 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo false;
 }
-
-
-
+mysql_close($conn);

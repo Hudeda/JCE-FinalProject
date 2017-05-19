@@ -21,7 +21,7 @@ $getUsersInProductGroup = "http://buy-with-friends.com/BuyerWeb/db/getUsersInPro
 <html>
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="http://buy-with-friends.com/BuyerWeb/js/MyCategoryClick.js"></script>
+    <script type="text/javascript" src="http://buy-with-friends.com/BuyerWeb/js/categoryClickFunctions.js"></script>
 
 
 </head>

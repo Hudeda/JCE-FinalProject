@@ -27,7 +27,7 @@ function productsOfSeller() {
         type: 'POST',
         url: getProductsOfSeller,
         data: {
-            companyId: localStorage.getItem("companyId"),
+            companyId: localStorage.getItem("companyIdSeller"),
         },
         success: function (response) {
             Products = JSON.parse(response);

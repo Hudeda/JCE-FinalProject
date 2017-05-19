@@ -5,22 +5,26 @@
  * Date: 06/12/2016
  * Time: 04:50
  */
-require "init.php";
+session_start();
+if ($_SESSION["userNameBuyer"] == $_POST['userName']):
+    require "init.php";
 
-$productId = $_POST['productId'];
-$userName = $_POST['userName'];
+    $productId = $_POST['productId'];
+    $UserId = $_POST['UserId'];
 
 
-$sql = "DELETE FROM productByUser WHERE idProduct = '$productId' AND userName = '$userName' LIMIT 1";
+    $sql = "DELETE FROM productByUser WHERE idProduct = '$productId' AND UserId = '$UserId' LIMIT 1";
 
 
-if ($conn->query($sql) === TRUE) {
-    $sql ="UPDATE productbwf SET NumberOfJoined = (NumberOfJoined - 1) WHERE idProduct = '".$productId."'";
-    if ($conn->query($sql) === TRUE)
-        echo true;
-    else
-        echo false;
+    if ($conn->query($sql) === TRUE) {
+        $sql = "UPDATE productBWF SET NumberOfJoined = (NumberOfJoined - 1) WHERE ProductId = '$productId'";
+        if ($conn->query($sql) === TRUE)
+            echo 1;
+        else
+            echo 0;
 
-} else {
-    echo false;
-}
+    } else {
+        echo 0;
+    }
+    mysql_close($conn);
+endif;

@@ -3,9 +3,8 @@
  */
 $(document).ready(function () {
     getProductByCategory();
-
-
 });
+
 var Products;
 var idProduct = 0;
 var userNameProduct = 1;
@@ -21,7 +20,8 @@ var numberOfJoined = 10;
 var price = 11;
 //this function loading the products by click on any category on nav-bar
 function getProductByCategory() {
-    if(localStorage.getItem("companyName") == undefined) {
+    if (localStorage.getItem("companyNameSeller") == undefined) {
+        window.location.href = "http://buy-with-friends.com/SellerWeb/#/loginBtn";
         $("#loader").css('display', "none");
         return;
     }
@@ -33,12 +33,11 @@ function getProductByCategory() {
         url: getProductsForSeller,
         data: {
             category: category,
+            companyIdSeller: localStorage.getItem("companyIdSeller"),
         },
         success: function (response) {
-
             if (response.length > 6) {
                 Products = JSON.parse(response);
-
                 divChanges += "<div class='container' id='divReplaceByPress'><div class='row' >";
                 //print on divReplaceByPress any product in array Products of this category
                 for (var i = 0; i < Products.length; i++) {
@@ -52,20 +51,21 @@ function getProductByCategory() {
                         else
                             stringSub = Products[i][descriptionProduct];
 
-                        divChanges += "<div class='col-lg-4 col-md-6 col-sm-12 col-xs-12 box'><div class='thumbnail''><img src=" + Products[i][imageProduct] + ">";
+                        divChanges += "<div class='col-lg-4 col-md-6 col-sm-12 col-xs-12 box'><div class='thumbnail''><div id='imageProductSeller'><img src=" + Products[i][imageProduct] + "></div>";
                         divChanges += "<div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
                         divChanges += "<p>" + stringSub + "</p><br>"
-                        divChanges += "<p>" +  " מס' החברים בקבוצה: " + Products[i][numberOfJoined] +"</p>";
+                        divChanges += "<p>" + " מס' החברים בקבוצה: " + Products[i][numberOfJoined] + "</p>";
                         divChanges += "<p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='openDetails(" + i + ")'>פרטים נוספים/הצעת מחיר</button></p>";
                         divChanges += "</div></div></div>";
                     }
                 }
-
                 divChanges += "</div>";
                 $("#divReplaceByPress").replaceWith(divChanges);
             }
-            else
-                alert("לא קיימת קבוצה בקטגוריה זו");
+            else {
+                swal("שגיאה","לא קיימת קבוצה בקטגוריה זו", "warning");
+                window.location.href = "http://buy-with-friends.com/SellerWeb/#/";
+            }
             $("#loader").css('display', "none");
 
         }
@@ -85,10 +85,10 @@ function openDetails(x) {
     divChanges += "<h4 class='modal-title'>" + Products[x][productName] + ', ' + Products[x][companyName] + "</h4></div>";
     divChanges += "<div class='thumbnail''><img src=" + Products[x][imageProduct] + "></div>";
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
-    divChanges += "<div class='modal-footer'><div class='col-xs-5'><p>הזן הצעת מחיר</p> <input class='form-control' id='ex1' type='number' min='1'>" +
+    divChanges += "<div class='modal-footer'><div class='col-xs-5'><p>הזן הצעת מחיר</p> <input class='form-control' id='offer' type='number' min='1'>" +
         "<br><button type='button' class='btn btn-success' onclick='sendSellerOffer(" + x + ',' + Products[x][idProduct] + ")' >שליחת הצעה </button></div>" +
         "<div class='col-xs-7'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p> המחיר שהוצע עד כה:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- "+getDayBeforeXMonth(Products[x][endOfGetOfferDate])+"</p></div>" +
+        "<p> המחיר שהוצע עד כה:  " + Products[x][price] + " </p><p>המכרז מסתיים ב- " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div> </div></div></div>";
 
@@ -121,46 +121,47 @@ function getDayBeforeXMonth(datea) {
         Seconds = '0' + Seconds
     }
 
-    var date = dd + '/' + mm + '/' + yyyy +" "+ Hours+":"+Minutes+":"+Seconds;
+    var date = dd + '/' + mm + '/' + yyyy + " " + Hours + ":" + Minutes + ":" + Seconds;
     return date;
 }
 
 
 function sendSellerOffer(indexInProduct, id) {
-    var offer = $("#ex1").val();
+    var offer = $("#offer").val();
     if (parseInt(Products[indexInProduct][price]) <= parseInt(offer)) {
         if (parseInt(Products[indexInProduct][price]) == parseInt(offer))
-            alert("קיים כבר מחיר זהה למוצר זה");
+            swal("!שים לב","קיים כבר מחיר זהה למוצר זה", "warning");
         else
-            alert("תן הצעה קטנה יותר מהמחיר המוצע כרגע");
+            swal("!שים לב","כדי שתספק לקבוצה זו, יש להזין מחיר נמוך יותר מהמחיר שהוצע עד כה", "warning");
         return;
     }
     if (parseInt(offer) <= 0) {
-        alert("אי אפשר למכור בחינם");
+        swal("!שים לב","לא ניתן אפשר למכור בחינם", "warning");
         return;
     }
-
+    var companyIdSeller = localStorage.getItem("companyIdSeller");
     $.ajax({
         type: 'POST',
         url: setNewPriceOfProduct,
         data: {
             id: id,
+            companyId: companyIdSeller,
             price: offer,
         },
         success: function (response) {
-            if (response.localeCompare(" success") == 0) {
+            if (response == " 1") {
                 Products[indexInProduct][price] = offer;
 
                 $.ajax({
                     type: 'POST',
                     url: changeSellerOfProduct,
                     data: {
-                        companyId: localStorage.getItem("companyId"),
+                        companyId: companyIdSeller,
                         productId: id,
                     },
                     success: function (response) {
-                        if (response.localeCompare(" success") == 0) {
-                            alert("change as been made");
+                        if (response == " 1") {
+                            swal("שינויים בוצעו בהצלחה","כעת אתה הספק של קבוצה זו", "success");
                         }
                     }
                 });

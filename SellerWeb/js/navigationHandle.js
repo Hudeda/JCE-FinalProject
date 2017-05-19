@@ -30,8 +30,14 @@ app.config(function ($routeProvider) {
         .when('/other',{
             templateUrl:'pages/other.php'
         })
+        .when('/loginBtn',{
+            templateUrl:'pages/login.php'
+        })
         .when('/MyProducts',{
             templateUrl:'pages/sellerProductPage.php'
+        })
+        .when('/search',{
+            templateUrl:'pages/mySearch.php',
         })
         .otherwise({redirectTo: '/'});
 
