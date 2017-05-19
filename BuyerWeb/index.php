@@ -156,7 +156,9 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                         <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myRegistration'>
                             הירשם
                         </button>
-                        <button onclick="login()" id="login" type='button' class='btn btn-primary'>התחבר/הירשם דרך פייסבוק</button>
+                        <button onclick="login()" id="login" type='button' class='btn btn-primary'>התחבר/הירשם דרך
+                            פייסבוק
+                        </button>
 
                     </div>
                     <br>
@@ -304,10 +306,10 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
             });
             FB.AppEvents.logPageView();
 
-            FB.getLoginStatus(function(response) {
+            FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {
                     $('#status').html('We are connected.');
-                    
+
 
                 } else if (response.status === 'not_authorized') {
 
@@ -320,55 +322,33 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                 }
             });
         };
-        (function(d, s, id){
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
         // login with facebook with extra permissions
         function login() {
-            swal({
-                title: 'כדי להירשם יש להכניס מספר טלפון',
-                input: 'text',
-                showCancelButton: true,
-                confirmButtonText: 'שלח',
-                cancelButtonText: 'ביטול',
-                showLoaderOnConfirm: true,
-                confirmButtonClass: 'btn btn-success btn-lg',
-                cancelButtonClass: 'btn btn-danger btn-lg',
-                preConfirm: function (phone) {
-                    return new Promise(function (resolve, reject) {
-                        setTimeout(function () {
-                            var phoneno = /^\d{10}$/;
-                            if (!(phone.match(phoneno))) {
-                                reject('This is not phone.')
-                            } else {
-                                resolve()
-                            }
-                        }, 2000)
-                    })
-                },
-                allowOutsideClick: false
-            }).then(function (phone) {
-                FB.login(function(response) {
-                    if (response.status === 'connected') {
-                        alert(1);
-                        addFacebookRegister(phone);
-                    } else if (response.status === 'not_authorized') {
-                        $('#status').html('We are not logged in.');
-                    } else {
-                        $('#status').html('You are not logged into Facebook.');
-                    }
-                }, {scope: 'publish_actions'});
-            })
+            FB.login(function (response) {
+                if (response.status === 'connected') {
+                    addFacebookRegister();
+                } else if (response.status === 'not_authorized') {
+                    alert('We are not logged in.');
+                } else {
+                    alert('You are not logged into Facebook.');
+                }
+            }, {scope: 'publish_actions'});
         }
         // getting basic user info
         function getInfo() {
-            FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function(response) {
-                $('#status').html(response.name+" " +response.email+" "+response.first_name + " " +response.id +" "+response.last_name);
+            FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function (response) {
+                alert(response.name + " " + response.email + " " + response.first_name + " " + response.id + " " + response.last_name);
             });
         }
     </script>

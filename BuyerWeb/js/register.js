@@ -242,13 +242,14 @@ function sendReferences() {
         }
     });
 }
-function addFacebookRegister(phone) {
-    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function (response) {
+function addFacebookRegister() {
+    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email,phone'}, function (response) {
         var firstName = response.first_name;
         var lastName = response.last_name;
         var userName = response.email.substring(0, response.email.indexOf('@'));
         var userEmail = response.email;
         var userId = response.id;
+        var phone = response.phone;
         $.ajax({
             async: false,
             type: 'POST',
