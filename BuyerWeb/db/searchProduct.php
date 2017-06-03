@@ -9,7 +9,7 @@ require "init.php";
 
 $textSearch = $_POST["textSearch"];
 
-$date = date('Y-m-d H:i:s');
+$date = $date = date("Y-m-d H:i:s", strtotime('+3 hours'));
 $result = $conn->query("SELECT * FROM productBWF WHERE ((category LIKE '%$textSearch%') OR (productName LIKE '%$textSearch%') OR 
 (companyName LIKE '%$textSearch%') OR (descriptionProduct LIKE '%$textSearch%')) AND endOfAddPeopleDate >  '$date'");
 

@@ -127,6 +127,10 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
             <div class="col-lg-2 col-sm-2 col-lg-offset-5 col-sm-offset-5" id="userName"></div>
         </div><!-- /.container-fluid -->
     </nav>
+    <?php if (isset($_SESSION["userNameBuyer"])) { ?>
+        <div id='name'><span id='spanName'></span>
+            <img id='imgeUser' src="http://buy-with-friends.com/BuyerWeb/image/userImage/imgUser.png"></div>
+    <?php } ?>
     <div class="divCategory text-center">
         <div class="btn-group">
             <a href="#/other" type="button" class="btn btn-primary">שונות</a>
@@ -151,7 +155,7 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                     <p>שם משתמש: <input id="userNameConnection" class='form-control' id='ex1' type='text'></p><br>
                     <p>סיסמא:<input id="userPassConnection" class='form-control' id='ex1' type='password'></p></div>
                 <div class='modal-footer'>
-                    <div class='col-xs-5'><br>
+                    <div class='col-lg-6 boxOFConnection'><br>
                         <button id="userConnection" type='button' class='btn btn-success'>התחבר</button>
                         <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myRegistration'>
                             הירשם
@@ -183,8 +187,7 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                     <p>שם פרטי: <input id="firstNameRegistration" class='form-control' id='ex1' type='text'></p>
                     <p>שם משפחה: <input id="lastNameRegistration" class='form-control' id='ex1' type='text'></p>
                     <p>שם משתמש: <input id="userNameRegistration" class='form-control' id='ex1' type='text'></p>
-                    <p>מספר טלפון: <input id="userPhoneRegistration" class='form-control' id='ex1' type='tel'
-                                          maxlength='10'></p>
+                    <p>מספר טלפון: <input id="userPhoneRegistration" class='form-control' type='tel' maxlength='10'></p>
                     <p>אימייל: <input id="userEmailRegistration" class='form-control' id='ex1' type='email'></p>
                     <p>סיסמא: <input id="pass1Registration" class='form-control' id='ex1' type='password'></p>
                     <p>אימות סיסמא: <input id="pass2Registration" class='form-control' id='ex1' type='password'></p>
@@ -308,8 +311,6 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
 
             FB.getLoginStatus(function (response) {
                 if (response.status === 'connected') {
-                    $('#status').html('We are connected.');
-
 
                 } else if (response.status === 'not_authorized') {
 
@@ -343,13 +344,7 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                 } else {
                     alert('You are not logged into Facebook.');
                 }
-            }, {scope: 'publish_actions'});
-        }
-        // getting basic user info
-        function getInfo() {
-            FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function (response) {
-                alert(response.name + " " + response.email + " " + response.first_name + " " + response.id + " " + response.last_name);
-            });
+            }, {scope: 'public_profile ,email'});
         }
     </script>
 

@@ -15,6 +15,7 @@ $(document).ready(function () {
     else {
         var userName = localStorage.getItem("userNameBuyer");
         $('#userNameSendingInput').val(userName);
+        $('#spanName').text("שלום, "+userName);
         swal("שלום " + userName, ".כעת תוכל להנות מקנייה משותפת ", "success");
     }
 
@@ -23,7 +24,6 @@ $(document).ready(function () {
     $("#userConnection").click(checkConnection);
     $("#emailSendingButton").click(sendEmailForgot);
     $("#sendReferences").click(sendReferences);
-
 
 });
 
@@ -243,13 +243,12 @@ function sendReferences() {
     });
 }
 function addFacebookRegister() {
-    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email,phone'}, function (response) {
+    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,email'}, function (response) {
         var firstName = response.first_name;
         var lastName = response.last_name;
-        var userName = response.email.substring(0, response.email.indexOf('@'));
         var userEmail = response.email;
+        var userName = response.email.substring(0, response.email.indexOf('@'));
         var userId = response.id;
-        var phone = response.phone;
         $.ajax({
             async: false,
             type: 'POST',
@@ -260,7 +259,6 @@ function addFacebookRegister() {
                 userName: userName,
                 userEmail: userEmail,
                 userId: userId,
-                userPhone: phone,
             },
             success: function (response) {
                 if (response == " 0"){
@@ -276,10 +274,8 @@ function addFacebookRegister() {
                             localStorage.setItem("firstNameBuyer", Profile[0]);
                             localStorage.setItem("lastNameBuyer", Profile[1]);
                             localStorage.setItem("userNameBuyer", Profile[2]);
-                            localStorage.setItem("phoneBuyer", Profile[3]);
                             localStorage.setItem("emailBuyer", Profile[4]);
                             localStorage.setItem("UserIdBuyer", Profile[5]);
-                            window.location.href = "http://buy-with-friends.com/BuyerWeb/";
 
                         }
                     });
@@ -289,17 +285,12 @@ function addFacebookRegister() {
                     localStorage.setItem("lastNameBuyer", lastName);
                     localStorage.setItem("userNameBuyer", userName);
                     localStorage.setItem("phoneBuyer", userEmail);
-                    localStorage.setItem("emailBuyer", phone);
                     localStorage.setItem("UserIdBuyer", userId);
-                    location.reload();
                 }
-
+                window.location.href = "http://buy-with-friends.com/BuyerWeb/";
             }
         });
     });
 
 }
 
-function alreadyRegisteredFB(){
-
-}

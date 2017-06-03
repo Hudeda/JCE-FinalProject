@@ -9,7 +9,7 @@ require "init.php";
 
 $category = $_POST["category"];
 
-$date = date('Y-m-d H:i:s');
+$date = date("Y-m-d H:i:s", strtotime('+3 hours'));
 $result = $conn->query("SELECT * FROM productBWF WHERE category =  '$category' AND endOfAddPeopleDate >  '$date'");
 
 

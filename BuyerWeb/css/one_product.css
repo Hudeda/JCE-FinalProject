@@ -5,7 +5,6 @@
 }
 .col-lg-4{
     float: left;
-    width: 100%;
 }
 .col-xs-5 {
     text-align: center;
@@ -69,4 +68,59 @@
 }
 form.navbar-form.navbar-right.ng-pristine.ng-valid {
     display: flex;
+}
+
+
+
+.labelVideo{
+    font-size: 19px;
+}
+.rtlStyle.ng-scope {
+    margin-bottom: 20px;
+}
+
+div#name {
+    text-align: right;
+    color: green;
+}
+
+#imgeUser{
+    width: 35px;
+}
+
+span#spanName {
+    font-size: larger;
+}
+.productPrice{
+    font-size: larger;
+    color: mediumblue;
+}
+h4.modal-title {
+    text-align: center;
+}
+
+.boxOFConnection{
+    text-align: center;
+}
+.btnAddPeople {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+p {
+    margin: 4px;
+}
+
+.credit-card-div  span {
+    padding-top:10px;
+}
+.credit-card-div img {
+    padding-top:30px;
+}
+.credit-card-div .small-font {
+    font-size:9px;
+}
+.credit-card-div .pad-adjust {
+    padding-top:10px;
 }

@@ -24,8 +24,6 @@ var numberOfJoined = 10;
 
 //this function loading the products by click on any category on nav-bar
 function getProductByCategory() {
-    FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
-    });
 
     var category = $("#categoryText").text();
 
@@ -34,10 +32,9 @@ function getProductByCategory() {
         type: 'POST',
         url: getProducts,
         data: {
-            category: category,
+            category: category
         },
         success: function (response) {
-
             if (response.length > 6) {
                 Products = JSON.parse(response);
 
@@ -67,7 +64,7 @@ function ShowProducts() {
             stringSub = Products[i][descriptionProduct];
 
         divChanges += "<div class='panel panel-default'><div class='col-lg-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
-        divChanges += "<div class='col-lg-4'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
+        divChanges += "<div class='col-lg-8'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
         divChanges += "<p>" + stringSub + "</p><br>"
         divChanges += "<p>" + " מספר החברים בקבוצה: " + Products[i][numberOfJoined] + "</p>";
         divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='openDetails(" + i + ")'>פרטים</button></p>";
@@ -90,9 +87,10 @@ function openDetails(x) {
     divChanges += "<h4 class='modal-title'>" + Products[x][productName] + ', ' + Products[x][companyName] + "</h4></div>";
     divChanges += "<div class='thumbnail''><img src=" + Products[x][imageProduct] + "></div>";
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
-    divChanges += "<div class='modal-footer'><div class='col-xs-5'><br><button type='button' class='btn btn-success' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button> <div class='col-lg-4 btn-product' ><button type='button' id='shareBtn' class='btn btn-info btn-lg' onclick='share("+x+")'>שיתוף בפייסבוק</button></div></div>" +
-        "<div class='col-xs-7'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p>המכרז מסתיים ב- " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
+    divChanges += "<div class='modal-footer'><div class='col-lg-4 '><br><button type='button' class='btn btn-success' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button><br> <div class='col-lg-4 btn-product' ><button type='button' id='shareBtn' class='btn btn-info btn-lg' onclick='share("+x+")'>שיתוף בפייסבוק</button></div></div>" +
+        "<div class='col-lg-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
+        "<p>תאריך הצתרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
+        "<p>המכרז מסתיים ב: " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div> </div></div></div>";
 
@@ -120,9 +118,28 @@ function share(x) {
     );
 
 }
+
+// var countDownDate = new Date(datea);
+//
+// var now = new Date().getTime();
+//
+// // Find the distance between now an the count down date
+// var distance = countDownDate - now;
+//
+// // Time calculations for days, hours, minutes and seconds
+// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+// var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+// var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//
+// var date = days+" ימים " +" "+ hours +":"+ minutes + ":" + seconds;
+// return date;
+
+
 //return the day in date before the month
 function getDayBeforeXMonth(datea) {
-    var date = new Date(datea)
+
+    var date = new Date(datea);
 
     var Hours = date.getHours(); // => 9
     var Minutes = date.getMinutes(); // =>  30
@@ -162,6 +179,7 @@ function addProductByUser(idPro) {
     //get the real idProduct
     var idProductSend = Products[idPro][idProduct];
     //send post request to join the group
+
     $.ajax({
         type: 'POST',
         url: addProductByUserDB,

@@ -6,7 +6,8 @@
  * Time: 04:50
  */
 session_start();
-if ($_SESSION["userNameBuyer"] == $_POST['userName']):
+if (str_replace(' ', '',$_SESSION["userNameBuyer"]) ==  str_replace(' ', '',$_POST['userName'])):
+
     require "init.php";
 
     $productId = $_POST['productId'];
