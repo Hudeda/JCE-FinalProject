@@ -73,7 +73,8 @@ form.navbar-form.navbar-right.ng-pristine.ng-valid {
 
 
 .labelVideo{
-    font-size: 19px;
+    font-size: 23px;
+    font-weight: bold;
 }
 .rtlStyle.ng-scope {
     margin-bottom: 20px;
@@ -123,4 +124,16 @@ p {
 }
 .credit-card-div .pad-adjust {
     padding-top:10px;
+}
+.navbar-nav{
+    margin: 0;
+    margin-left: 10px;
+}
+
+#navlogo{
+    width: 50px;
+}
+#titleHomePage{
+    text-decoration: underline;
+    font-weight: bold;
 }

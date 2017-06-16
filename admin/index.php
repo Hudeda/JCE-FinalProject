@@ -42,6 +42,8 @@ $deleteProduct = "http://buy-with-friends.com/admin/db/deleteProduct.php";
 <html dir="rtl" lang="he" ng-app="navBarAdmin">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../BuyerWeb/image/logoBWF.png"/>
+
     <title>Buy With Friends Admin</title>
 
     <!-- Import of javascript URL -->

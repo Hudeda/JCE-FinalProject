@@ -17,12 +17,12 @@
 <br>
 
 <div class="container-fluid bg-3 text-center">
-    <h3>קנייה משותפת - סרטוני הדרכה</h3><br>
+    <h3 id="titleHomePage">קנייה משותפת - סרטוני הדרכה</h3><br>
     <div class="row">
         <div class="col-sm-4">
-            <p class="labelVideo">יצורת קבוצת רכישה חדשה לקנייה משותפת</p>
+            <p class="labelVideo">יצורת קבוצת רכישה חדשה</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/createNewGroup.mp4" type="video/mp4">
                 </video>
             </div>
@@ -30,7 +30,7 @@
         <div class="col-sm-4" >
             <p class="labelVideo">איך נרשמים/מתחברים למערכת</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/connectionBuyer.mp4" type="video/mp4">
                 </video>
             </div>
@@ -38,7 +38,7 @@
         <div class="col-sm-4">
             <p class="labelVideo">?מי אנחנו</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/buyWithFriendsDescription.mp4" type="video/mp4">
                 </video>
             </div>
@@ -52,7 +52,7 @@
         <div class="col-sm-4">
             <p class="labelVideo">?שכחת סיסמה</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/sendEmailForgotPassword.mp4" type="video/mp4">
                 </video>
             </div>
@@ -60,7 +60,7 @@
         <div class="col-sm-4">
             <p class="labelVideo">הצטרפות לקבוצת רכישה קיימת</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/addToGroup.mp4" type="video/mp4">
                 </video>
             </div>
@@ -68,7 +68,7 @@
         <div class="col-sm-4">
             <p class="labelVideo">אפשרויות חיפוש של קבוצות באתר</p>
             <div align="center" class="embed-responsive embed-responsive-16by9">
-                <video class="embed-responsive-item">
+                <video class="embed-responsive-item" poster="image/logoVideo.jpeg">
                     <source src="http://buy-with-friends.com/video/searchOptions.mp4" type="video/mp4">
                 </video>
             </div>
@@ -78,12 +78,13 @@
 <br><br>
 </body>
 <script>
-    $('video').hover(function toggleControls() {
-        if (this.hasAttribute("controls")) {
-            this.removeAttribute("controls")
+    $("video").click(function() {
+        //console.log(this);
+        if (this.paused) {
+            this.play();
         } else {
-            this.setAttribute("controls", "controls")
+            this.pause();
         }
-    })
+    });
 </script>
 </html>

@@ -36,6 +36,8 @@ $searchProductSeller = "http://buy-with-friends.com/SellerWeb/db/searchProductSe
     <meta charset="UTF-8">
     <meta http-equiv="X-UA)Compatible" content="IE-edge">
     <meta name="viewport" content="width = device-width,initial-scale = 1">
+    <link rel="shortcut icon" type="image/x-icon" href="../BuyerWeb/image/logoBWF.png"/>
+
     <title>Buy With Friends Seller</title>
 
     <!-- Import of javascript URL -->
@@ -91,7 +93,7 @@ $searchProductSeller = "http://buy-with-friends.com/SellerWeb/db/searchProductSe
                 </button>
 
                 <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
-                <a class="pull-left" href="#"><img src="../BuyerWeb/image/logoBWF.png"></a>
+                <a class="pull-left" href="#"><img id="navlogo" src="../BuyerWeb/image/logoBWF.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

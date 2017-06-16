@@ -86,7 +86,7 @@ $addFacebookRegister = "http://buy-with-friends.com/BuyerWeb/db/addFacebookRegis
                 </button>
 
                 <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
-                <a class="pull-left" href="http://buy-with-friends.com/BuyerWeb/#/"><img
+                <a class="pull-left" href="http://buy-with-friends.com/BuyerWeb/#/"><img id="navlogo"
                         src="http://buy-with-friends.com/BuyerWeb/image/logoBWF.png"></a>
             </div>
 

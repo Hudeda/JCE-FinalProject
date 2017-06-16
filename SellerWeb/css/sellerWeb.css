@@ -2,6 +2,14 @@
     /*background: lightgray;*/
     /*border-color: white;*/
 /*}*/
+#navlogo{
+    width: 50px;
+}
+.navbar-nav{
+    margin: 0;
+    margin-left: 10px;
+}
+
 #imageProductSeller {
     height: 300;
     width: 300;
