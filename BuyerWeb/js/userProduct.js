@@ -1,6 +1,17 @@
 /**
  * Created by hudeda on 26/11/2016.
  */
+
+/*
+ * functionality of add product by buyer
+ *
+ *1)displayUserProducts - display product that user as joined them
+ *2)exitFromGroup - exit from group
+ *3)getDayBeforeXMonth - replace between day and month
+ *
+ *4,5)openPaymentDialog,openPayment- open dialog payment
+ *6)payment - payment functionality
+ * */
 $(document).ready(function () {
     $(".divCategory").hide();
     displayUserProducts();
@@ -33,7 +44,7 @@ function displayUserProducts() {
         url: getUserProducts,
         data: {
             userName: localStorage.getItem("userNameBuyer"),
-            UserId: localStorage.getItem("UserIdBuyer"),
+            UserId: localStorage.getItem("UserIdBuyer")
         },
         success: function (response) {
             Products = JSON.parse(response);

@@ -5,7 +5,7 @@
  * Date: 03/06/2017
  * Time: 16:22
  */
-
+// get the number of orders
 require "init.php";
 
 $idProduct = $_POST['idProduct'];

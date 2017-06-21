@@ -5,6 +5,7 @@
  * Date: 25/11/2016
  * Time: 16:02
  */
+//this script return number of joined to product
 
 require "init.php";
 

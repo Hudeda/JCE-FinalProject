@@ -5,7 +5,11 @@
  * Date: 03/06/2017
  * Time: 15:48
  */
+
+//this script for the payment of product
+
 session_start();
+//check if buyer is connected
 if (str_replace(' ', '', $_SESSION["userNameBuyer"]) == str_replace(' ', '', $_POST['userName'])):
 
     require "init.php";

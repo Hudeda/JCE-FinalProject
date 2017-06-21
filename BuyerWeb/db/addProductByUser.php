@@ -5,7 +5,10 @@
  * Date: 25/11/2016
  * Time: 00:48
  */
+
+//this script add product
 session_start();
+//check if buyer is register
 if (str_replace(' ', '',$_SESSION["userNameBuyer"]) ==  str_replace(' ', '',$_POST['userName'])):
 
     require "init.php";
@@ -15,6 +18,7 @@ if (str_replace(' ', '',$_SESSION["userNameBuyer"]) ==  str_replace(' ', '',$_PO
 
     $result = $conn->query("SELECT * FROM productByUser WHERE idProduct = '$idProduct' AND UserId ='$UserId'");
 
+    // if thar is no connection between product and user & the user exist so create connection between them
     if($result->num_rows == 0){
         $result = $conn->query("SELECT UserId FROM users WHERE UserId = '$UserId'");
         if ($result->num_rows > 0) {

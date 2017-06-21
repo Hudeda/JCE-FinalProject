@@ -5,10 +5,11 @@
  * Date: 21/04/2017
  * Time: 17:35
  */
+//this script save all facebook register
 session_start();
 
 require "init.php";
-
+//get data
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $userName = $_POST['userName'];
@@ -19,6 +20,7 @@ $UserId = $_POST['userId'];
 
 $result = $conn->query("SELECT * FROM users WHERE UserId =  '$UserId' OR User_Name = '$userName'OR Email = '$userEmail'");
 
+//if exist return 0  else create new user and open session
 if ($result->num_rows > 0) {
     echo 0;
 } else {

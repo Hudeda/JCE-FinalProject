@@ -5,9 +5,11 @@
  * Date: 14/11/2016
  * Time: 20:15
  */
+//connection of user
 session_start();
 require "init.php";
 
+//data from html
 $userName = $_POST['userName'];
 $password = $_POST['password'];
 

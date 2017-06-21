@@ -5,6 +5,8 @@
  * Date: 09/04/2017
  * Time: 12:38
  */
+
+//kill the connection of buyer
 session_start();
 if (isset($_SESSION["userNameBuyer"])):
 session_start();

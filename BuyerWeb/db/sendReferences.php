@@ -5,6 +5,9 @@
  * Date: 02/04/2017
  * Time: 17:21
  */
+
+//this script send message to admin
+
 require "init.php";
 
 $userName = $_POST['userName'];

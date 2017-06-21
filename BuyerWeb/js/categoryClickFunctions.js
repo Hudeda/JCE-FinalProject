@@ -1,14 +1,22 @@
 /**
  * Created by hudeda on 05/12/2016.
  */
+/*
+ * functionality by buyer
+ *
+ *1)getProductByCategory - get all product by click on category
+ *2)ShowProducts - show all product
+ *3)openDetails - this function open and set the details of any product
+ *4)share - function to share the product on facebook
+ *5)getDayBeforeXMonth - replace between day and month
+ *6)addProductByUser - add to database user how want to join any group
+ *
+ * */
 $(document).ready(function () {
 
     getProductByCategory();
-
 });
-function hideDetails() {
-    $("#DivShowDetails").hide();
-}
+
 var Products;
 var idProduct = 0;
 var userNameProduct = 1;
@@ -17,7 +25,7 @@ var companyName = 3;
 var descriptionProduct = 4;
 var category = 5;
 var endOfAddPeopleDate = 6;
-var endOfGetOfferDate = 7
+var endOfGetOfferDate = 7;
 var imageProduct = 8;
 var uploadDate = 9;
 var numberOfJoined = 10;
@@ -89,7 +97,7 @@ function openDetails(x) {
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
     divChanges += "<div class='modal-footer'><div class='col-lg-4 '><br><button type='button' class='btn btn-success' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button><br> <div class='col-lg-4 btn-product' ><button type='button' id='shareBtn' class='btn btn-info btn-lg' onclick='share("+x+")'>שיתוף בפייסבוק</button></div></div>" +
         "<div class='col-lg-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p>תאריך הצתרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
+        "<p>תאריך הצטרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
         "<p>המכרז מסתיים ב: " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div> </div></div></div>";
@@ -118,23 +126,6 @@ function share(x) {
     );
 
 }
-
-// var countDownDate = new Date(datea);
-//
-// var now = new Date().getTime();
-//
-// // Find the distance between now an the count down date
-// var distance = countDownDate - now;
-//
-// // Time calculations for days, hours, minutes and seconds
-// var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-// var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-// var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-// var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-//
-// var date = days+" ימים " +" "+ hours +":"+ minutes + ":" + seconds;
-// return date;
-
 
 //return the day in date before the month
 function getDayBeforeXMonth(datea) {

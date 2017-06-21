@@ -5,7 +5,9 @@
  * Date: 26/11/2016
  * Time: 04:04
  */
+//this script return all group that buyer joined them
 session_start();
+//check if buyer connected
 if (str_replace(' ', '',$_SESSION["userNameBuyer"]) ==  str_replace(' ', '',$_POST['userName'])):
 
     require "init.php";

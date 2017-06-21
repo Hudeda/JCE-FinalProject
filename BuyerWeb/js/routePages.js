@@ -5,34 +5,34 @@ var app = angular.module('myApp1', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/electricity',{
+        .when('/electricity',{// get page of electricity
             templateUrl:'pages/MyElectricity.php'
         })
-        .when('/tourist',{
+        .when('/tourist',{// get page of tourist
             templateUrl:'pages/MyTourist.php'
         })
-        .when('/computer',{
+        .when('/computer',{// get page of computer
             templateUrl:'pages/MyComputer.php'
         })
-        .when('/sport',{
+        .when('/sport',{// get page of sport
             templateUrl:'pages/MySport.php'
         })
-        .when('/cellular',{
+        .when('/cellular',{// get page of cellular
             templateUrl:'pages/MyCellular.php'
         })
-        .when('/car',{
+        .when('/car',{// get page of car
             templateUrl:'pages/MyCar.php'
         })
-        .when('/other',{
+        .when('/other',{// get page of other
             templateUrl:'pages/MyOther.php'
         })
-        .when('/userProduct',{
+        .when('/userProduct',{// get page of products
             templateUrl:'pages/MyProducts.php',
         })
-        .when('/search',{
+        .when('/search',{// get page of search
             templateUrl:'pages/MySearch.php',
         })
-        .when('/',{
+        .when('/',{// get page of home page
             templateUrl:'pages/MyHomePage.php',
         })
         .otherwise({redirectTo: '/'});

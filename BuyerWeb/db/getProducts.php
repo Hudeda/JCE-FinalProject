@@ -5,6 +5,8 @@
  * Date: 21/11/2016
  * Time: 11:28
  */
+
+//get all product that are open to joined
 require "init.php";
 
 $category = $_POST["category"];

@@ -1,6 +1,15 @@
 /**
  * Created by hudeda on 30/03/2017.
  */
+
+/* functionality by buyer
+*
+*1)showProductsAsSearch - get all product that text search like any text on product(eg category,name,description)
+*2)showProductsAsSearch - show all product
+*3)openDetails - this function open and set the details of any product
+*4)getDayBeforeXMonth - replace between day and month
+*5)addProductByUser - add to database user how want to join any group
+* */
 $(document).ready(function () {
     $("#searchProduct").click(searchProduct);
 });
@@ -79,7 +88,7 @@ function openDetails(x) {
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
     divChanges += "<div class='modal-footer'><div class='col-xs-5'><br><button type='button' class='btn btn-success btnAddPeople' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button></div>" +
         "<div class='col-lg-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
-        "<p>תאריך הצתרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
+        "<p>תאריך הצטרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
         "<p>המכרז מסתיים ב: " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";
     divChanges += "</div> </div></div></div>";
@@ -89,7 +98,7 @@ function openDetails(x) {
 
 //return the day in date before the month
 function getDayBeforeXMonth(datea) {
-    var date = new Date(datea)
+    var date = new Date(datea);
 
     var Hours = date.getHours(); // => 9
     var Minutes = date.getMinutes(); // =>  30

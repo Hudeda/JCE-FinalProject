@@ -1,6 +1,6 @@
 <?php
+//register fo buyer and open session
 session_start();
-
 require "init.php";
 
 $firstName = $_POST['firstName'];

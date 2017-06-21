@@ -6,7 +6,7 @@
  * Time: 18:01
  */
 
-
+//this script send mail if the user forgot the password
 $email = $_POST['email'];
 $password = $_POST['password'];
 

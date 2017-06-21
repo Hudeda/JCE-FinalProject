@@ -1,6 +1,14 @@
 /**
  * Created by hudeda on 16/11/2016.
  */
+/*
+ * functionality of add product by buyer
+ *
+ *1)ImageResize - convert image to base64 and return this string
+ *2)saveProductDb - save the group product in database
+ *
+ * */
+
 var target;
 $(document).ready(function () {
     $("#addProductBuyUser").click(saveProductDb);

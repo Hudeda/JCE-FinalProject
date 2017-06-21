@@ -1,3 +1,19 @@
+
+/*
+ * functionality of register buyer
+ *
+ *1)deleteSession - close session of buyer
+ *2)validateForm - validation of email
+ *3)checkConnection - check connection
+ *4)checkRegistration - check registration of user
+ *5)phonenumber - validation of phone
+ *6)addFacebookRegister - functionality of facebook registration
+ *7)sendReferences - send message for admin
+ *8)sendEmailForgot - send new password to user
+ *9)newPassword - return new password
+ *
+ * */
+
 $(document).ready(function () {
     $(".nav a").on("click", function () {
         $(".nav").find(".active").removeClass("active");

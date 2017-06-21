@@ -5,6 +5,9 @@
  * Date: 30/03/2017
  * Time: 01:38
  */
+
+//this script return all product that description,category or name like the textSearch in the date fo joined people
+
 require "init.php";
 
 $textSearch = $_POST["textSearch"];
