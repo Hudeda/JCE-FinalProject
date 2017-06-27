@@ -5,25 +5,25 @@ var app = angular.module('navBarAdmin', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider
-        .when('/buyers',{
+        .when('/buyers',{//show buyers clicked
             templateUrl:'pages/buyers.php'
         })
-        .when('/sellers',{
+        .when('/sellers',{//show seller clicked
             templateUrl:'pages/sellers.php'
         })
-        .when('/product',{
+        .when('/product',{//show products clicked
             templateUrl:'pages/products.php'
         })
-        .when('/referencesBuyers',{
+        .when('/referencesBuyers',{//show message buyer clicked
             templateUrl:'pages/referencesBuyers.php'
         })
-        .when('/referencesSellers',{
+        .when('/referencesSellers',{//show message seller clicked
             templateUrl:'pages/referencesSellers.php'
         })
-        .when('/referencesUnregistered',{
+        .when('/referencesUnregistered',{//show message unregistered clicked
             templateUrl:'pages/referencesUnregistered.php'
         })
-        .when('/addSeller',{
+        .when('/addSeller',{//add seller click
             templateUrl:'pages/addSeller.php',
         })
         .otherwise({redirectTo: '/'});

@@ -50,8 +50,8 @@ function displayUserProducts() {
             Products = JSON.parse(response);
             for (var i = 0; i < Products.length; i++) {
 
-                divChanges = "<div class='panel panel-default'><div class='col-lg-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
-                divChanges += "<div class='col-lg-8'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
+                divChanges = "<div class='panel panel-default'><div class='col-sm-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
+                divChanges += "<div class='col-sm-8'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
                 divChanges += "<p>" + Products[i][descriptionProduct] + "</p><br>"
                 divChanges += "<p>" + " מספר החברים בקבוצה: " + Products[i][numberOfJoined] + "</p>";
                 var currentDate = new Date();

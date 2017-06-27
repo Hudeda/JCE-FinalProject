@@ -5,6 +5,9 @@
  * Date: 09/04/2017
  * Time: 11:47
  */
+
+//this script kill the session
+
 session_start();
 if (isset($_SESSION["userNameAdmin"])):
 session_start();

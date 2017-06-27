@@ -171,7 +171,6 @@ function checkRegistration() {
                 localStorage.setItem("emailBuyer", userPhone.val());
                 localStorage.setItem("UserIdBuyer", response.replace(/\s+/g, ''));
                 swal("נוצר מוכר חדש", "כעת, תוכל להנות מקנייה משותפת", "success");
-                location.reload();
             }
 
         }

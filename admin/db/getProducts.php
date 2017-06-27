@@ -5,7 +5,11 @@
  * Date: 27/03/2017
  * Time: 20:24
  */
+
+//get all product from database
 session_start();
+
+//check if admin connected
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";
 $result =  $conn->query( "SELECT * FROM productBWF" );

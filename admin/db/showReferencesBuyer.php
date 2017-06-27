@@ -5,7 +5,11 @@
  * Date: 03/04/2017
  * Time: 03:45
  */
+
+// get add the message from buyer users from database
+
 session_start();
+//check if the admin connected
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";
 $result =  $conn->query( "SELECT * FROM referencesUsers WHERE userType = 'buyer' ORDER BY uploadDate ASC;" );

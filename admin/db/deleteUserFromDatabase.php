@@ -5,14 +5,17 @@
  * Date: 29/03/2017
  * Time: 14:40
  */
+//delete user from database
 session_start();
+//check if the admin connected
 if (isset($_SESSION["userNameAdmin"])):
-    require "init.php";
 
+    require "init.php";
+    //get data from html
     $userId = $_POST["userId"];
 
     $sql = "DELETE FROM users WHERE UserId = '$userId'";
-
+    //if success delete and if the user joined to group update -1
     if ($conn->query($sql)) {
         $sql = "UPDATE productBWF 
             SET NumberOfJoined = NumberOfJoined - 1 

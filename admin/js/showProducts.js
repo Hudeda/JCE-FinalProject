@@ -1,7 +1,17 @@
 /**
  * Created by hudeda on 15/04/2017.
  */
-var Products;
+
+/*
+ * functionality of show/delete buyer by admin
+ *
+ *1)deleteUserFromDatabase - this function delete user from database
+ *2)openDetails - dialog open by click
+ *3)showProducts - show all product from database
+ *4)getDayBeforeXMonth - replace between day and month
+ *5)deleteProduct - delete product from database
+ * */
+
 $(document).ready(function () {
     showProducts();
 });

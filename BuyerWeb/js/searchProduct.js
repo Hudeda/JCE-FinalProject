@@ -62,8 +62,8 @@ function showProductsAsSearch() {
         else
             stringSub = Products[i][descriptionProduct];
 
-        divChanges += "<div class='panel panel-default'><div class='col-lg-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
-        divChanges += "<div class='col-lg-8'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
+        divChanges += "<div class='panel panel-default'><div class='col-sm-4 panel-body'><img src=" + Products[i][imageProduct] + "></div>";
+        divChanges += "<div class='col-sm-8'><div class='caption'><h3>" + Products[i][companyName] + "</h3><h4>" + Products[i][productName] + "</h4>"
         divChanges += "<p>" + stringSub + "</p><br>"
         divChanges += "<p>" + " מספר החברים בקבוצה: " + Products[i][numberOfJoined] + "</p>";
         divChanges += "<div class='col-lg-4 btn-product' ><p><button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal' onclick='openDetails(" + i + ")'>פרטים</button></p>";
@@ -86,8 +86,8 @@ function openDetails(x) {
     divChanges += "<h4 class='modal-title'>" + Products[x][productName] + ', ' + Products[x][companyName] + "</h4></div>";
     divChanges += "<div class='thumbnail''><img src=" + Products[x][imageProduct] + "></div>";
     divChanges += "<div class='modal-body'> <p>" + Products[x][descriptionProduct] + "</p></div>";
-    divChanges += "<div class='modal-footer'><div class='col-xs-5'><br><button type='button' class='btn btn-success btnAddPeople' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button></div>" +
-        "<div class='col-lg-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
+    divChanges += "<div class='modal-footer'><div class='col-sm-4'><br><button type='button' class='btn btn-success btnAddPeople' onclick='addProductByUser(" + x + ")'>הצטרף לקבוצה </button></div>" +
+        "<div class='col-sm-8'> מספר החברים בקבוצה הינו " + Products[x][numberOfJoined] + "" +
         "<p>תאריך הצטרפות חברים לקבוצה: " + getDayBeforeXMonth(Products[x][endOfAddPeopleDate]) + "</p>" +
         "<p>המכרז מסתיים ב: " + getDayBeforeXMonth(Products[x][endOfGetOfferDate]) + "</p></div>" +
         "<br><button type='button' class='btn btn-default exitDetails' data-dismiss='modal'>Close</button>";

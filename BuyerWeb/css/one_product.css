@@ -137,3 +137,14 @@ p {
     text-decoration: underline;
     font-weight: bold;
 }
+
+.modal-footer .col-sm-4 {
+    text-align: center;
+}
+
+.btn-group-lg>.btn, .btn-lg{
+    padding: 10px 8px 10px 8px !important;
+}
+button.swal2-confirm.btn.btn-success.btn-lg {
+    padding: 10px 20px !important;
+}

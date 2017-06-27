@@ -5,6 +5,8 @@
  * Date: 27/03/2017
  * Time: 20:24
  */
+
+//get all users from database
 session_start();
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";

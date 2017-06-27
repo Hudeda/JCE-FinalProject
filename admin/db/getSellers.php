@@ -5,6 +5,8 @@
  * Date: 29/03/2017
  * Time: 15:11
  */
+
+//get all sellers in database
 session_start();
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";

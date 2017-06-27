@@ -68,6 +68,7 @@ $deleteProduct = "http://buy-with-friends.com/admin/db/deleteProduct.php";
 </head>
 <body>
 <div class="container">
+<!--     if admin connected show the nav side   -->
     <?php if (isset($_SESSION["userNameAdmin"])): ?>
         <div class="modal-body row">
             <div class="col-md-12 btnConnect">
@@ -96,8 +97,8 @@ $deleteProduct = "http://buy-with-friends.com/admin/db/deleteProduct.php";
                                 </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle" data-toggle="dropdown"> משתמשים <span
-                                            class="caret"></span><span style="font-size:16px;"
-                                                                       class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                                                class="caret"></span><span style="font-size:16px;"
+                                                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
                                     <ul class="dropdown-menu forAnimate" role="menu">
                                         <li><a href="#/sellers">מוכרים</a></li>
                                         <li><a href="#/buyers">רוכשים</a></li>
@@ -105,8 +106,8 @@ $deleteProduct = "http://buy-with-friends.com/admin/db/deleteProduct.php";
                                 </li>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle" data-toggle="dropdown"> הודעות <span
-                                            class="caret"></span><span style="font-size:16px;"
-                                                                       class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a>
+                                                class="caret"></span><span style="font-size:16px;"
+                                                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a>
                                     <ul class="dropdown-menu forAnimate" role="menu">
                                         <li><a href="#/referencesSellers"> מוכרים </a></li>
                                         <li><a href="#/referencesBuyers"> רוכשים </a></li>
@@ -136,7 +137,7 @@ $deleteProduct = "http://buy-with-friends.com/admin/db/deleteProduct.php";
         </div>
     <?php endif; ?>
 
-    <!-- popup windows fo   r connection -->
+    <!-- popup windows for connection -->
     <div class='modal fade' id='myAdminLogin' role='dialog'>
         <div class='modal-dialog'>
 

@@ -1,6 +1,13 @@
 /**
  * Created by hudeda on 27/03/2017.
  */
+/*
+ * functionality of connection by admin
+ *
+ *1)deleteConnectionSession - remove the session of admin
+ *2)connectionAdmin - connect admin and create session
+ *
+ * */
 $(document).ready(function () {
     $("#userConnection").click(connectionAdmin);
     $("#endConnection").click(deleteConnectionSession);

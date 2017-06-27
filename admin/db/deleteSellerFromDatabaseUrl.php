@@ -6,13 +6,16 @@
  * Time: 17:32
  */
 
+//this script delete seller from database
 session_start();
+//check if admin connected
 if (isset($_SESSION["userNameAdmin"])):
-require "init.php";
-
-$idSeller = $_POST['idSeller'];
-
-$sql = "DELETE FROM companyUser WHERE ID = '$idSeller'";
+    require "init.php";
+    //get data
+    $idSeller = $_POST['idSeller'];
+    // delete user from database
+    $sql = "DELETE FROM companyUser WHERE ID = '$idSeller'";
+    //if success update all product price that selle is the provider to 0 and delete the connection between them
     if ($conn->query($sql)) {
         $sql = "UPDATE productBWF 
             SET Price = 0 
@@ -24,15 +27,14 @@ $sql = "DELETE FROM companyUser WHERE ID = '$idSeller'";
             $sql = "DELETE FROM sellerToProduct WHERE companyId = '$idSeller'";
             if ($conn->query($sql)) {
                 echo 1;
-            }else {
+            } else {
                 echo 0;
             }
         } else
             echo 0;
-    }
-    else
+    } else
         echo 0;
 
-mysql_close($conn);
+    mysql_close($conn);
 endif;
 

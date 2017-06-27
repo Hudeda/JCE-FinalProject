@@ -5,7 +5,10 @@
  * Date: 03/04/2017
  * Time: 04:39
  */
+
+// get add the message from unconnected users from database
 session_start();
+// check if the admin connected
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";
 $result =  $conn->query( "SELECT * FROM referencesUsers WHERE userType = 'else' ORDER BY uploadDate ASC;" );

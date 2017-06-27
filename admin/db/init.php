@@ -1,4 +1,5 @@
 <?php
+//connected to the database
 $servername = 'server77.hosting24.com';
 $username = "buywithf_DB";
 $password = "nati0109";

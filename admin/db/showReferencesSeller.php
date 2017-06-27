@@ -5,6 +5,9 @@
  * Date: 03/04/2017
  * Time: 04:10
  */
+
+// get add the message from seller users from database
+
 session_start();
 if (isset($_SESSION["userNameAdmin"])):
 require "init.php";

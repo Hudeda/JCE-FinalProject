@@ -1,6 +1,10 @@
 /**
  * Created by hudeda on 03/04/2017.
  */
+
+////referencesUnregisteredDB - show all the unregistered messages
+
+
 $(document).ready(function () {
     referencesUnregisteredDB();
 });

@@ -1,6 +1,9 @@
 /**
  * Created by hudeda on 03/04/2017.
  */
+
+////showReferencesBuyerDB - show all the buyers messages
+
 $(document).ready(function () {
     showReferencesBuyerDB();
 });

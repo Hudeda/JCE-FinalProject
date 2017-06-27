@@ -1,6 +1,15 @@
 /**
  * Created by hudeda on 02/04/2017.
  */
+/*
+ * functionality of show/delete buyer by admin
+ *
+ *1)deleteUserFromDatabase - this function delete user from database
+ *2)showUsers - show all buyers
+ *
+ * */
+
+
 var users;
 
 $(document).ready(function () {

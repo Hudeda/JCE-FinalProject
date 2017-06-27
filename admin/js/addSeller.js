@@ -2,7 +2,18 @@
  * Created by hudeda on 02/04/2017.
  */
 
+/*
+* functionality of add seller by admin
+*
+*1)addSeller - add Seller insert new seller to database
+*2)newPss - return new password to seller
+*3)phonenumber - check validation of Phone
+*4)validateForm - check validation of email
+*
+* */
+
 $(document).ready(function () {
+  //print the form of add seller
     var addSeller = $("#addSeller");
     addSeller.empty();
     var divChanges ="";

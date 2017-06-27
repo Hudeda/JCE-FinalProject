@@ -109,7 +109,7 @@ $.fn.ImageResize = function (options) {
     }
 
 
-}
+};
 
 //add a product to server
 function saveProductDb() {
@@ -154,7 +154,6 @@ function saveProductDb() {
             success: function (response) {
                 if (response == ' 1') {
                     swal("נוצרה קבוצת רכישה חדשה", "הינך רשום לקבוצה, כרגע הקבוצה בשלב איסוף אנשים", "success");
-                    location.reload();
                 }
                 else
                     swal("שגיאה","לא היה ניתן ליצור את הקבוצה", "error");

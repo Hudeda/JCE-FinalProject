@@ -1,6 +1,9 @@
 /**
  * Created by hudeda on 03/04/2017.
  */
+
+////showReferencesSellerDB - show all the sellers messages
+
 $(document).ready(function () {
     showReferencesSellerDB();
 });
